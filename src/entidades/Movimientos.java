@@ -4,37 +4,52 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author luisg
  */
-public class Movimientos {
+public class Movimientos implements Serializable {
 
-    private List<Dado> dados;
+    private int id;
 
-    public Movimientos(List<Dado> dados) {
-        this.dados = dados;
+    public Movimientos() {
+
     }
 
-    public List<Dado> getDados() {
-        return dados;
+    public int getId() {
+        return id;
     }
 
-    public void setDados(List<Dado> dados) {
-        this.dados = dados;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int obtenerMovimiento() {
-        int numeroCasillas = 0;
-
-        for (Dado d : dados) {
-            if (!d.isLiso()) {
-                numeroCasillas++;
-            }
-        }
-
-        return numeroCasillas;
-    }
+//    private List<Dado> dados;
+//
+//    public Movimientos(List<Dado> dados) {
+//        this.dados = dados;
+//    }
+//
+//    public List<Dado> getDados() {
+//        return dados;
+//    }
+//
+//    public void setDados(List<Dado> dados) {
+//        this.dados = dados;
+//    }
+//
+//    public int obtenerMovimiento() {
+//        int numeroCasillas = 0;
+//
+//        for (Dado d : dados) {
+//            if (!d.isLiso()) {
+//                numeroCasillas++;
+//            }
+//        }
+//
+//        return numeroCasillas;
+//    }
 }

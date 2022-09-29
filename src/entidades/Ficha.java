@@ -11,11 +11,11 @@ package entidades;
 public class Ficha {
 
     private String color;
-    private boolean enTablero;
+    private Jugador jugador;
+    private int ordenSalida;
 
-    public Ficha(String color, boolean enTablero) {
-        this.color = color;
-        this.enTablero = enTablero;
+    public Ficha(int ordenSalida) {
+        this.ordenSalida = ordenSalida;
     }
 
     public String getColor() {
@@ -26,11 +26,19 @@ public class Ficha {
         this.color = color;
     }
 
-    public boolean etsaEnTablero() {
-        return enTablero;
+    public Jugador getJugador() {
+        return jugador;
     }
 
-    public void setEnTablero(boolean enTablero) {
-        this.enTablero = enTablero;
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    public int getOrdenSalida() {
+        return ordenSalida;
+    }
+
+    public void setOrdenSalida(int ordenSalida) {
+        this.ordenSalida = ordenSalida;
     }
 }

@@ -4,20 +4,23 @@
  */
 package entidades;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  *
  * @author luisg
  */
-public class Jugador {
+public class Jugador implements Serializable {
 
     private String usuario;
-    private String contrasenia;
-    private boolean jugando;
+    private String colorFichas;
+    private List<Ficha> fichas;
 
-    public Jugador(String usuario, String contrasenia, boolean jugando) {
+    public Jugador(String usuario, String colorFichas, List<Ficha> fichas) {
         this.usuario = usuario;
-        this.contrasenia = contrasenia;
-        this.jugando = jugando;
+        this.colorFichas = colorFichas;
+        this.fichas = fichas;
     }
 
     public String getUsuario() {
@@ -28,19 +31,19 @@ public class Jugador {
         this.usuario = usuario;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getColorFichas() {
+        return colorFichas;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setColorFichas(String colorFichas) {
+        this.colorFichas = colorFichas;
     }
 
-    public boolean estaJugando() {
-        return jugando;
+    public List<Ficha> getFichas() {
+        return fichas;
     }
 
-    public void setJugando(boolean jugando) {
-        this.jugando = jugando;
+    public void setFichas(List<Ficha> fichas) {
+        this.fichas = fichas;
     }
 }
