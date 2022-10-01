@@ -83,7 +83,7 @@ public class CanvasTablero extends Canvas {
         g2d.setColor(Color.BLUE);
         List<DibujoCasilla> dCasillas = this.dibujoTablero.getCasillas();
         for (DibujoCasilla dCasilla : dCasillas) {
-            if (!dCasilla.getCasilla().isDisponible()) {
+            if (!dCasilla.getCasilla().isLibre()) {
                 ficha = new Ellipse2D.Double(dCasilla.getX(),
                         dCasilla.getY(), tamanioCasilla / 2, tamanioCasilla / 2);
                 g2d.fill(ficha);
