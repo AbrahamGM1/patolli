@@ -4,16 +4,21 @@
  */
 package entidades;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  *
  * @author luisg
  */
-public class Tablero {
+public class Tablero implements Serializable {
 
     private int numCasillas;
+    private List<Casilla> casillas;
 
-    public Tablero(int numCasillas) {
+    public Tablero(int numCasillas, List casillas) {
         this.numCasillas = numCasillas;
+        this.casillas = casillas;
     }
 
     public int getNumCasillas() {
@@ -22,5 +27,13 @@ public class Tablero {
 
     public void setNumCasillas(int numCasillas) {
         this.numCasillas = numCasillas;
+    }
+
+    public void addCasilla(Casilla casilla) {
+        this.casillas.add(casilla);
+    }
+
+    public List<Casilla> getCasillas() {
+        return casillas;
     }
 }
