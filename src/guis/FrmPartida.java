@@ -29,6 +29,11 @@ public class FrmPartida extends javax.swing.JFrame {
         this.casillas = partida.getNumCasillas();
         mostrarTablero(this.casillas);
         iniciarlbl();
+    }
+    
+    public FrmPartida(){
+        initComponents();
+        iniciarlbl();
         this.setLocationRelativeTo(null);
     }
 
@@ -230,7 +235,7 @@ public class FrmPartida extends javax.swing.JFrame {
     
     public void iniciarlbl() {
 
-        dado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("//imagenes/cañaLisa.png")));
+        dado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         dado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         dado3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         dado4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));

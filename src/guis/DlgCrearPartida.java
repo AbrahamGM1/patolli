@@ -200,6 +200,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     private void botonCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPartidaActionPerformed
         this.crearPartida();
         this.iniciarPartida();
+        dispose();
     }//GEN-LAST:event_botonCrearPartidaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

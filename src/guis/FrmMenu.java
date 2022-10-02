@@ -4,6 +4,9 @@
  */
 package guis;
 
+import entidades.Dado;
+import org.greenrobot.eventbus.EventBus;
+
 /**
  *
  * @author luisg
@@ -15,6 +18,10 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     public FrmMenu() {
         initComponents();
+        initComponents();
+        setLocationRelativeTo(null);
+        Dado dado = new Dado();
+        dado.GenerarLado();
     }
 
     /**
@@ -28,8 +35,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonCrearPartida = new javax.swing.JButton();
+        botonUnirsePartida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,9 +44,19 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jLabel2.setText("¿Quiere crear una partida o unirse a una ya existente?");
 
-        jButton1.setText("Crear partida");
+        botonCrearPartida.setText("Crear partida");
+        botonCrearPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearPartidaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Unirse a partida");
+        botonUnirsePartida.setText("Unirse a partida");
+        botonUnirsePartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonUnirsePartidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,9 +73,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(botonCrearPartida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonUnirsePartida)
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -70,13 +87,21 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(botonCrearPartida)
+                    .addComponent(botonUnirsePartida))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPartidaActionPerformed
+        new DlgCrearPartida(this, true).setVisible(true);
+    }//GEN-LAST:event_botonCrearPartidaActionPerformed
+
+    private void botonUnirsePartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnirsePartidaActionPerformed
+        new DlgUnirsePartida(this, true).setVisible(true);
+    }//GEN-LAST:event_botonUnirsePartidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,9 +139,10 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonCrearPartida;
+    private javax.swing.JButton botonUnirsePartida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+    public static EventBus evento = new EventBus();
 }
