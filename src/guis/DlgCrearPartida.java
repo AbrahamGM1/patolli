@@ -4,6 +4,16 @@
  */
 package guis;
 
+import entidades.Apuestas;
+import entidades.Casilla;
+import entidades.Dado;
+import entidades.Ficha;
+import entidades.Jugador;
+import entidades.Partida;
+import entidades.Tablero;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author luisg
@@ -16,6 +26,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     public DlgCrearPartida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -187,12 +198,157 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPartidaActionPerformed
-        // TODO add your handling code here:
+        this.crearPartida();
+        this.iniciarPartida();
     }//GEN-LAST:event_botonCrearPartidaActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    public boolean validarMonto() {
+        try {
+            if (esNumero(campoTextoMontoPorApuesta.getText().trim()) && esNumero(campoTextoFondoApuestas.getText().trim())) {
+
+                float maximo = 10000000;
+
+                float monto = Float.parseFloat(campoTextoMontoPorApuesta.getText());
+                float fondo = Float.parseFloat(campoTextoFondoApuestas.getText());
+                if ((monto > 0 || monto >= maximo) && (fondo > 0 || fondo >= maximo)) {
+                    this.confirmacion = 1;
+                    JOptionPane.showMessageDialog(null, "Se han validado los datos correctamente");
+                    return true;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Solo se aceptan números");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "LLene correctamente los datos SOLO NÚMEROS");
+            return false;
+        }
+        return false;
+    }
+
+    public void vaciar() {
+        this.campoTextoMontoPorApuesta.setText("");
+        this.campoTextoFondoApuestas.setText("");
+    }
+
+    public static boolean esNumero(String numero) {
+        return numero.matches("[0-9]*");
+    }
+
+    public Partida crearPartida() {
+        int numJugadores = 0;
+        if (this.checkBox2Jugadores.isSelected()) {
+            numJugadores = 2;
+        }
+        if (this.checkBox3Jugadores.isSelected()) {
+            numJugadores = 3;
+        }
+        if (this.checkBox4Jugadores.isSelected()) {
+            numJugadores = 4;
+        }
+
+        int fondo = 0;
+        int monto = 0;
+        if (validarMonto()) {
+            monto = Integer.parseInt(campoTextoMontoPorApuesta.getText());
+            fondo = Integer.parseInt(campoTextoFondoApuestas.getText());
+        }
+
+        int numCasillas = 0;
+        if (this.checkBox10Casillas.isSelected()) {
+            numCasillas = 10;
+        }
+        if (this.checkBox12Casillas.isSelected()) {
+            numCasillas = 12;
+        }
+        if (this.checkBox14Casillas.isSelected()) {
+            numCasillas = 14;
+        }
+
+        int numFichas = 0;
+        if (this.checkBox2Fichas.isSelected()) {
+            numFichas = 2;
+        }
+        if (this.checkBox3Fichas.isSelected()) {
+            numFichas = 3;
+        }
+        if (this.checkBox4Fichas.isSelected()) {
+            numFichas = 4;
+        }
+        if (this.checkBox5Fichas.isSelected()) {
+            numFichas = 5;
+        }
+        if (this.checkBox6Fichas.isSelected()) {
+            numFichas = 6;
+        }
+
+        Apuestas apuestas = new Apuestas(fondo, monto);
+        Tablero tablero = new Tablero(this.llenarCasillas(numCasillas * 2 * 4 + 4, numFichas));
+        Jugador[] jugadores = this.llenarJugadores(numJugadores, apuestas);
+
+        for (Jugador j : jugadores) {
+            j.setFichas(this.llenarFichas(numFichas, j));
+        }
+
+        return new Partida(numCasillas, tablero, jugadores, this.llenarDados(), gen());
+    }
+
+    public int gen() {
+        Random r = new Random(System.currentTimeMillis());
+        return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
+    }
+
+    public void iniciarPartida() {
+        try {
+            if (confirmacion == 0) {
+                JOptionPane.showMessageDialog(null, "Es necesario que se validen los datos");
+                return;
+            }
+            FrmPartida partida = new FrmPartida();
+            FrmMenu.evento.register(partida);
+            FrmMenu.evento.post(this.crearPartida());
+            partida.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Dato Erróneo");
+        }
+    }
+
+    public Dado[] llenarDados() {
+        Dado[] dados = new Dado[5];
+        for (int i = 0; i < 5; i++) {
+            Dado dado = new Dado();
+            dados[i] = dado;
+        }
+        return dados;
+    }
+
+    public Jugador[] llenarJugadores(int numJugadores, Apuestas apuesta) {
+        Jugador[] jugadores = new Jugador[numJugadores];
+        for (int i = 1; i < numJugadores + 1; i++) {
+            jugadores[i - 1] = new Jugador(apuesta);
+        }
+        return jugadores;
+    }
+
+    public Casilla[] llenarCasillas(int numCasillas, int numFichas) {
+        Casilla[] casillas = new Casilla[numCasillas];
+        for (int i = 1; i < numCasillas; i++) {
+            casillas[i - 1] = new Casilla(i, new Ficha[numFichas]);
+        }
+        return casillas;
+    }
+
+    public Ficha[] llenarFichas(int numFichas, Jugador jugador) {
+        Ficha[] fichas = new Ficha[numFichas];
+        for (int i = 1; i < numFichas + 1; i++) {
+            fichas[i - 1] = new Ficha(i - 1, -1);
+        }
+        return fichas;
+    }
 
     /**
      * @param args the command line arguments
@@ -258,4 +414,5 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
+    int confirmacion = 0;
 }
