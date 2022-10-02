@@ -10,35 +10,27 @@ package entidades;
  */
 public class Ficha {
 
-    private String color;
-    private Jugador jugador;
-    private int ordenSalida;
+    private int posicion;
+    private int id;
 
-    public Ficha(int ordenSalida) {
-        this.ordenSalida = ordenSalida;
+    public Ficha(int id, int posicion) {
+        this.id = id;
+        this.posicion = posicion;
     }
 
-    public String getColor() {
-        return color;
+    public int getId() {
+        return id;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Jugador getJugador() {
-        return jugador;
+    public int getPosicion() {
+        return posicion;
     }
 
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
-    }
-
-    public int getOrdenSalida() {
-        return ordenSalida;
-    }
-
-    public void setOrdenSalida(int ordenSalida) {
-        this.ordenSalida = ordenSalida;
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
     }
 }

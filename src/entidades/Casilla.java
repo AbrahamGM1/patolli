@@ -10,26 +10,38 @@ package entidades;
  */
 public class Casilla {
 
-    private boolean libre;
-    private Ficha ficha;
+    private int id;
+    private Ficha[] listaFicha;
 
-    public Casilla(boolean libre) {
-        this.libre = libre;
+    public Casilla() {
     }
 
-    public boolean isLibre() {
-        return libre;
+    public Casilla(int id, Ficha[] listaFicha) {
+        this.id = id;
+        this.listaFicha = listaFicha;
     }
 
-    public void setLibre(boolean libre) {
-        this.libre = libre;
+    public int getId() {
+        return id;
     }
 
-    public Ficha getFicha() {
-        return ficha;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
+    public Ficha[] getListaFicha() {
+        return listaFicha;
+    }
+
+    public void setListaFicha(Ficha[] listaFicha) {
+        this.listaFicha = listaFicha;
+    }
+
+    public void agregarFicha(Ficha ficha) {
+        for (int i = 0; i < listaFicha.length; i++) {
+            if (this.listaFicha[i] == null) {
+                this.listaFicha[i] = ficha;
+            }
+        }
     }
 }

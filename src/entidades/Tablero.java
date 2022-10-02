@@ -4,36 +4,27 @@
  */
 package entidades;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  *
  * @author luisg
  */
-public class Tablero implements Serializable {
+public class Tablero {
 
-    private int numCasillas;
-    private List<Casilla> casillas;
+    private Casilla[] casillas;
 
-    public Tablero(int numCasillas, List casillas) {
-        this.numCasillas = numCasillas;
+    public Tablero() {
+
+    }
+
+    public Tablero(Casilla[] casillas) {
         this.casillas = casillas;
     }
 
-    public int getNumCasillas() {
-        return numCasillas;
-    }
-
-    public void setNumCasillas(int numCasillas) {
-        this.numCasillas = numCasillas;
-    }
-
-    public void addCasilla(Casilla casilla) {
-        this.casillas.add(casilla);
-    }
-
-    public List<Casilla> getCasillas() {
+    public Casilla[] getCasillas() {
         return casillas;
+    }
+
+    public void setCasillas(Casilla[] casillas) {
+        this.casillas = casillas;
     }
 }

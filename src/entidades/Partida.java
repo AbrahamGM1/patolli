@@ -4,57 +4,34 @@
  */
 package entidades;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author luisg
  */
-public class Partida implements Serializable {
-    
-    private final List<Dado> dados;
-    private int numJugadores;
-    private int numFichas;
-    private int fondoApuestas;
-    private int montoPorApuesta;
+public class Partida {
+
+    private int numCasillas;
     private Tablero tablero;
-    
-    public Partida(){
-        dados = new ArrayList<>(5);
+    private Jugador[] listaJugadores;
+    private Dado[] dados;
+    private int Codigo;
+
+    public Partida() {
+
     }
 
-    public int getNumJugadores() {
-        return numJugadores;
+    public Partida(int numCasillas, Tablero tablero, Jugador[] listaJugadores, Dado[] dados, int Codigo) {
+        this.numCasillas = numCasillas;
+        this.tablero = tablero;
+        this.listaJugadores = listaJugadores;
+        this.dados = dados;
+        this.Codigo = Codigo;
     }
 
-    public void setNumJugadores(int numJugadores) {
-        this.numJugadores = numJugadores;
-    }
-
-    public int getNumFichas() {
-        return numFichas;
-    }
-
-    public void setNumFichas(int numFichas) {
-        this.numFichas = numFichas;
-    }
-
-    public int getFondoApuestas() {
-        return fondoApuestas;
-    }
-
-    public void setFondoApuestas(int fondoApuestas) {
-        this.fondoApuestas = fondoApuestas;
-    }
-
-    public int getMontoPorApuesta() {
-        return montoPorApuesta;
-    }
-
-    public void setMontoPorApuesta(int montoPorApuesta) {
-        this.montoPorApuesta = montoPorApuesta;
+    public Partida(Tablero tablero, Jugador[] listaJugadores, Dado[] dados) {
+        this.tablero = tablero;
+        this.listaJugadores = listaJugadores;
+        this.dados = dados;
     }
 
     public Tablero getTablero() {
@@ -65,7 +42,35 @@ public class Partida implements Serializable {
         this.tablero = tablero;
     }
 
-    public List<Dado> getDados() {
+    public Jugador[] getListaJugadores() {
+        return listaJugadores;
+    }
+
+    public void setListaJugadores(Jugador[] listaJugadores) {
+        this.listaJugadores = listaJugadores;
+    }
+
+    public Dado[] getDados() {
         return dados;
+    }
+
+    public void setDados(Dado[] dados) {
+        this.dados = dados;
+    }
+
+    public int getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(int Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    public int getNumCasillas() {
+        return numCasillas;
+    }
+
+    public void setNumCasillas(int numCasillas) {
+        this.numCasillas = numCasillas;
     }
 }

@@ -4,46 +4,41 @@
  */
 package entidades;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  *
  * @author luisg
  */
-public class Jugador implements Serializable {
+public class Jugador {
 
-    private String usuario;
-    private String colorFichas;
-    private List<Ficha> fichas;
+    private Apuestas apuesta;
+    private Ficha[] fichas;
 
-    public Jugador(String usuario, String colorFichas, List<Ficha> fichas) {
-        this.usuario = usuario;
-        this.colorFichas = colorFichas;
+    public Jugador() {
+
+    }
+
+    public Jugador(Apuestas apuesta) {
+        this.apuesta = apuesta;
+    }
+
+    public Jugador(Apuestas apuesta, Ficha[] fichas) {
+        this.apuesta = apuesta;
         this.fichas = fichas;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Apuestas getApuesta() {
+        return apuesta;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setApuesta(Apuestas apuesta) {
+        this.apuesta = apuesta;
     }
 
-    public String getColorFichas() {
-        return colorFichas;
-    }
-
-    public void setColorFichas(String colorFichas) {
-        this.colorFichas = colorFichas;
-    }
-
-    public List<Ficha> getFichas() {
+    public Ficha[] getFichas() {
         return fichas;
     }
 
-    public void setFichas(List<Ficha> fichas) {
+    public void setFichas(Ficha[] fichas) {
         this.fichas = fichas;
     }
 }
