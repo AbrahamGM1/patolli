@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package guis;
 
 import entidades.Dado;
@@ -9,7 +5,12 @@ import org.greenrobot.eventbus.EventBus;
 
 /**
  *
- * @author luisg
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
  */
 public class FrmMenu extends javax.swing.JFrame {
 
@@ -40,10 +41,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
         jLabel1.setText("¡Juguemos Patolli!");
 
+        jLabel2.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel2.setText("¿Quiere crear una partida o unirse a una ya existente?");
 
+        botonCrearPartida.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCrearPartida.setText("Crear partida");
         botonCrearPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +55,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
+        botonUnirsePartida.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonUnirsePartida.setText("Unirse a partida");
         botonUnirsePartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,20 +68,20 @@ public class FrmMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLabel2)
+                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel2)))
-                .addContainerGap(68, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(botonCrearPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonUnirsePartida)
-                .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonCrearPartida)
+                        .addGap(72, 72, 72)
+                        .addComponent(botonUnirsePartida)
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(179, 179, 179))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +94,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCrearPartida)
                     .addComponent(botonUnirsePartida))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package guis;
 
 import entidades.Apuestas;
@@ -16,7 +12,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author luisg
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
  */
 public class DlgCrearPartida extends javax.swing.JDialog {
 
@@ -58,43 +59,61 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         campoTextoMontoPorApuesta = new javax.swing.JTextField();
         botonCrearPartida = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear partida");
 
+        jLabel1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel1.setText("Casillas por aspa");
 
+        jLabel2.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel2.setText("Número de jugadores");
 
+        jLabel3.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel3.setText("Fichas por jugador");
 
+        jLabel4.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel4.setText("Fondo de apuestas");
 
+        jLabel5.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel5.setText("Monto por apuesta");
 
+        checkBox10Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox10Casillas.setText("10");
 
+        checkBox12Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox12Casillas.setText("12");
         checkBox12Casillas.setToolTipText("");
 
+        checkBox14Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox14Casillas.setText("14");
 
+        checkBox2Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox2Jugadores.setText("2");
 
+        checkBox3Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox3Jugadores.setText("3");
 
+        checkBox4Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox4Jugadores.setText("4");
 
+        checkBox2Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox2Fichas.setText("2");
 
+        checkBox3Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox3Fichas.setText("3");
 
+        checkBox4Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox4Fichas.setText("4");
 
+        checkBox5Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox5Fichas.setText("5");
 
+        checkBox6Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         checkBox6Fichas.setText("6");
 
+        botonCrearPartida.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCrearPartida.setText("Crear");
         botonCrearPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +121,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
         });
 
+        botonCancelar.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,14 +129,17 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
+        jLabel6.setText("Configuracion de Partida");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -124,42 +147,52 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(checkBox10Casillas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox12Casillas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox14Casillas))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(checkBox2Jugadores)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox3Jugadores)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox4Jugadores))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(checkBox2Fichas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox3Fichas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox4Fichas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox5Fichas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkBox6Fichas))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoTextoMontoPorApuesta)
                             .addComponent(campoTextoFondoApuestas)
-                            .addComponent(campoTextoMontoPorApuesta)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkBox10Casillas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox12Casillas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox14Casillas))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkBox2Jugadores)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox3Jugadores)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox4Jugadores))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkBox2Fichas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox3Fichas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox4Fichas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox5Fichas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(checkBox6Fichas)))
+                                .addGap(0, 74, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(botonCrearPartida)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonCancelar)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabel6)
+                        .addGap(74, 74, 74)))
+                .addGap(42, 42, 42))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonCrearPartida)
+                .addGap(124, 124, 124)
+                .addComponent(botonCancelar)
+                .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel6)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(checkBox10Casillas)
@@ -180,18 +213,22 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                     .addComponent(checkBox5Fichas)
                     .addComponent(checkBox6Fichas))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoTextoFondoApuestas)
+                        .addGap(2, 2, 2)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCrearPartida)
-                    .addComponent(botonCancelar))
-                .addGap(39, 39, 39))
+                    .addComponent(botonCancelar)
+                    .addComponent(botonCrearPartida))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -372,6 +409,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     int confirmacion = 0;
 }

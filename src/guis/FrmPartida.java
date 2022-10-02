@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package guis;
 
 import entidades.Casilla;
@@ -16,7 +12,12 @@ import org.greenrobot.eventbus.Subscribe;
 
 /**
  *
- * @author luisg
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
  */
 public class FrmPartida extends javax.swing.JFrame {
 
@@ -63,8 +64,8 @@ public class FrmPartida extends javax.swing.JFrame {
         codigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1650, 957));
 
+        botonTirarDados.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonTirarDados.setText("Tirar Dados");
         botonTirarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,14 +73,19 @@ public class FrmPartida extends javax.swing.JFrame {
             }
         });
 
+        botonApostar.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonApostar.setText("Apostar");
 
+        jugador1.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jugador1.setText("Jugador 1");
 
+        jugador2.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jugador2.setText("Jugador 2");
 
+        jugador3.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jugador3.setText("Jugador 3");
 
+        jugador4.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jugador4.setText("Jugador 4");
 
         javax.swing.GroupLayout panelCodigoLayout = new javax.swing.GroupLayout(panelCodigo);
@@ -100,11 +106,6 @@ public class FrmPartida extends javax.swing.JFrame {
             .addGroup(panelPartidaLayout.createSequentialGroup()
                 .addGroup(panelPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPartidaLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(botonApostar)
-                        .addGap(18, 18, 18)
-                        .addComponent(campoTextoApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPartidaLayout.createSequentialGroup()
                         .addGap(252, 252, 252)
                         .addComponent(dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -116,17 +117,22 @@ public class FrmPartida extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dado5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPartidaLayout.createSequentialGroup()
-                        .addGap(312, 312, 312)
-                        .addComponent(botonTirarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPartidaLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jugador1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador4)))
+                        .addGap(92, 92, 92)
+                        .addGroup(panelPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPartidaLayout.createSequentialGroup()
+                                .addComponent(jugador1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jugador2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jugador3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jugador4))
+                            .addGroup(panelPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(botonTirarDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelPartidaLayout.createSequentialGroup()
+                                    .addComponent(botonApostar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(campoTextoApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(1154, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPartidaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -147,14 +153,14 @@ public class FrmPartida extends javax.swing.JFrame {
                 .addGap(352, 352, 352)
                 .addGroup(panelPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonApostar)
-                    .addComponent(campoTextoApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                    .addComponent(campoTextoApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
                 .addGroup(panelPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jugador1)
                     .addComponent(jugador2)
                     .addComponent(jugador3)
                     .addComponent(jugador4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(panelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

@@ -1,14 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package guis;
 
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author luisg
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
  */
 public class DlgUnirsePartida extends javax.swing.JDialog {
 
@@ -34,11 +35,14 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
         campoTextoIP = new javax.swing.JTextField();
         botonUnirse = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jLabel1.setText("Introduzca la dirección IP que el anfitrió le proporcionó para unirse a la partida");
 
+        botonUnirse.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonUnirse.setText("Unirse");
         botonUnirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +50,7 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
             }
         });
 
+        botonCancelar.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,37 +58,44 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
+        jLabel2.setText("Unirse a Partida");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(campoTextoIP, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(botonUnirse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonCancelar)
-                .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoTextoIP)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonUnirse)
+                                .addGap(193, 193, 193)
+                                .addComponent(botonCancelar)))
+                        .addGap(107, 107, 107))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(206, 206, 206)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(campoTextoIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addComponent(campoTextoIP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonUnirse)
-                    .addComponent(botonCancelar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(botonCancelar)
+                    .addComponent(botonUnirse))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -129,5 +141,6 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
     private javax.swing.JButton botonUnirse;
     private javax.swing.JTextField campoTextoIP;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
