@@ -22,7 +22,7 @@ public class FrmMenu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Dado dado = new Dado();
-        dado.GenerarLado();
+        dado.generarLado();
     }
 
     /**
