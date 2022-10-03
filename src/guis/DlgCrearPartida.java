@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ */
 package guis;
 
 import entidades.Apuestas;
@@ -12,22 +16,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
- * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
- * Martínez 00000228796
- *
+ * @author luisg
  */
 public class DlgCrearPartida extends javax.swing.JDialog {
 
     /**
-     * Creates new form DlgCrearPartida
+     * Creates new form DlgCrearPartida2
      */
     public DlgCrearPartida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
     }
-    static int numCasillas = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,84 +43,39 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        checkBox10Casillas = new javax.swing.JCheckBox();
-        checkBox12Casillas = new javax.swing.JCheckBox();
-        checkBox14Casillas = new javax.swing.JCheckBox();
-        checkBox2Jugadores = new javax.swing.JCheckBox();
-        checkBox3Jugadores = new javax.swing.JCheckBox();
-        checkBox4Jugadores = new javax.swing.JCheckBox();
-        checkBox2Fichas = new javax.swing.JCheckBox();
-        checkBox3Fichas = new javax.swing.JCheckBox();
-        checkBox4Fichas = new javax.swing.JCheckBox();
-        checkBox5Fichas = new javax.swing.JCheckBox();
-        checkBox6Fichas = new javax.swing.JCheckBox();
+        comboBoxCasillas = new javax.swing.JComboBox<>();
+        comboBoxNumJugadores = new javax.swing.JComboBox<>();
+        comboBoxFichas = new javax.swing.JComboBox<>();
         campoTextoFondoApuestas = new javax.swing.JTextField();
         campoTextoMontoPorApuesta = new javax.swing.JTextField();
-        botonCrearPartida = new javax.swing.JButton();
+        botonCrear = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Crear partida");
 
-        jLabel1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel1.setText("Casillas por aspa");
 
-        jLabel2.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel2.setText("Número de jugadores");
 
-        jLabel3.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel3.setText("Fichas por jugador");
 
-        jLabel4.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel4.setText("Fondo de apuestas");
 
-        jLabel5.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel5.setText("Monto por apuesta");
 
-        checkBox10Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox10Casillas.setText("10");
+        comboBoxCasillas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "12", "14" }));
 
-        checkBox12Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox12Casillas.setText("12");
-        checkBox12Casillas.setToolTipText("");
+        comboBoxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
 
-        checkBox14Casillas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox14Casillas.setText("14");
+        comboBoxFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
 
-        checkBox2Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox2Jugadores.setText("2");
-
-        checkBox3Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox3Jugadores.setText("3");
-
-        checkBox4Jugadores.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox4Jugadores.setText("4");
-
-        checkBox2Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox2Fichas.setText("2");
-
-        checkBox3Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox3Fichas.setText("3");
-
-        checkBox4Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox4Fichas.setText("4");
-
-        checkBox5Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox5Fichas.setText("5");
-
-        checkBox6Fichas.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        checkBox6Fichas.setText("6");
-
-        botonCrearPartida.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
-        botonCrearPartida.setText("Crear");
-        botonCrearPartida.addActionListener(new java.awt.event.ActionListener() {
+        botonCrear.setText("Crear");
+        botonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCrearPartidaActionPerformed(evt);
+                botonCrearActionPerformed(evt);
             }
         });
 
-        botonCancelar.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,116 +83,72 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
-        jLabel6.setText("Configuracion de Partida");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTextoMontoPorApuesta)
-                            .addComponent(campoTextoFondoApuestas)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkBox10Casillas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox12Casillas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox14Casillas))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkBox2Jugadores)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox3Jugadores)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox4Jugadores))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkBox2Fichas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox3Fichas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox4Fichas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox5Fichas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkBox6Fichas)))
-                                .addGap(0, 74, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)
-                        .addGap(74, 74, 74)))
-                .addGap(42, 42, 42))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonCrearPartida)
-                .addGap(124, 124, 124)
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoTextoFondoApuestas)
+                    .addComponent(campoTextoMontoPorApuesta)
+                    .addComponent(comboBoxFichas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBoxNumJugadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBoxCasillas, 0, 174, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(botonCrear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(botonCancelar)
-                .addGap(103, 103, 103))
+                .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel6)
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(checkBox10Casillas)
-                    .addComponent(checkBox12Casillas)
-                    .addComponent(checkBox14Casillas))
+                    .addComponent(comboBoxCasillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(checkBox2Jugadores)
-                    .addComponent(checkBox3Jugadores)
-                    .addComponent(checkBox4Jugadores))
+                    .addComponent(comboBoxNumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(checkBox2Fichas)
-                    .addComponent(checkBox3Fichas)
-                    .addComponent(checkBox4Fichas)
-                    .addComponent(checkBox5Fichas)
-                    .addComponent(checkBox6Fichas))
+                    .addComponent(comboBoxFichas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoTextoFondoApuestas)
-                        .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCancelar)
-                    .addComponent(botonCrearPartida))
-                .addGap(15, 15, 15))
+                    .addComponent(jLabel4)
+                    .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCrear)
+                    .addComponent(botonCancelar))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPartidaActionPerformed
-        this.crearPartida();
-        this.iniciarPartida();
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+        crearPartida();
+        iniciarPartida();
         dispose();
-    }//GEN-LAST:event_botonCrearPartidaActionPerformed
+    }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         dispose();
@@ -265,62 +176,30 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         }
         return false;
     }
-
+    
     public void vaciar() {
         this.campoTextoMontoPorApuesta.setText("");
         this.campoTextoFondoApuestas.setText("");
     }
-
+    
     public static boolean esNumero(String numero) {
         return numero.matches("[0-9]*");
     }
-
-    public Partida crearPartida() {
-        int numJugadores = 0;
-        if (this.checkBox2Jugadores.isSelected()) {
-            numJugadores = 2;
-        }
-        if (this.checkBox3Jugadores.isSelected()) {
-            numJugadores = 3;
-        }
-        if (this.checkBox4Jugadores.isSelected()) {
-            numJugadores = 4;
-        }
-
+    
+    public Partida crearPartida(){
+        int numJugadores = Integer.parseInt((String)this.comboBoxNumJugadores.getSelectedItem());
+        
         int fondo = 0;
         int monto = 0;
         if (validarMonto()) {
             monto = Integer.parseInt(campoTextoMontoPorApuesta.getText());
             fondo = Integer.parseInt(campoTextoFondoApuestas.getText());
         }
-
-        if (this.checkBox10Casillas.isSelected()) {
-            numCasillas = 10;
-        }
-        if (this.checkBox12Casillas.isSelected()) {
-            numCasillas = 12;
-        }
-        if (this.checkBox14Casillas.isSelected()) {
-            numCasillas = 14;
-        }
-
-        int numFichas = 0;
-        if (this.checkBox2Fichas.isSelected()) {
-            numFichas = 2;
-        }
-        if (this.checkBox3Fichas.isSelected()) {
-            numFichas = 3;
-        }
-        if (this.checkBox4Fichas.isSelected()) {
-            numFichas = 4;
-        }
-        if (this.checkBox5Fichas.isSelected()) {
-            numFichas = 5;
-        }
-        if (this.checkBox6Fichas.isSelected()) {
-            numFichas = 6;
-        }
-
+        
+        numCasillas = Integer.parseInt((String) this.comboBoxCasillas.getSelectedItem());
+        
+        int numFichas = Integer.parseInt((String) this.comboBoxFichas.getSelectedItem());
+        
         Apuestas apuestas = new Apuestas(fondo, monto);
         Tablero tablero = new Tablero(this.llenarCasillas(numCasillas * 2 * 4 + 4, numFichas));
         Jugador[] jugadores = this.llenarJugadores(numJugadores, apuestas);
@@ -331,7 +210,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         return new Partida(numCasillas, tablero, jugadores, this.llenarDados(), gen());
     }
-
+    
     public int gen() {
         Random r = new Random(System.currentTimeMillis());
         return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
@@ -349,25 +228,21 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
-
-            } else if (numCasillas == 12) {
+            }
+            if (numCasillas == 12) {
                 FrmPartida12 partida = new FrmPartida12();
                 FrmMenu.evento.register(partida);
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
-            } else if (numCasillas == 14) {
+            }
+            if (numCasillas == 14) {
                 FrmPartida14 partida = new FrmPartida14();
                 FrmMenu.evento.register(partida);
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
-            FrmPartida partida = new FrmPartida();
-            FrmMenu.evento.register(partida);
-            FrmMenu.evento.post(this.crearPartida());
-            partida.setVisible(true);
-            this.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Dato Erróneo");
         }
@@ -405,29 +280,21 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         }
         return fichas;
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
-    private javax.swing.JButton botonCrearPartida;
+    private javax.swing.JButton botonCrear;
     private javax.swing.JTextField campoTextoFondoApuestas;
     private javax.swing.JTextField campoTextoMontoPorApuesta;
-    private javax.swing.JCheckBox checkBox10Casillas;
-    private javax.swing.JCheckBox checkBox12Casillas;
-    private javax.swing.JCheckBox checkBox14Casillas;
-    private javax.swing.JCheckBox checkBox2Fichas;
-    private javax.swing.JCheckBox checkBox2Jugadores;
-    private javax.swing.JCheckBox checkBox3Fichas;
-    private javax.swing.JCheckBox checkBox3Jugadores;
-    private javax.swing.JCheckBox checkBox4Fichas;
-    private javax.swing.JCheckBox checkBox4Jugadores;
-    private javax.swing.JCheckBox checkBox5Fichas;
-    private javax.swing.JCheckBox checkBox6Fichas;
+    private javax.swing.JComboBox<String> comboBoxCasillas;
+    private javax.swing.JComboBox<String> comboBoxFichas;
+    private javax.swing.JComboBox<String> comboBoxNumJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     int confirmacion = 0;
+    static int numCasillas = 0;
 }

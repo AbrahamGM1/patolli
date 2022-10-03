@@ -5,6 +5,9 @@
  */
 package guis;
 
+import entidades.Partida;
+import org.greenrobot.eventbus.Subscribe;
+
 /**
  *
  * @author Abraham
@@ -14,8 +17,14 @@ public class FrmPartida14 extends javax.swing.JFrame {
     /**
      * Creates new form FrmPartida10
      */
-    public FrmPartida14() {
+    public FrmPartida14(Partida partida) {
         initComponents();
+        this.partida = partida;
+    }
+    
+    public FrmPartida14(){
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -114,6 +123,10 @@ public class FrmPartida14 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
+    @Subscribe
+    public void establecerPartida(Partida partida){
+        this.partida = partida;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel caña1;
@@ -131,4 +144,5 @@ public class FrmPartida14 extends javax.swing.JFrame {
     private javax.swing.JLabel tablero;
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
+    Partida partida;
 }

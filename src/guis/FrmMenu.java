@@ -102,10 +102,12 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void botonCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPartidaActionPerformed
         new DlgCrearPartida(this, true).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonCrearPartidaActionPerformed
 
     private void botonUnirsePartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnirsePartidaActionPerformed
         new DlgUnirsePartida(this, true).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonUnirsePartidaActionPerformed
 
     /**
