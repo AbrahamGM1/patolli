@@ -12,12 +12,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
+ *
  */
 public class DlgCrearPartida extends javax.swing.JDialog {
 
@@ -29,6 +27,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
+    static int numCasillas = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -295,7 +294,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             fondo = Integer.parseInt(campoTextoFondoApuestas.getText());
         }
 
-        int numCasillas = 0;
         if (this.checkBox10Casillas.isSelected()) {
             numCasillas = 10;
         }
@@ -344,6 +342,26 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             if (confirmacion == 0) {
                 JOptionPane.showMessageDialog(null, "Es necesario que se validen los datos");
                 return;
+            }
+            if (numCasillas == 10) {
+                FrmPartida10 partida = new FrmPartida10();
+                FrmMenu.evento.register(partida);
+                FrmMenu.evento.post(this.crearPartida());
+                partida.setVisible(true);
+                this.setVisible(false);
+
+            } else if (numCasillas == 12) {
+                FrmPartida12 partida = new FrmPartida12();
+                FrmMenu.evento.register(partida);
+                FrmMenu.evento.post(this.crearPartida());
+                partida.setVisible(true);
+                this.setVisible(false);
+            } else if (numCasillas == 14) {
+                FrmPartida14 partida = new FrmPartida14();
+                FrmMenu.evento.register(partida);
+                FrmMenu.evento.post(this.crearPartida());
+                partida.setVisible(true);
+                this.setVisible(false);
             }
             FrmPartida partida = new FrmPartida();
             FrmMenu.evento.register(partida);
