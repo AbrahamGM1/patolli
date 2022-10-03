@@ -52,9 +52,10 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugador4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(950, 928));
+        setPreferredSize(new java.awt.Dimension(950, 940));
+        setResizable(false);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(950, 928));
+        jPanel1.setPreferredSize(new java.awt.Dimension(950, 940));
 
         tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
 
