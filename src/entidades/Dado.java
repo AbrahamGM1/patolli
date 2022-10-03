@@ -19,7 +19,7 @@ public class Dado {
     public Dado(int numDado) {
         this();
         this.numDado = numDado;
-        this.GenerarLado();
+        this.generarLado();
     }
 
     public Dado() {
@@ -42,11 +42,11 @@ public class Dado {
         this.lado = lado;
     }
 
-    public void GenerarLado() {
+    public void generarLado() {
         Random rd = new Random();
         int numAl = rd.nextInt(3);
         if (numAl == 0) {
-            GenerarLado();
+            generarLado();
         }
         for (int i = 0; i < numAl; i++) {
             if (numAl % 2 == 0) {

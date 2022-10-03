@@ -5,7 +5,10 @@
  */
 package guis;
 
+import entidades.Ficha;
+import entidades.Jugador;
 import entidades.Partida;
+import javax.swing.JOptionPane;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
@@ -20,10 +23,12 @@ public class FrmPartida14 extends javax.swing.JFrame {
     public FrmPartida14(Partida partida) {
         initComponents();
         this.partida = partida;
+        iniciarlbl();
     }
     
     public FrmPartida14(){
         initComponents();
+        iniciarlbl();
         this.setLocationRelativeTo(null);
     }
 
@@ -169,9 +174,106 @@ public class FrmPartida14 extends javax.swing.JFrame {
     }//GEN-LAST:event_hacerApuestaActionPerformed
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
-        // TODO add your handling code here:
+        try {
+            this.LanzarDados();
+
+            for (int i = 0; i < partida.getListaJugadores()[0].getFichas().length; i++) {
+                Ficha f = partida.getListaJugadores()[0].getFichas()[i];
+                if (!verificarDentro(f.getId(), partida.getListaJugadores()[0])) {
+                    int Posicion = partida.getListaJugadores()[0].getFichas()[i].getPosicion();
+                    partida.getListaJugadores()[0].getFichas()[i].setPosicion(Posicion + determinarMovimiento());
+                    System.out.println(Posicion + determinarMovimiento());
+
+                    return;
+                } else {
+                    if (this.determinarMovimiento() > 0) {
+                        partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
+
+                        return;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+        }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
+    public void LanzarDados() {
+        //caña1
+        partida.getDados()[0].generarLado();
+        partida.getDados()[1].generarLado();
+        partida.getDados()[2].generarLado();
+        partida.getDados()[3].generarLado();
+        partida.getDados()[4].generarLado();
+        if (partida.getDados()[0].getLado()) {
+            caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+        } else {
+            caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        }
+        //caña2
+        if (partida.getDados()[1].getLado()) {
+            caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+        } else {
+            caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        }
+        //caña3
+        if (partida.getDados()[2].getLado()) {
+            caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+        } else {
+            caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        }
+        //caña4
+        if (partida.getDados()[3].getLado()) {
+            caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+        } else {
+            caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        }
+        //caña5
+        if (partida.getDados()[4].getLado()) {
+            caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+        } else {
+            caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        }
+    }
+    
+    public void iniciarlbl() {
+        caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+    }
+    
+    public int determinarMovimiento() {
+        int movimiento = 0;
+        for (int i = 0; i < partida.getDados().length; i++) {
+            if (partida.getDados()[i].getLado()) {
+                movimiento++;
+            }
+        }
+        if (movimiento == 5) {
+            movimiento = 10;
+        }
+        return movimiento;
+    }
+    
+    public boolean verificarDentro(int Id, Jugador jugador) {
+        Jugador j = jugador;
+
+        for (int i = 0; i < j.getFichas().length; i++) {
+            if (j.getFichas()[i].getId() == Id) {
+                Ficha f = j.getFichas()[i];
+                if (f.getPosicion() == -1) {
+                    //posicion diferene a 0
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+    
     @Subscribe
     public void establecerPartida(Partida partida){
         this.partida = partida;
