@@ -54,10 +54,8 @@ public class FrmPartida12 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 928));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroMediano.png"))); // NOI18N
-        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         hacerApuesta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         hacerApuesta.setText("Hacer Apuesta");
@@ -66,7 +64,6 @@ public class FrmPartida12 extends javax.swing.JFrame {
                 hacerApuestaActionPerformed(evt);
             }
         });
-        jPanel1.add(hacerApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 810, 140, 40));
 
         lanzarCañas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lanzarCañas.setText("Lanzar Cañas");
@@ -75,29 +72,80 @@ public class FrmPartida12 extends javax.swing.JFrame {
                 lanzarCañasActionPerformed(evt);
             }
         });
-        jPanel1.add(lanzarCañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 870, 140, 40));
-        jPanel1.add(txtApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 810, 190, 40));
 
         caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
-        jPanel1.add(caña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 800, -1, 130));
 
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
-        jPanel1.add(caña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 800, -1, 130));
 
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
-        jPanel1.add(caña3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 800, -1, 130));
 
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
-        jPanel1.add(caña4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 800, -1, 130));
 
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
-        jPanel1.add(caña5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 800, -1, 130));
-        jPanel1.add(jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jugador2.setToolTipText("");
-        jPanel1.add(jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
-        jPanel1.add(jugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        jPanel1.add(jugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jugador1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jugador3))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jugador4))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jugador2))
+            .addComponent(tablero)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(caña2)
+                .addGap(6, 6, 6)
+                .addComponent(caña3)
+                .addGap(6, 6, 6)
+                .addComponent(caña4)
+                .addGap(6, 6, 6)
+                .addComponent(caña5)
+                .addGap(6, 6, 6)
+                .addComponent(caña1)
+                .addGap(176, 176, 176)
+                .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jugador1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jugador3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jugador4))
+                    .addComponent(jugador2)
+                    .addComponent(tablero))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(caña2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caña3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caña4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caña5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(caña1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
