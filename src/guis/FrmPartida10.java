@@ -19,7 +19,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPartida10
-     */
+     */   
+    int x=0;
+    int y=0;
+    int ancho=950;
+    int alto=928;
+    int avance;
+    
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
@@ -189,7 +195,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 } else {
                     if (this.determinarMovimiento() > 0) {
                         partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
-
+                        jugador1.setLocation(432,449);
                         return;
                     }
                 }
@@ -199,42 +205,54 @@ public class FrmPartida10 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
-    public void LanzarDados() {
+    public int LanzarDados() {
         //caña1
+        avance=0;
+        
         partida.getDados()[0].generarLado();
         partida.getDados()[1].generarLado();
         partida.getDados()[2].generarLado();
         partida.getDados()[3].generarLado();
         partida.getDados()[4].generarLado();
+        
+        
         if (partida.getDados()[0].getLado()) {
             caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+            avance++;
         } else {
             caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
         //caña2
         if (partida.getDados()[1].getLado()) {
             caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+            avance++;
         } else {
             caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
         //caña3
         if (partida.getDados()[2].getLado()) {
             caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+            avance++;
         } else {
             caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
         //caña4
         if (partida.getDados()[3].getLado()) {
             caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+            avance++;
         } else {
             caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
         //caña5
         if (partida.getDados()[4].getLado()) {
             caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
+            avance++;
         } else {
             caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
+        System.out.println("avance: "+avance);
+        return avance;
+        
     }
     
     public void iniciarlbl() {
@@ -243,6 +261,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
+        
     }
     
     public int determinarMovimiento() {

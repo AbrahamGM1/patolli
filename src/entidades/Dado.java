@@ -42,7 +42,7 @@ public class Dado {
         this.lado = lado;
     }
 
-    public void generarLado() {
+    public int generarLado() {
         Random rd = new Random();
         int numAl = rd.nextInt(3);
         if (numAl == 0) {
@@ -57,5 +57,6 @@ public class Dado {
                 System.out.println("El número es no par" + numAl);
             }
         }
+        return numAl;
     }
 }

@@ -57,7 +57,6 @@ public class FrmPartida12 extends javax.swing.JFrame {
         jugador4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(950, 940));
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 928));
@@ -189,7 +188,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
                 } else {
                     if (this.determinarMovimiento() > 0) {
                         partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
-
+                        jugador1.setLocation(302,583);
                         return;
                     }
                 }
@@ -243,6 +242,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
+        jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
     }
     
     public int determinarMovimiento() {
