@@ -28,6 +28,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     /**
      * Creates new form FrmPartida10
      */   
+    Casilla casillaAvanzada;
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
@@ -206,7 +207,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         
         LanzarDados();
         Casilla cs = gd.ingresarFicha(jugador1);
-        idAuxiliar=idAuxiliar+cs.getId();
+        
         try {
 
             if (avance==1&&ingresado==false) {
@@ -214,7 +215,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 ingresado=true; 
             }
             if(avance>0&&ingresado==true){
-                gd.moverFicha(idAuxiliar, avance, jugador1);
+                casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                idAuxiliar=casillaAvanzada.getId();
             }
 
         } catch (Exception e) {

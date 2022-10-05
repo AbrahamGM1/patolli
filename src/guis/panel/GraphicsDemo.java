@@ -238,10 +238,12 @@ public class GraphicsDemo extends JPanel {
 
     public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
         JLabel lbl=ficha;
+        int casillaAvance=idCasilla+valorCaña;
         try {
-            Casilla casillaDestino = lcasillas.get(idCasilla + valorCaña);
+            Casilla casillaDestino = lcasillas.get(casillaAvance);
             //TO DO: DESPLAZAR LA IMAGEN DE LA FICHA
             lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
+            repaint();
             return casillaDestino;
         } catch (Exception e) {
             return null;
@@ -252,8 +254,8 @@ public class GraphicsDemo extends JPanel {
         JLabel lbl=l;
         Casilla casillaInicial=lcasillas.get(0);
         lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-//        lbl.setLocation(casillaInicial.getX(),casillaInicial.getY());
-
+        lbl.setLocation(casillaInicial.getX(),casillaInicial.getY());
+        repaint();
         return casillaInicial;
     }
     
