@@ -10,9 +10,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
- * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
- * Martínez 00000228796
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549 
+ * Gabriel Francisco Piñuelas Ramos 00000230626 
+ * Ricardo Pacheco Urias 00000229178 
+ * Abraham Sered Gómez Martínez 00000228796
  *
  */
 public class GraphicsDemo extends JPanel {
@@ -80,8 +82,7 @@ public class GraphicsDemo extends JPanel {
         int InicioIzquierda = 334 - Espacio;
 
         for (int i = 0; i < casillas; i++) {
-
-//    
+   
             int Inicio = 314;
             int inicioIz = 334;
             int inicioAbajo = 367;
@@ -90,7 +91,7 @@ public class GraphicsDemo extends JPanel {
 
                 g2D.setStroke(new BasicStroke(1));
                 g2D.setColor(Color.yellow);
-//               g2D.drawLine(360, InicioArriba+22, 385, InicioArriba+22); 
+                //g2D.drawLine(360, InicioArriba+22, 385, InicioArriba+22); 
                 g2D.drawLine(360, Inicio - 0, 385, Inicio - 0);
                 for (int j = 0; j < Espacio; j++) {
                     g2D.drawLine(360, Inicio - j, 385, Inicio - j);
