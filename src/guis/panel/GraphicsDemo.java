@@ -40,9 +40,6 @@ public class GraphicsDemo extends JPanel {
 //        tablero(g);
         g2D.fillOval(x, y, 10, 10);
     }
-
-<<<<<<< HEAD
-=======
     public void tablero(Graphics g) {
 
         Graphics2D g2D = (Graphics2D) g;
@@ -145,7 +142,7 @@ public class GraphicsDemo extends JPanel {
         }
     }
 
->>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
+//>>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
     public void Panel() {
         this.setBackground(new Color(240, 223, 197));
         this.setSize(720, 720);

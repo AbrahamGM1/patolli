@@ -1,8 +1,6 @@
 package guis;
 
 import entidades.Casilla;
-import entidades.Ficha;
-import entidades.Jugador;
 import entidades.Partida;
 import javax.swing.JOptionPane;
 import guis.panel.GraphicsDemo;
@@ -30,18 +28,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
     /**
      * Creates new form FrmPartida10
      */   
-    int x=0;
-    int y=0;
-    int ancho=950;
-    int alto=928;
-    int avance;
-    int idAuxiliar;
-    boolean ingresado=false;
-    
-    GraphicsDemo gd;
-    CasillaPartida c = new CasillaPartida();
-    List<Casilla> casillas = c.inicializarCasilla10();
-    
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
@@ -183,20 +169,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
-=======
                             .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
->>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,13 +188,9 @@ public class FrmPartida10 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-=======
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
->>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
         );
 
         pack();
@@ -343,4 +318,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
+    int x=0;
+    int y=0;
+    int ancho=950;
+    int alto=928;
+    int avance;
+    int idAuxiliar;
+    boolean ingresado=false;
+    GraphicsDemo gd;
+    CasillaPartida c = new CasillaPartida();
+    List<Casilla> casillas = c.inicializarCasilla10();
 }
