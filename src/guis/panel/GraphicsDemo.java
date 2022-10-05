@@ -4,17 +4,16 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
+ *
  */
 public class GraphicsDemo extends JPanel {
 
@@ -211,16 +210,14 @@ public class GraphicsDemo extends JPanel {
         }
     }
 
-    public void AvanzarFicha(Graphics g, int casillasAvanzadas, int numJugador) {
+    public void AvanzarFicha(JLabel l, int casillasAvanzadas, int numJugador) {
 
-        Graphics2D g2D = (Graphics2D) g;
-
+        JLabel lbl = l;
         int espacio2 = 0;
 
         if (numJugador == 1) {
-            g2D.setStroke(new BasicStroke(5));
+            lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
             //fichas jugador 1
-            g2D.setColor(Color.CYAN);
 
             int InicioArriba = 347;
             if (casillasAvanzadas <= casillastotales / 8.5 || casillas == casillasAvanzadas) {
@@ -233,7 +230,8 @@ public class GraphicsDemo extends JPanel {
 //
 //                f.setX(InicioArriba - espacio2);           
                 //f.setY(325);
-                g2D.fillOval(InicioArriba - espacio2, 325, 10, 10);
+                lbl.setLocation(InicioArriba - espacio2, 325);
+////                g2D.fillOval(InicioArriba - espacio2, 325, 10, 10);
 //                f.pintar(g);
 
             } else if (casillasAvanzadas >= casillastotales / 7.55555555555555555 && casillasAvanzadas <= casillastotales / 4) {
@@ -242,14 +240,16 @@ public class GraphicsDemo extends JPanel {
                     espacio2 = espacio2 + this.DeterminarEspacioAvanzar();
                 }
 //               f.mover(inicio + espacio2, 350);
-                g2D.fillOval(inicio + espacio2, 350, 10, 10);
+                lbl.setLocation(InicioArriba + espacio2, 350);
+////                g2D.fillOval(inicio + espacio2, 350, 10, 10);
 //               f.pintar(g);
             } else if (casillasAvanzadas >= casillastotales / 4 && casillasAvanzadas < casillastotales / 2.61111111111111 && casillasAvanzadas != casillas * 3 + 2) {
                 int inicio = 340;
                 for (int i = 0; i < casillasAvanzadas - casillas * 2 - 1; i++) {
                     espacio2 = espacio2 + this.DeterminarEspacioAvanzar();
                 }
-                g2D.fillOval(344, inicio + espacio2, 10, 10);
+////                g2D.fillOval(344, inicio + espacio2, 10, 10);
+                lbl.setLocation(344, InicioArriba + espacio2);
 //               f.mover(344, inicio + espacio2);
 //               f.pintar(g);
             } else if (casillasAvanzadas <= 33) {
@@ -259,25 +259,29 @@ public class GraphicsDemo extends JPanel {
                 }
 //                f.mover(370, inicio - espacio2);
 //                f.pintar(g);
-                g2D.fillOval(370, inicio - espacio2, 10, 10);
+                lbl.setLocation(344, InicioArriba + espacio2);
+////                g2D.fillOval(370, inicio - espacio2, 10, 10);
             } else if (casillasAvanzadas <= 42) {
                 int inicio = 332;
                 for (int i = 0; i < casillasAvanzadas - casillas * 4 - 1; i++) {
                     espacio2 = espacio2 + this.DeterminarEspacioAvanzar();
                 }
-                g2D.fillOval(inicio + espacio2, 347, 10, 10);
+                lbl.setLocation(344, InicioArriba + espacio2);
+////                g2D.fillOval(inicio + espacio2, 347, 10, 10);
             } else if (casillasAvanzadas <= 51) {
                 int inicio = 322;
                 for (int i = 0; i < casillasAvanzadas - casillas * 5 - 1; i++) {
                     espacio2 = espacio2 + this.DeterminarEspacioAvanzar();
                 }
-                g2D.fillOval(727 - espacio2, inicio, 10, 10);
+                lbl.setLocation(344, InicioArriba + espacio2);
+////                g2D.fillOval(727 - espacio2, inicio, 10, 10);
             } else if (casillasAvanzadas >= 52) {
                 int inicio = 295;
                 for (int i = 0; i < casillasAvanzadas - casillas * 5 - 1; i++) {
                     espacio2 = espacio2 + this.DeterminarEspacioAvanzar();
                 }
-                g2D.fillOval(367, inicio, 10, 10);
+                lbl.setLocation(344, InicioArriba + espacio2);
+////                g2D.fillOval(367, inicio, 10, 10);
                 JOptionPane.showMessageDialog(null, "¡¡¡¡GANASTE!!!!");
             }
         }

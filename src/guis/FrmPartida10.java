@@ -9,6 +9,7 @@ import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
 import javax.swing.JOptionPane;
+import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
@@ -25,6 +26,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int ancho=950;
     int alto=928;
     int avance;
+    GraphicsDemo gd;
     
     public FrmPartida10(Partida partida) {
         initComponents();
@@ -181,21 +183,21 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_hacerApuestaActionPerformed
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
+        
         try {
             this.LanzarDados();
 
             for (int i = 0; i < partida.getListaJugadores()[0].getFichas().length; i++) {
                 Ficha f = partida.getListaJugadores()[0].getFichas()[i];
                 if (!verificarDentro(f.getId(), partida.getListaJugadores()[0])) {
+                    moverFicha(f, f.getPosicion() + this.determinarMovimiento());
                     int Posicion = partida.getListaJugadores()[0].getFichas()[i].getPosicion();
                     partida.getListaJugadores()[0].getFichas()[i].setPosicion(Posicion + determinarMovimiento());
                     System.out.println(Posicion + determinarMovimiento());
-
                     return;
                 } else {
                     if (this.determinarMovimiento() > 0) {
                         partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
-                        jugador1.setLocation(432,449);
                         return;
                     }
                 }
@@ -260,9 +262,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
-        caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
-        jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-        
+        caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));        
     }
     
     public int determinarMovimiento() {
@@ -294,10 +294,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
         }
         return false;
     }
+        public void moverFicha(Ficha ficha, int movimientos) {
+        if (movimientos > 0) {
+            gd.setx(199);
+            gd.sety(566);
+            gd.AvanzarFicha(jugador1, movimientos, 1);
+            gd.repaint();
+        }
+    }
     
     @Subscribe
     public void establecerPartida(Partida partida){
         this.partida = partida;
+        gd = new GraphicsDemo(10);
+
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
