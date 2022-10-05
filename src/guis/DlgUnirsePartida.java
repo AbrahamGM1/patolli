@@ -107,7 +107,9 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
     }//GEN-LAST:event_botonUnirseActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        dispose();
+        this.dispose();
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     public void verificarCampo() {

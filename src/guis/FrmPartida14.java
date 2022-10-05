@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guis;
 
 import entidades.Ficha;
@@ -12,9 +7,19 @@ import javax.swing.JOptionPane;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
+<<<<<<< HEAD
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
+=======
+ *
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
+>>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
  */
 public class FrmPartida14 extends javax.swing.JFrame {
 
@@ -56,16 +61,17 @@ public class FrmPartida14 extends javax.swing.JFrame {
         jugador2 = new javax.swing.JLabel();
         jugador3 = new javax.swing.JLabel();
         jugador4 = new javax.swing.JLabel();
+        btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tablero Grande");
         setPreferredSize(new java.awt.Dimension(950, 940));
-        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 928));
 
         tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroGrande.png"))); // NOI18N
 
-        hacerApuesta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        hacerApuesta.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         hacerApuesta.setText("Hacer Apuesta");
         hacerApuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +79,7 @@ public class FrmPartida14 extends javax.swing.JFrame {
             }
         });
 
-        lanzarCañas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lanzarCañas.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         lanzarCañas.setText("Lanzar Cañas");
         lanzarCañas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +98,14 @@ public class FrmPartida14 extends javax.swing.JFrame {
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
         jugador2.setToolTipText("");
+
+        btn_Salir.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        btn_Salir.setText("Salir");
+        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,12 +132,14 @@ public class FrmPartida14 extends javax.swing.JFrame {
                 .addComponent(caña5)
                 .addGap(6, 6, 6)
                 .addComponent(caña1)
-                .addGap(176, 176, 176)
+                .addGap(49, 49, 49)
+                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(hacerApuesta)
+                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,10 +164,13 @@ public class FrmPartida14 extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,7 +183,9 @@ public class FrmPartida14 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,6 +219,16 @@ public class FrmPartida14 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
     }//GEN-LAST:event_lanzarCañasActionPerformed
+
+    private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
+        int opcionSeleccionado = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas abandonar la partida?", "CONFIRMAR", JOptionPane.YES_NO_OPTION);
+        if (opcionSeleccionado == JOptionPane.NO_OPTION) {
+            return;
+        }
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_SalirActionPerformed
 
     public void LanzarDados() {
         //caña1
@@ -281,6 +312,7 @@ public class FrmPartida14 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
     private javax.swing.JLabel caña2;
     private javax.swing.JLabel caña3;

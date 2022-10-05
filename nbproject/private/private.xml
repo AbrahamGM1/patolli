@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Jorge%20Red/Documents/GITHUB/Patolli/src/guis/panel/GraphicsDemo.java</file>
             <file>file:/C:/Users/Jorge%20Red/Documents/GITHUB/Patolli/src/entidades/Casilla.java</file>
@@ -10,5 +11,8 @@
             <file>file:/C:/Users/Jorge%20Red/Documents/GITHUB/Patolli/src/guis/FrmPartida10.java</file>
             <file>file:/C:/Users/Jorge%20Red/Documents/GITHUB/Patolli/src/entidades/Jugador.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
     </open-files>
 </project-private>

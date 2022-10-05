@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package guis;
 
 import entidades.Apuestas;
@@ -16,7 +12,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author luisg
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549
+ * Gabriel Francisco Piñuelas Ramos 00000230626
+ * Ricardo Pacheco Urias 00000229178
+ * Abraham Sered Gómez Martínez 00000228796
+ * 
  */
 public class DlgCrearPartida extends javax.swing.JDialog {
 
@@ -50,25 +51,41 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         campoTextoMontoPorApuesta = new javax.swing.JTextField();
         botonCrear = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel1.setText("Casillas por aspa");
 
+        jLabel2.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel2.setText("Número de jugadores");
 
+        jLabel3.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel3.setText("Fichas por jugador");
 
+        jLabel4.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel4.setText("Fondo de apuestas");
 
+        jLabel5.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel5.setText("Monto por apuesta");
 
+        comboBoxCasillas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxCasillas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "12", "14" }));
 
+        comboBoxNumJugadores.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
 
+        comboBoxFichas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
 
+        campoTextoFondoApuestas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTextoFondoApuestasActionPerformed(evt);
+            }
+        });
+
+        botonCrear.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCrear.setText("Crear");
         botonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +93,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
         });
 
+        botonCancelar.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,12 +101,15 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Jokerman", 1, 24)); // NOI18N
+        jLabel6.setText("Configuración de Partida");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,24 +118,28 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoTextoFondoApuestas)
-                    .addComponent(campoTextoMontoPorApuesta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonCrear)
+                        .addGap(46, 46, 46)
+                        .addComponent(botonCancelar))
                     .addComponent(comboBoxFichas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboBoxNumJugadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboBoxCasillas, 0, 174, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(botonCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(botonCancelar)
-                .addGap(74, 74, 74))
+                    .addComponent(comboBoxCasillas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoTextoMontoPorApuesta)
+                    .addComponent(campoTextoFondoApuestas))
+                .addGap(91, 91, 91))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(129, 129, 129))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboBoxCasillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,19 +151,21 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(comboBoxFichas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCrear)
                     .addComponent(botonCancelar))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -151,8 +178,14 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        dispose();
+        this.dispose();
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void campoTextoFondoApuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoFondoApuestasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTextoFondoApuestasActionPerformed
 
     public boolean validarMonto() {
         try {
@@ -294,6 +327,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     int confirmacion = 0;
     static int numCasillas = 0;

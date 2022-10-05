@@ -12,9 +12,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
- * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
- * Martínez 00000228796
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549 
+ * Gabriel Francisco Piñuelas Ramos 00000230626 
+ * Ricardo Pacheco Urias 00000229178 
+ * Abraham Sered Gómez Martínez 00000228796
  *
  */
 public class GraphicsDemo extends JPanel {
@@ -39,6 +41,111 @@ public class GraphicsDemo extends JPanel {
         g2D.fillOval(x, y, 10, 10);
     }
 
+<<<<<<< HEAD
+=======
+    public void tablero(Graphics g) {
+
+        Graphics2D g2D = (Graphics2D) g;
+
+        g2D.setColor(new Color(145, 91, 63));
+        g2D.setStroke(new BasicStroke(50));
+
+        //linea Horizontal
+        g2D.drawLine(70, 340, 647, 340);
+
+        //Linea Vertical
+        g2D.drawLine(360, 52, 360, 630);
+
+        //LINEAS INTERNAS  \
+        //horizontal  
+        g2D.setStroke(new BasicStroke(2));
+        g2D.setColor(Color.white);
+        g2D.drawLine(46, 340, 674, 340);
+
+        //LINEAS INTERNAS  \
+        //vertical        
+        g2D.setStroke(new BasicStroke(2));
+        g2D.setColor(Color.white);
+        g2D.drawLine(360, 29, 360, 654);
+
+        //lineas Centro
+        //Verticales
+        g2D.drawLine(335, 29, 335, 654);
+        g2D.drawLine(386, 29, 386, 654);
+        //Horizontales
+        g2D.drawLine(46, 316, 674, 316);
+        g2D.drawLine(46, 366, 674, 366);
+
+        //casillas 
+        //Horizontal Ariba
+        //ABAJO; 316
+        //Arriba; 46
+        //total=290
+        int Espacio = 290 / casillas;
+        int InicioArriba = 316 - Espacio;
+        int InicioAbajo = 366 + Espacio;
+        int InicioDerecha = 385 + Espacio;
+        int InicioIzquierda = 334 - Espacio;
+
+        for (int i = 0; i < casillas; i++) {
+   
+            int Inicio = 314;
+            int inicioIz = 334;
+            int inicioAbajo = 367;
+            int inicioDer = 387;
+            if (i == 0) {
+
+                g2D.setStroke(new BasicStroke(1));
+                g2D.setColor(Color.yellow);
+                //g2D.drawLine(360, InicioArriba+22, 385, InicioArriba+22); 
+                g2D.drawLine(360, Inicio - 0, 385, Inicio - 0);
+                for (int j = 0; j < Espacio; j++) {
+                    g2D.drawLine(360, Inicio - j, 385, Inicio - j);
+                    g2D.drawLine(inicioIz - j, 317, inicioIz - j, 338);
+                    g2D.drawLine(inicioDer + j, 340, inicioDer + j, 364);
+                    g2D.drawLine(335, inicioAbajo + j, 358, inicioAbajo + j);
+                }
+            }
+            if (i == casillas - 1) {
+                g2D.setStroke(new BasicStroke(5));
+            } else {
+                g2D.setStroke(new BasicStroke(2));
+            }
+            //Horizontales
+            g2D.setColor(Color.white);
+            g2D.drawLine(335, InicioArriba, 386, InicioArriba);
+            InicioArriba = InicioArriba - Espacio;
+
+            g2D.drawLine(335, InicioAbajo, 386, InicioAbajo);
+            InicioAbajo = InicioAbajo + Espacio;
+
+            //Verticales   
+            g2D.drawLine(InicioIzquierda, 316, InicioIzquierda, 366);
+            InicioIzquierda = InicioIzquierda - Espacio;
+
+            g2D.drawLine(InicioDerecha, 316, InicioDerecha, 366);
+            InicioDerecha = InicioDerecha + Espacio;
+
+            //triangulitos
+            if (i == casillas - 4) {
+                g2D.setStroke(new BasicStroke(5));
+                //Triangulitos de arriba
+                g2D.drawLine(335, InicioArriba + Espacio, 386, InicioArriba);
+                g2D.drawLine(335, InicioArriba, 386, InicioArriba + Espacio);
+                //triangulitos de la Izquierdo
+                g2D.drawLine(InicioIzquierda + Espacio, 316, InicioIzquierda, 366);
+                g2D.drawLine(InicioIzquierda, 316, InicioIzquierda + Espacio, 366);
+                //triangulitos de la Derecha
+                g2D.drawLine(InicioDerecha - Espacio, 316, InicioDerecha, 366);
+                g2D.drawLine(InicioDerecha, 316, InicioDerecha - Espacio, 366);
+                //triangulitos de la Abajo
+                g2D.drawLine(335, InicioAbajo - Espacio, 386, InicioAbajo);
+                g2D.drawLine(335, InicioAbajo, 386, InicioAbajo - Espacio);
+            }
+        }
+    }
+
+>>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
     public void Panel() {
         this.setBackground(new Color(240, 223, 197));
         this.setSize(720, 720);
