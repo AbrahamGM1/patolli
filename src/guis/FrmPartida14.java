@@ -12,8 +12,9 @@ import javax.swing.JOptionPane;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
- *
- * @author Abraham
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
 public class FrmPartida14 extends javax.swing.JFrame {
 

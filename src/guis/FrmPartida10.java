@@ -5,16 +5,20 @@
  */
 package guis;
 
+import entidades.Casilla;
 import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
 import javax.swing.JOptionPane;
 import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
+import guis.panel.CasillaPartida;
+import java.util.List;
 
 /**
- *
- * @author Abraham
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
 public class FrmPartida10 extends javax.swing.JFrame {
 
@@ -26,12 +30,19 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int ancho=950;
     int alto=928;
     int avance;
+    int idAuxiliar;
+    boolean ingresado=false;
+    
     GraphicsDemo gd;
+    CasillaPartida c = new CasillaPartida();
+    List<Casilla> casillas = c.inicializarCasilla10();
     
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
+        jugador1.setLocation(432,449);
         iniciarlbl();
+        
     }
     
     public FrmPartida10(){
@@ -159,7 +170,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,7 +184,9 @@ public class FrmPartida10 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,24 +198,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         
+        
+        LanzarDados();
+        Casilla cs = gd.ingresarFicha(jugador1);
+        idAuxiliar=idAuxiliar+cs.getId();
         try {
-            this.LanzarDados();
 
-            for (int i = 0; i < partida.getListaJugadores()[0].getFichas().length; i++) {
-                Ficha f = partida.getListaJugadores()[0].getFichas()[i];
-                if (!verificarDentro(f.getId(), partida.getListaJugadores()[0])) {
-                    moverFicha(f, f.getPosicion() + this.determinarMovimiento());
-                    int Posicion = partida.getListaJugadores()[0].getFichas()[i].getPosicion();
-                    partida.getListaJugadores()[0].getFichas()[i].setPosicion(Posicion + determinarMovimiento());
-                    System.out.println(Posicion + determinarMovimiento());
-                    return;
-                } else {
-                    if (this.determinarMovimiento() > 0) {
-                        partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
-                        return;
-                    }
-                }
+            if (avance==1&&ingresado==false) {
+                gd.ingresarFicha(jugador1);
+                ingresado=true; 
             }
+            if(avance>0&&ingresado==true){
+                gd.moverFicha(idAuxiliar, avance, jugador1);
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -265,43 +275,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));        
     }
     
-    public int determinarMovimiento() {
-        int movimiento = 0;
-        for (int i = 0; i < partida.getDados().length; i++) {
-            if (partida.getDados()[i].getLado()) {
-                movimiento++;
-            }
-        }
-        if (movimiento == 5) {
-            movimiento = 10;
-        }
-        return movimiento;
-    }
     
-    public boolean verificarDentro(int Id, Jugador jugador) {
-        Jugador j = jugador;
 
-        for (int i = 0; i < j.getFichas().length; i++) {
-            if (j.getFichas()[i].getId() == Id) {
-                Ficha f = j.getFichas()[i];
-                if (f.getPosicion() == -1) {
-                    //posicion diferene a 0
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-        public void moverFicha(Ficha ficha, int movimientos) {
-        if (movimientos > 0) {
-            gd.setx(199);
-            gd.sety(566);
-            gd.AvanzarFicha(jugador1, movimientos, 1);
-            gd.repaint();
-        }
-    }
     
     @Subscribe
     public void establecerPartida(Partida partida){
