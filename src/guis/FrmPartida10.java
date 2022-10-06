@@ -7,6 +7,7 @@ import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
 import guis.panel.CasillaPartida;
 import java.util.List;
+import javax.swing.SwingUtilities;
 
 /**
  * <<<<<<< HEAD @a
@@ -28,7 +29,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
      * Creates new form FrmPartida10
      */
     Casilla casillaAvanzada;
-    boolean primeraVez;
     
 
     public FrmPartida10(Partida partida) {
@@ -36,7 +36,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         this.partida = partida;
         jugador1.setLocation(432, 449);
         ingresado = false;
-        primeraVez=true;
+        primeraVez = true;
         iniciarlbl();
 
     }
@@ -79,6 +79,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
         setPreferredSize(new java.awt.Dimension(950, 940));
+        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 940));
 
@@ -237,11 +238,11 @@ public class FrmPartida10 extends javax.swing.JFrame {
             return;
         }
         if (avance == 0 && ingresado == true) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1,primeraVez);
+            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
         }
         try {
             if (avance == 1 && ingresado == false) {
-                gd.ingresarFicha(jugador1);
+                gd.ingresarFicha(jugador1,idAuxiliar);
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
@@ -249,10 +250,10 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
             if (ingresado == true) {
                 if (avance > 0) {
-                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1,primeraVez);
+                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
                     idAuxiliar = casillaAvanzada.getId();
-                        System.out.println(primeraVez);
-                    
+                    System.out.println(primeraVez);
+                    primeraVez=false;
                 } else if (idAuxiliar > 43) {
 
                     JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
@@ -278,9 +279,10 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
         lanzarCañas.setEnabled(true);
-        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1,false);
+        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
+        idAuxiliar=idAuxiliar-1;
         btnMeterFicha.setEnabled(false);
-        
+
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
     public int LanzarDados() {
@@ -373,6 +375,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int avance;
     int idAuxiliar;
     boolean ingresado;
+    boolean primeraVez=true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
