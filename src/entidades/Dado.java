@@ -51,10 +51,8 @@ public class Dado {
         for (int i = 0; i < numAl; i++) {
             if (numAl % 2 == 0) {
                 this.lado = true;
-                System.out.println("El número es par" + numAl);
             } else {
                 this.lado = false;
-                System.out.println("El número es no par" + numAl);
             }
         }
         return numAl;

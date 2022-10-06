@@ -238,13 +238,21 @@ public class GraphicsDemo extends JPanel {
 
     public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
         JLabel lbl=ficha;
+        Casilla casillaDestino=lcasillas.get(idCasilla);
         int casillaAvance=idCasilla+valorCaña;
+        if (valorCaña==0) {
+            lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
+            System.out.println("Jugador permanece en la casilla " +casillaDestino);
+            return casillaDestino;
+        }
         try {
-            Casilla casillaDestino = lcasillas.get(casillaAvance);
+            casillaDestino = lcasillas.get(casillaAvance);
             //TO DO: DESPLAZAR LA IMAGEN DE LA FICHA
             lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
+            System.out.println(casillaAvance);
             repaint();
             return casillaDestino;
+             
         } catch (Exception e) {
             return null;
         }
@@ -259,12 +267,17 @@ public class GraphicsDemo extends JPanel {
         return casillaInicial;
     }
     
+    
     public boolean seIngresoFicha(Casilla casilla){
         if (casilla.getId()!=0) {
             return false;
         }else{
             return true;
         }
+    }
+    
+    public void sacarFicha(JLabel lbl){
+      lbl=null;
     }
 
     public void setx(int x) {

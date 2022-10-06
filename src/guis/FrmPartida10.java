@@ -9,37 +9,40 @@ import guis.panel.CasillaPartida;
 import java.util.List;
 
 /**
-<<<<<<< HEAD
+ * <<<<<<< HEAD @a
+ *
+ *
+ * uthor Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796 =======
+ *
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
-=======
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
->>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
+ * >>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
  */
 public class FrmPartida10 extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPartida10
-     */   
+     */
     Casilla casillaAvanzada;
+
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
-        jugador1.setLocation(432,449);
+        jugador1.setLocation(432, 449);
+        ingresado=false;
         iniciarlbl();
-        
+
     }
-    
-    public FrmPartida10(){
+
+    public FrmPartida10() {
         initComponents();
         iniciarlbl();
+        jugador1.setLocation(432, 449);
+        ingresado=false;
         this.setLocationRelativeTo(null);
     }
 
@@ -203,21 +206,29 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_hacerApuestaActionPerformed
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
-        
-        
+
         LanzarDados();
         Casilla cs = gd.ingresarFicha(jugador1);
-        
-        try {
 
-            if (avance==1&&ingresado==false) {
+        if (avance==0&&ingresado==true) {
+             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+        }
+        try {
+            if (avance == 1 && ingresado == false) {
                 gd.ingresarFicha(jugador1);
-                ingresado=true; 
+                ingresado = true;
             }
-            if(avance>0&&ingresado==true){
+            else if (avance > 0 && ingresado == true) {
                 casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
-                idAuxiliar=casillaAvanzada.getId();
+                if (idAuxiliar >= casillaAvanzada.getId()) {
+
+                    JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
+                    gd.sacarFicha(jugador1);
+                }
+                idAuxiliar = casillaAvanzada.getId();
             }
+            
+
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
@@ -236,15 +247,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     public int LanzarDados() {
         //caña1
-        avance=0;
-        
+        avance = 0;
+
         partida.getDados()[0].generarLado();
         partida.getDados()[1].generarLado();
         partida.getDados()[2].generarLado();
         partida.getDados()[3].generarLado();
         partida.getDados()[4].generarLado();
-        
-        
+
         if (partida.getDados()[0].getLado()) {
             caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaPunto.png")));
             avance++;
@@ -279,29 +289,26 @@ public class FrmPartida10 extends javax.swing.JFrame {
         } else {
             caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
-        System.out.println("avance: "+avance);
+        System.out.println("avance: " + avance);
         return avance;
-        
+
     }
-    
+
     public void iniciarlbl() {
         caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
-        caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));        
+        caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
     }
-    
-    
 
-    
     @Subscribe
-    public void establecerPartida(Partida partida){
+    public void establecerPartida(Partida partida) {
         this.partida = partida;
         gd = new GraphicsDemo(10);
 
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
@@ -320,13 +327,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
-    int x=0;
-    int y=0;
-    int ancho=950;
-    int alto=928;
+    int x = 0;
+    int y = 0;
+    int ancho = 950;
+    int alto = 928;
     int avance;
     int idAuxiliar;
-    boolean ingresado=false;
+    boolean ingresado;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
