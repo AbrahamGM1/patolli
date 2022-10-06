@@ -57,25 +57,9 @@ public class GraphicsDemo extends JPanel {
         int casillaAvance=idCasilla+valorCaña;
         System.out.println("id casilla "+idCasilla);
         
-//        if (idCasilla==1) {
-//            
-//            casillaDestino=lcasillas.get(idCasilla-1);
-//            lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
-//            System.out.println("casilla-1:"+casillaAvance);
-//            repaint();
-//            return casillaDestino;
-//        }
-        
-        
-//        if(valorCaña==-1){
-////            casillaDestino = lcasillas.get(casillaAvance);
-//          
-//            casillaDestino=lcasillas.get(idCasilla-1);
-//            lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
-//            System.out.println(casillaAvance);
-//            repaint();
-//            return casillaDestino;
-//        }
+        if (valorCaña==5) {
+            casillaAvance=idCasilla+valorCaña+5;
+        }
         
         if (valorCaña==0) {
             lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
