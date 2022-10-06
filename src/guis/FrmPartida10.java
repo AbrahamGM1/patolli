@@ -210,6 +210,9 @@ public class FrmPartida10 extends javax.swing.JFrame {
         LanzarDados();
         Casilla cs = gd.ingresarFicha(jugador1);
 
+        if (avance!=1 && ingresado==false) {
+            return;
+        }
         if (avance==0&&ingresado==true) {
              casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
         }
@@ -218,20 +221,24 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 gd.ingresarFicha(jugador1);
                 ingresado = true;
             }
-            else if (avance > 0 && ingresado == true) {
-                casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
-                if (idAuxiliar >= casillaAvanzada.getId()) {
+            
+            if (ingresado == true) {
+                if (avance > 0) {
+                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                    idAuxiliar = casillaAvanzada.getId();
+                }
+                else if (idAuxiliar > 43) {
 
                     JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
                     gd.sacarFicha(jugador1);
                 }
-                idAuxiliar = casillaAvanzada.getId();
+                
             }
             
 
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
         }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
