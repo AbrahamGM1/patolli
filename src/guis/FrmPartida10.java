@@ -7,30 +7,19 @@ import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
 import guis.panel.CasillaPartida;
 import java.util.List;
-import javax.swing.SwingUtilities;
 
 /**
- * <<<<<<< HEAD @a
- *
- *
- * uthor Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
- * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
- * Martínez 00000228796 =======
- *
+ * 
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
- *
- * >>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
  */
 public class FrmPartida10 extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPartida10
+     * @param partida
      */
-    Casilla casillaAvanzada;
-    
-
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
@@ -379,4 +368,5 @@ public class FrmPartida10 extends javax.swing.JFrame {
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
+    Casilla casillaAvanzada;
 }
