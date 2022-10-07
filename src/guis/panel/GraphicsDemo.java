@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -73,6 +74,8 @@ public class GraphicsDemo extends JPanel {
             return casillaDestino;
              
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+            lbl.setEnabled(false);
             return null;
         }
     }

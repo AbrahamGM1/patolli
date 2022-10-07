@@ -245,7 +245,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
                     primeraVez=false;
                 } else if (idAuxiliar > 43) {
 
-                    JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
+                    JOptionPane.showMessageDialog(null, "");
                     gd.sacarFicha(jugador1);
                 }
 
