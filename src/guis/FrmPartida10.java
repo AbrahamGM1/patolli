@@ -243,16 +243,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
                     idAuxiliar = casillaAvanzada.getId();
                     System.out.println(primeraVez);
                     primeraVez=false;
-                } else if (idAuxiliar > 43) {
-
-                    JOptionPane.showMessageDialog(null, "");
-                    gd.sacarFicha(jugador1);
                 }
 
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Recorriste todo el tablero");
+            JOptionPane.showMessageDialog(null, "");
+            jugador1.setIcon(null);
+            jugador1.setEnabled(false);
         }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 

@@ -66,16 +66,26 @@ public class GraphicsDemo extends JPanel {
             return casillaDestino;
         }
         try {
-            casillaDestino = lcasillas.get(casillaAvance);
-          
+
+            if (casillaAvance<=44) {
+                casillaDestino = lcasillas.get(casillaAvance);
+                
+                if (casillaDestino.equals(lcasillas.get(43))) {
+                JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                lbl.setEnabled(false);
+                return null;
+                }
             lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
             System.out.println(casillaAvance);
             repaint();
             return casillaDestino;
-             
-        } catch (Exception e) {
+            }else{
             JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
             lbl.setEnabled(false);
+            return null;
+            }
+
+        } catch (Exception e) {
             return null;
         }
     }
