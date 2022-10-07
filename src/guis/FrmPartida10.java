@@ -221,8 +221,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
 
         LanzarDados();
-//        Casilla cs = gd.ingresarFicha(jugador1);
-
+        
         if (avance != 1 && ingresado == false) {
             return;
         }
@@ -240,17 +239,18 @@ public class FrmPartida10 extends javax.swing.JFrame {
             if (ingresado == true) {
                 if (avance > 0) {
                     casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                    if (casillaAvanzada==null) {
+                    }else{
                     idAuxiliar = casillaAvanzada.getId();
                     System.out.println(primeraVez);
                     primeraVez=false;
+                    }
                 }
 
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "");
-            jugador1.setIcon(null);
-            jugador1.setEnabled(false);
         }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 

@@ -11,11 +11,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549 
- * Gabriel Francisco Piñuelas Ramos 00000230626 
- * Ricardo Pacheco Urias 00000229178 
- * Abraham Sered Gómez Martínez 00000228796
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  *
  */
 public class GraphicsDemo extends JPanel {
@@ -46,73 +44,81 @@ public class GraphicsDemo extends JPanel {
         this.setSize(720, 720);
     }
 
-    
     int ident = 0;
 
-
     public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
-        JLabel lbl=ficha;
-        Casilla casillaDestino=lcasillas.get(idCasilla);
-        int casillaAvance=idCasilla+valorCaña;
-        System.out.println("id casilla "+idCasilla);
-        
-        if (valorCaña==5) {
-            casillaAvance=idCasilla+valorCaña+5;
+        JLabel lbl = ficha;
+        Casilla casillaDestino = lcasillas.get(idCasilla);
+        int casillaAvance = idCasilla + valorCaña;
+        System.out.println("id casilla " + idCasilla);
+
+        if (valorCaña == 5) {
+            casillaAvance = idCasilla + valorCaña + 5;
         }
-        
-        if (valorCaña==0) {
+
+        if (valorCaña == 0) {
             lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
-            System.out.println("Jugador permanece en la casilla " +casillaDestino.getId());
+            System.out.println("Jugador permanece en la casilla " + casillaDestino.getId());
             return casillaDestino;
         }
         try {
 
-            if (casillaAvance<=44) {
+            if (casillaAvance <= 44) {
                 casillaDestino = lcasillas.get(casillaAvance);
-                
+                if (casillaDestino.getId() >= lcasillas.get(43).getId()) {
+                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    lbl.setIcon(null);
+                    lbl.setEnabled(false);
+                    
+                    return null;
+                }
+
                 if (casillaDestino.equals(lcasillas.get(43))) {
+                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    lbl.setIcon(null);
+                    lbl.setEnabled(false);
+
+                    return null;
+                }
+
+                lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
+                System.out.println(casillaAvance);
+                repaint();
+                return casillaDestino;
+            } else {
                 JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                lbl.setIcon(null);
                 lbl.setEnabled(false);
                 return null;
-                }
-            lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
-            System.out.println(casillaAvance);
-            repaint();
-            return casillaDestino;
-            }else{
-            JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
-            lbl.setEnabled(false);
-            return null;
             }
 
         } catch (Exception e) {
             return null;
         }
     }
-    
-    public Casilla ingresarFicha(JLabel l, int idCasilla){
-        JLabel lbl=l;
-        Casilla casillaInicial=lcasillas.get(idCasilla);
-        
-        System.out.println(casillaInicial.getX()+","+casillaInicial.getY());
+
+    public Casilla ingresarFicha(JLabel l, int idCasilla) {
+        JLabel lbl = l;
+        Casilla casillaInicial = lcasillas.get(idCasilla);
+
+        System.out.println(casillaInicial.getX() + "," + casillaInicial.getY());
         lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-        lbl.setLocation(casillaInicial.getX(),casillaInicial.getY());
-        
+        lbl.setLocation(casillaInicial.getX(), casillaInicial.getY());
+
         repaint();
         return casillaInicial;
     }
-    
-    
-    public boolean seIngresoFicha(Casilla casilla){
-        if (casilla.getId()!=0) {
+
+    public boolean seIngresoFicha(Casilla casilla) {
+        if (casilla.getId() != 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    
-    public void sacarFicha(JLabel lbl){
-      lbl=null;
+
+    public void sacarFicha(JLabel lbl) {
+        lbl = null;
     }
 
     public void setx(int x) {
