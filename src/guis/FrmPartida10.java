@@ -1,6 +1,7 @@
 package guis;
 
 import entidades.Casilla;
+import entidades.Ficha;
 import entidades.Partida;
 import javax.swing.JOptionPane;
 import guis.panel.GraphicsDemo;
@@ -226,11 +227,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
             return;
         }
         if (avance == 0 && ingresado == true) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
         }
         try {
             if (avance == 1 && ingresado == false) {
-                gd.ingresarFicha(jugador1,idAuxiliar);
+                ficha1j1=new Ficha(1,jugador1,true);
+                gd.ingresarFicha(ficha1j1,jugador1,idAuxiliar);
+                
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
@@ -238,7 +241,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
             if (ingresado == true) {
                 if (avance > 0) {
-                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance,ficha1j1);
                     if (casillaAvanzada==null) {
                     }else{
                     idAuxiliar = casillaAvanzada.getId();
@@ -266,7 +269,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
         lanzarCañas.setEnabled(true);
-        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
+        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
         idAuxiliar=idAuxiliar-1;
         btnMeterFicha.setEnabled(false);
 
@@ -328,7 +331,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
     }
-
+    
     @Subscribe
     public void establecerPartida(Partida partida) {
         this.partida = partida;
@@ -367,4 +370,5 @@ public class FrmPartida10 extends javax.swing.JFrame {
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
+    Ficha ficha1j1=new Ficha();
 }

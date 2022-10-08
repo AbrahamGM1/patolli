@@ -1,5 +1,7 @@
 package entidades;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
@@ -11,9 +13,16 @@ public class Ficha {
 
     private int posicion;
     private int id;
+    private JLabel label;
     private boolean enJuego;
 
     public Ficha() {
+    }
+
+    public Ficha(int id, JLabel label, boolean enJuego) {
+        this.id = id;
+        this.label = label;
+        this.enJuego = enJuego;
     }
     
     public Ficha(int posicion, int id, boolean enJuego) {
@@ -51,5 +60,13 @@ public class Ficha {
         this.enJuego = enJuego;
     }
 
+    public JLabel getLabel() {
+        return label;
+    }
 
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
+
+    
 }

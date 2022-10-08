@@ -1,6 +1,7 @@
 package guis.panel;
 
 import entidades.Casilla;
+import entidades.Ficha;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -46,8 +47,8 @@ public class GraphicsDemo extends JPanel {
 
     int ident = 0;
 
-    public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
-        JLabel lbl = ficha;
+    public Casilla moverFicha(int idCasilla, int valorCaña, Ficha ficha) {
+        JLabel lbl = ficha.getLabel();
         Casilla casillaDestino = lcasillas.get(idCasilla);
         int casillaAvance = idCasilla + valorCaña;
         System.out.println("id casilla " + idCasilla);
@@ -66,7 +67,7 @@ public class GraphicsDemo extends JPanel {
             if (casillaAvance <= 44) {
                 casillaDestino = lcasillas.get(casillaAvance);
                 if (casillaDestino.getId() >= lcasillas.get(43).getId()) {
-                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
                     lbl.setIcon(null);
                     lbl.setEnabled(false);
                     
@@ -74,7 +75,7 @@ public class GraphicsDemo extends JPanel {
                 }
 
                 if (casillaDestino.equals(lcasillas.get(43))) {
-                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
                     lbl.setIcon(null);
                     lbl.setEnabled(false);
 
@@ -86,7 +87,7 @@ public class GraphicsDemo extends JPanel {
                 repaint();
                 return casillaDestino;
             } else {
-                JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
                 lbl.setIcon(null);
                 lbl.setEnabled(false);
                 return null;
@@ -97,7 +98,7 @@ public class GraphicsDemo extends JPanel {
         }
     }
 
-    public Casilla ingresarFicha(JLabel l, int idCasilla) {
+    public Casilla ingresarFicha(Ficha ficha, JLabel l, int idCasilla) {
         JLabel lbl = l;
         Casilla casillaInicial = lcasillas.get(idCasilla);
 
