@@ -56,16 +56,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Component id="jugador3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jugador1ficha3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="jugador2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jugador1ficha2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Component id="jugador1" min="-2" max="-2" attributes="0"/>
+              <Component id="jugador1ficha1" min="-2" max="-2" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Component id="jugador4" min="-2" max="-2" attributes="0"/>
+                  <Component id="jugador1ficha4" min="-2" max="-2" attributes="0"/>
               </Group>
               <Component id="tablero" min="-2" max="-2" attributes="0"/>
               <Group type="102" attributes="0">
@@ -105,13 +105,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="jugador3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jugador1ficha3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jugador2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jugador1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jugador1ficha2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jugador1ficha1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jugador4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jugador1ficha4" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="tablero" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -215,16 +215,16 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jugador1">
+        <Component class="javax.swing.JLabel" name="jugador1ficha1">
         </Component>
-        <Component class="javax.swing.JLabel" name="jugador2">
+        <Component class="javax.swing.JLabel" name="jugador1ficha2">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jugador3">
+        <Component class="javax.swing.JLabel" name="jugador1ficha3">
         </Component>
-        <Component class="javax.swing.JLabel" name="jugador4">
+        <Component class="javax.swing.JLabel" name="jugador1ficha4">
         </Component>
         <Component class="javax.swing.JButton" name="btn_Salir">
           <Properties>

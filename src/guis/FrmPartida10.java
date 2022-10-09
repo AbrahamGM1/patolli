@@ -8,9 +8,10 @@ import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
 import guis.panel.CasillaPartida;
 import java.util.List;
+import javax.swing.JLabel;
 
 /**
- * 
+ *
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
@@ -19,12 +20,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPartida10
+     *
      * @param partida
      */
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
-        jugador1.setLocation(432, 449);
+        jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
         iniciarlbl();
@@ -34,7 +36,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     public FrmPartida10() {
         initComponents();
         iniciarlbl();
-        jugador1.setLocation(432, 449);
+        jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
@@ -59,10 +61,10 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña3 = new javax.swing.JLabel();
         caña4 = new javax.swing.JLabel();
         caña5 = new javax.swing.JLabel();
-        jugador1 = new javax.swing.JLabel();
-        jugador2 = new javax.swing.JLabel();
-        jugador3 = new javax.swing.JLabel();
-        jugador4 = new javax.swing.JLabel();
+        jugador1ficha1 = new javax.swing.JLabel();
+        jugador1ficha2 = new javax.swing.JLabel();
+        jugador1ficha3 = new javax.swing.JLabel();
+        jugador1ficha4 = new javax.swing.JLabel();
         btn_Salir = new javax.swing.JButton();
         btnMeterFicha = new javax.swing.JButton();
 
@@ -101,7 +103,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
-        jugador2.setToolTipText("");
+        jugador1ficha2.setToolTipText("");
 
         btn_Salir.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         btn_Salir.setText("Salir");
@@ -125,14 +127,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jugador3))
+                .addComponent(jugador1ficha3))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jugador2))
-            .addComponent(jugador1)
+                .addComponent(jugador1ficha2))
+            .addComponent(jugador1ficha1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jugador4))
+                .addComponent(jugador1ficha4))
             .addComponent(tablero)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
@@ -165,12 +167,12 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jugador3))
-                    .addComponent(jugador2)
-                    .addComponent(jugador1)
+                        .addComponent(jugador1ficha3))
+                    .addComponent(jugador1ficha2)
+                    .addComponent(jugador1ficha1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jugador4))
+                        .addComponent(jugador1ficha4))
                     .addComponent(tablero))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -222,39 +224,52 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
 
         LanzarDados();
-        
+
         if (avance != 1 && ingresado == false) {
             return;
         }
         if (avance == 0 && ingresado == true) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
         }
-        try {
-            if (avance == 1 && ingresado == false) {
-                ficha1j1=new Ficha(1,jugador1,true);
-                gd.ingresarFicha(ficha1j1,jugador1,idAuxiliar);
-                
+//        try {
+        if (avance == 1 && fichasMetidas <= 2) {
+            ///INGRESAR CADA FICHA AL TABLERO
+            if (ficha1j1 == null) {
+                j1 = jugador1ficha1;
+                ficha1j1 = new Ficha(1, j1, true);
+                gd.ingresarFicha(ficha1j1, j1, idAuxiliar);
+                fichasMetidas++;
+                ingresado = true;
+                btnMeterFicha.setEnabled(true);
+                lanzarCañas.setEnabled(false);
+            } else if (ficha2j1 == null) {
+                j2 = jugador1ficha2;
+                ficha2j1 = new Ficha(1, j2, true);
+                gd.ingresarFicha(ficha2j1, j2, idAuxiliar2);
+                fichasMetidas++;
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
             }
 
-            if (ingresado == true) {
-                if (avance > 0) {
-                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance,ficha1j1);
-                    if (casillaAvanzada==null) {
-                    }else{
+        }
+
+        if (ingresado == true) {
+            if (avance > 0) {
+                casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
+                if (casillaAvanzada == null) {
+                } else {
                     idAuxiliar = casillaAvanzada.getId();
                     System.out.println(primeraVez);
-                    primeraVez=false;
-                    }
+                    primeraVez = false;
                 }
-
             }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "");
         }
+        
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "");
+//        }
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
@@ -269,9 +284,17 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
         lanzarCañas.setEnabled(true);
-        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
-        idAuxiliar=idAuxiliar-1;
-        btnMeterFicha.setEnabled(false);
+        if (ficha2j1!=null) {
+            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha2j1);
+            idAuxiliar = idAuxiliar - 1;
+            btnMeterFicha.setEnabled(false);
+        }
+        if (ficha1j1.isEnJuego()) {
+            casillaAvanzada = gd.moverFicha(idAuxiliar2, -1, ficha1j1);
+            idAuxiliar2 = idAuxiliar2 - 1;
+            btnMeterFicha.setEnabled(false);
+        }
+
 
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
@@ -331,7 +354,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
     }
-    
+
     @Subscribe
     public void establecerPartida(Partida partida) {
         this.partida = partida;
@@ -349,10 +372,10 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private javax.swing.JLabel caña5;
     private javax.swing.JButton hacerApuesta;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jugador1;
-    private javax.swing.JLabel jugador2;
-    private javax.swing.JLabel jugador3;
-    private javax.swing.JLabel jugador4;
+    private javax.swing.JLabel jugador1ficha1;
+    private javax.swing.JLabel jugador1ficha2;
+    private javax.swing.JLabel jugador1ficha3;
+    private javax.swing.JLabel jugador1ficha4;
     private javax.swing.JButton lanzarCañas;
     private javax.swing.JLabel tablero;
     private javax.swing.JTextField txtApuesta;
@@ -363,12 +386,17 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int ancho = 950;
     int alto = 928;
     int avance;
-    int idAuxiliar;
+    int idAuxiliar, idAuxiliar2=0;
+    
     boolean ingresado;
-    boolean primeraVez=true;
+    boolean primeraVez = true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
-    Ficha ficha1j1=new Ficha();
+    Ficha ficha1j1;
+    Ficha ficha2j1;
+    JLabel j1 = new JLabel();
+    JLabel j2 = new JLabel();
+    int fichasMetidas;
 }
