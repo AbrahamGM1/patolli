@@ -12,14 +12,16 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
+ *
  */
 public class DlgCrearPartida extends javax.swing.JDialog {
+
+    public DlgCrearPartida() {
+        initComponents();
+    }
 
     /**
      * Creates new form DlgCrearPartida2
@@ -75,6 +77,11 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         comboBoxNumJugadores.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
+        comboBoxNumJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxNumJugadoresActionPerformed(evt);
+            }
+        });
 
         comboBoxFichas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
@@ -154,9 +161,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
+                    .addComponent(campoTextoFondoApuestas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoTextoMontoPorApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,9 +177,30 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        crearPartida();
-        iniciarPartida();
-        dispose();
+        FrmPartida10 xd = new FrmPartida10();
+
+        int FondoApuesta = Integer.parseInt(campoTextoFondoApuestas.getText());
+        int MontoApuesta = Integer.parseInt(campoTextoMontoPorApuesta.getText());
+        int numJugadores = Integer.parseInt(comboBoxNumJugadores.getSelectedItem().toString());
+
+        System.out.println("FA: " + FondoApuesta);
+        System.out.println("MA: " + MontoApuesta);
+
+        try {
+
+            if (FondoApuesta > MontoApuesta) {
+                crearPartida();
+                iniciarPartida();
+                System.out.println("numJugadors: " + numJugadores);
+                xd.LblnumJugadores.setText(" " + numJugadores);
+                // xd.Turno.setText(comboBoxNumJugadores.getSelectedItem().toString());
+                dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Llene correctamente los datos!");
+        }
+
+
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -186,6 +212,10 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     private void campoTextoFondoApuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTextoFondoApuestasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTextoFondoApuestasActionPerformed
+
+    private void comboBoxNumJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxNumJugadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxNumJugadoresActionPerformed
 
     public boolean validarMonto() {
         try {
@@ -209,30 +239,30 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         }
         return false;
     }
-    
+
     public void vaciar() {
         this.campoTextoMontoPorApuesta.setText("");
         this.campoTextoFondoApuestas.setText("");
     }
-    
+
     public static boolean esNumero(String numero) {
         return numero.matches("[0-9]*");
     }
-    
-    public Partida crearPartida(){
-        int numJugadores = Integer.parseInt((String)this.comboBoxNumJugadores.getSelectedItem());
-        
+
+    public Partida crearPartida() {
+        int numJugadores = Integer.parseInt((String) this.comboBoxNumJugadores.getSelectedItem());
+
         int fondo = 0;
         int monto = 0;
         if (validarMonto()) {
             monto = Integer.parseInt(campoTextoMontoPorApuesta.getText());
             fondo = Integer.parseInt(campoTextoFondoApuestas.getText());
         }
-        
+
         numCasillas = Integer.parseInt((String) this.comboBoxCasillas.getSelectedItem());
-        
+
         int numFichas = Integer.parseInt((String) this.comboBoxFichas.getSelectedItem());
-        
+
         Apuestas apuestas = new Apuestas(fondo, monto);
         Tablero tablero = new Tablero(this.llenarCasillas(numCasillas * 2 * 4 + 4, numFichas));
         Jugador[] jugadores = this.llenarJugadores(numJugadores, apuestas);
@@ -243,7 +273,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         return new Partida(numCasillas, tablero, jugadores, this.llenarDados(), gen());
     }
-    
+
     public int gen() {
         Random r = new Random(System.currentTimeMillis());
         return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
@@ -313,15 +343,15 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         }
         return fichas;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonCrear;
-    private javax.swing.JTextField campoTextoFondoApuestas;
+    public static javax.swing.JTextField campoTextoFondoApuestas;
     private javax.swing.JTextField campoTextoMontoPorApuesta;
     private javax.swing.JComboBox<String> comboBoxCasillas;
     private javax.swing.JComboBox<String> comboBoxFichas;
-    private javax.swing.JComboBox<String> comboBoxNumJugadores;
+    public static javax.swing.JComboBox<String> comboBoxNumJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

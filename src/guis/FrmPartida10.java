@@ -18,18 +18,20 @@ import javax.swing.JLabel;
  */
 public class FrmPartida10 extends javax.swing.JFrame {
 
+    int iparaNumJ = 0;
+
     /**
      * Creates new form FrmPartida10
      *
      * @param partida
      */
     public FrmPartida10(Partida partida) {
-        initComponents();
         this.partida = partida;
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
         iniciarlbl();
+        initComponents();
 
     }
 
@@ -67,6 +69,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugador1ficha4 = new javax.swing.JLabel();
         btn_Salir = new javax.swing.JButton();
         btnMeterFicha = new javax.swing.JButton();
+        Turno = new javax.swing.JTextField();
+        LblnumJugadores = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
@@ -121,6 +125,13 @@ public class FrmPartida10 extends javax.swing.JFrame {
             }
         });
 
+        Turno.setEditable(false);
+        Turno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TurnoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,14 +158,16 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 .addComponent(caña5)
                 .addGap(6, 6, 6)
                 .addComponent(caña1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Turno)
+                    .addComponent(btn_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,13 +201,18 @@ public class FrmPartida10 extends javax.swing.JFrame {
                         .addContainerGap(25, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -210,7 +228,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,7 +240,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_hacerApuestaActionPerformed
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
-
         LanzarDados();
 
         if (avance != 1 && ingresado == false) {
@@ -242,6 +259,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
+
             } else if (ficha2j1 == null) {
                 j2 = jugador1ficha2;
                 ficha2j1 = new Ficha(1, j2, true);
@@ -266,7 +284,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
             }
 
         }
-        
+
 //        } catch (Exception e) {
 //            JOptionPane.showMessageDialog(null, "");
 //        }
@@ -284,7 +302,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
         lanzarCañas.setEnabled(true);
-        if (ficha2j1!=null) {
+        if (ficha2j1 != null) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha2j1);
             idAuxiliar = idAuxiliar - 1;
             btnMeterFicha.setEnabled(false);
@@ -298,10 +316,29 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
+    private void TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TurnoActionPerformed
+
     public int LanzarDados() {
         //caña1
-        avance = 0;
+        // avance = 0;
+        int numeroJ = Integer.parseInt(LblnumJugadores.getText().trim());
+        char lol = LblnumJugadores.getText().charAt(0);
+        int numJug2 = Integer.parseInt(LblnumJugadores.getText().trim());
 
+        System.out.println("numJ: " + numJug2);
+        if (iparaNumJ <= numJug2) { //1 <= 2
+            Turno.setText("Turno: J" + (iparaNumJ + 1));
+
+            if (iparaNumJ == numJug2) {
+                System.out.println("Entras?");
+                iparaNumJ = 0;
+                Turno.setText("Turno J:" + (iparaNumJ + 1));
+            }
+            iparaNumJ++;
+        }
+        avance = 0;
         partida.getDados()[0].generarLado();
         partida.getDados()[1].generarLado();
         partida.getDados()[2].generarLado();
@@ -363,6 +400,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel LblnumJugadores;
+    public static javax.swing.JTextField Turno;
     private javax.swing.JButton btnMeterFicha;
     private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
@@ -386,8 +425,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int ancho = 950;
     int alto = 928;
     int avance;
-    int idAuxiliar, idAuxiliar2=0;
-    
+    int idAuxiliar, idAuxiliar2 = 0;
+
     boolean ingresado;
     boolean primeraVez = true;
     GraphicsDemo gd;

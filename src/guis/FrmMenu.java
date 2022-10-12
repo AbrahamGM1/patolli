@@ -5,12 +5,10 @@ import org.greenrobot.eventbus.EventBus;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
+ *
  */
 public class FrmMenu extends javax.swing.JFrame {
 
@@ -23,6 +21,7 @@ public class FrmMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Dado dado = new Dado();
         dado.generarLado();
+        setTitle("Patolli Equipo3");
     }
 
     /**
