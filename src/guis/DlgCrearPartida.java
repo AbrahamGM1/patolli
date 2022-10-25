@@ -85,6 +85,11 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         comboBoxFichas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
+        comboBoxFichas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxFichasActionPerformed(evt);
+            }
+        });
 
         campoTextoFondoApuestas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +182,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        FrmPartida10 xd = new FrmPartida10();
+        FrmPartida10 xd = new FrmPartida10(crearPartida());
 
         int FondoApuesta = Integer.parseInt(campoTextoFondoApuestas.getText());
         int MontoApuesta = Integer.parseInt(campoTextoMontoPorApuesta.getText());
@@ -217,6 +222,10 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxNumJugadoresActionPerformed
 
+    private void comboBoxFichasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFichasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxFichasActionPerformed
+
     public boolean validarMonto() {
         try {
             if (esNumero(campoTextoMontoPorApuesta.getText().trim()) && esNumero(campoTextoFondoApuestas.getText().trim())) {
@@ -233,7 +242,9 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(null, "Solo se aceptan números");
             }
-        } catch (Exception ex) {
+        } 
+        
+        catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "LLene correctamente los datos SOLO NÚMEROS");
             return false;
         }
@@ -286,27 +297,28 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 return;
             }
             if (numCasillas == 10) {
-                FrmPartida10 partida = new FrmPartida10();
+                FrmPartida10 partida = new FrmPartida10(crearPartida());
                 FrmMenu.evento.register(partida);
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 12) {
-                FrmPartida12 partida = new FrmPartida12();
+                FrmPartida12 partida = new FrmPartida12(crearPartida());
                 FrmMenu.evento.register(partida);
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 14) {
-                FrmPartida14 partida = new FrmPartida14();
+                FrmPartida14 partida = new FrmPartida14(crearPartida());
                 FrmMenu.evento.register(partida);
                 FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Dato Erróneo");
         }
     }

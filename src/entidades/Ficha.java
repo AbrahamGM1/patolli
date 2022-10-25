@@ -11,6 +11,7 @@ import javax.swing.JLabel;
  */
 public class Ficha {
 
+    private Casilla casilla;
     private int posicion;
     private int id;
     private JLabel label;
@@ -18,6 +19,14 @@ public class Ficha {
 
     public Ficha() {
     }
+
+    public Ficha(Casilla casilla, int id, JLabel label, boolean enJuego) {
+        this.casilla = casilla;
+        this.id = id;
+        this.label = label;
+        this.enJuego = enJuego;
+    }
+
 
     public Ficha(int id, JLabel label, boolean enJuego) {
         this.id = id;
@@ -42,6 +51,14 @@ public class Ficha {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public Casilla getCasilla() {
+        return casilla;
+    }
+
+    public void setCasilla(Casilla casilla) {
+        this.casilla = casilla;
     }
 
     public int getPosicion() {

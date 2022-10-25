@@ -1,5 +1,6 @@
 package guis;
 
+import entidades.Jugador;
 import entidades.Casilla;
 import entidades.Ficha;
 import entidades.Partida;
@@ -17,22 +18,23 @@ import javax.swing.JLabel;
  * Martínez 00000228796
  */
 public class FrmPartida10 extends javax.swing.JFrame {
-
+    
+    Jugador[] jugadores;
     int iparaNumJ = 0;
-
+    
     /**
      * Creates new form FrmPartida10
      *
      * @param partida
      */
     public FrmPartida10(Partida partida) {
+        initComponents();
         this.partida = partida;
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
+        jugadores=partida.getListaJugadores();
         iniciarlbl();
-        initComponents();
-
     }
 
     public FrmPartida10() {
@@ -40,6 +42,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         iniciarlbl();
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
+        jugadores=partida.getListaJugadores();
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
     }
