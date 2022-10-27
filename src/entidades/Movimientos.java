@@ -10,6 +10,9 @@ import java.io.Serializable;
  * Ricardo Pacheco Urias 00000229178
  * Abraham Sered Gómez Martínez 00000228796
  * 
+ * Clase que contiene los atributos de la entidad de
+ * Movimientos. 
+ * 
  */
 public class Movimientos implements Serializable {
 

@@ -8,6 +8,10 @@ package entidades;
  * Ricardo Pacheco Urias 00000229178
  * Abraham Sered Gómez Martínez 00000228796
  * 
+ * Clase que contienen los atributos de la entidad 
+ * Jugador. El fondo de apuestas que este posee y 
+ * el numero de fichas con las que jugara.
+ * 
  */
 public class Jugador {
 

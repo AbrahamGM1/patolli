@@ -8,6 +8,10 @@ package entidades;
  * Ricardo Pacheco Urias 00000229178
  * Abraham Sered Gómez Martínez 00000228796
  * 
+ * Clase que contiene los atributos para la entidad
+ * de Tablero. Este se compone del nuemro de casilla 
+ * que contendra segun la configuración de la partida.
+ * 
  */
 public class Tablero {
 

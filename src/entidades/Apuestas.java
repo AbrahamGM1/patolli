@@ -8,6 +8,11 @@ package entidades;
  * Ricardo Pacheco Urias 00000229178
  * Abraham Sered Gómez Martínez 00000228796
  * 
+ * Clase que contiene los atributos de la 
+ * entidad de apuestas, el fondo para 
+ * apuestas y el monto que se tiene
+ * que pagar por cada una.
+ * 
  */
 public class Apuestas {
 

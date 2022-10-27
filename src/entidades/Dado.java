@@ -10,6 +10,11 @@ import java.util.Random;
  * Ricardo Pacheco Urias 00000229178
  * Abraham Sered Gómez Martínez 00000228796
  * 
+ * Clase que contiene los atributos de la entidad
+ * de Dado, el numero que contiene el dado y el
+ * lado en el cual este se imprime de manera
+ * aleatoria.
+ * 
  */
 public class Dado {
 

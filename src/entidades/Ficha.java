@@ -4,10 +4,17 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
- * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
- * Martínez 00000228796
+ * @author 
+ * Luis Gonzalo Cervantes Rivera 00000228549 
+ * Gabriel Francisco Piñuelas Ramos 00000230626 
+ * Ricardo Pacheco Urias 00000229178 
+ * Abraham Sered Gómez Martínez 00000228796
  *
+ * Clase que contiene los atributos de la entidad de
+ * Ficha. La posicion en la que esta se encuentra
+ * en relacion al id de la casilla y el estado en 
+ * el que se encuentra, jugando o no.
+ * 
  */
 public class Ficha {
 
