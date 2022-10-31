@@ -41,7 +41,6 @@ public class GraphicsDemo extends JPanel {
         g2D.fillOval(x, y, 10, 10);
     }
 
-//>>>>>>> 34dc71bf8be41c78dfb73f7772d71ab049224947
     public void Panel() {
         this.setBackground(new Color(240, 223, 197));
         this.setSize(720, 720);
