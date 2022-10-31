@@ -200,7 +200,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "El Monto de la apuesta no puede ser mayor o igual al fondo de las apuestas", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            return;
         }
     }//GEN-LAST:event_botonCrearActionPerformed
 
