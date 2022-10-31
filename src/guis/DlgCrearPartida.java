@@ -191,21 +191,17 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         System.out.println("FA: " + FondoApuesta);
         System.out.println("MA: " + MontoApuesta);
 
-        try {
-
-            if (FondoApuesta > MontoApuesta) {
-                crearPartida();
-                iniciarPartida();
-                System.out.println("numJugadors: " + numJugadores);
-                xd.LblnumJugadores.setText(" " + numJugadores);
-                // xd.Turno.setText(comboBoxNumJugadores.getSelectedItem().toString());
-                dispose();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Llene correctamente los datos!");
+        if (FondoApuesta > MontoApuesta) {
+            crearPartida();
+            iniciarPartida();
+            System.out.println("numJugadors: " + numJugadores);
+            xd.LblnumJugadores.setText(" " + numJugadores);
+            // xd.Turno.setText(comboBoxNumJugadores.getSelectedItem().toString());
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "El Monto de la apuesta no puede ser mayor o igual al fondo de las apuestas", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-
-
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
