@@ -193,6 +193,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtApuesta">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="ca&#xf1;a1">
           <Properties>

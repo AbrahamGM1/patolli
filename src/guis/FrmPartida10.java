@@ -21,7 +21,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
     
     Jugador[] jugadores;
     int iparaNumJ = 0;
-    
+    Ficha[] fichasj1; 
+    int contadorFichasj1=0;
     /**
      * Creates new form FrmPartida10
      *
@@ -36,6 +37,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         ficha1j1.setEnJuego(ingresado);
         btnMeterFicha.setEnabled(false);
         jugadores = partida.getListaJugadores();
+        fichasj1 = jugadores[0].getFichas();
         iniciarlbl();
     }
 
@@ -79,7 +81,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
-        setPreferredSize(new java.awt.Dimension(1244, 844));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -102,6 +103,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 lanzarCañasActionPerformed(evt);
             }
         });
+
+        txtApuesta.setEditable(false);
 
         caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
@@ -251,28 +254,38 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         LanzarDados();
-
+        
         if (avance != 1 && ingresado == false) {
             return;
         }
         if (avance == 0 && ingresado == true) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
         }
-//        try {
-        if (avance == 1 && fichasMetidas <= 2) {
-            ///INGRESAR CADA FICHA AL TABLERO
-            if (ingresado == false) {
-                j1 = jugador1ficha1;
-                ficha1j1 = new Ficha(1, j1, true);
-                gd.ingresarFicha(ficha1j1, j1, idAuxiliar);
-                fichasMetidas++;
-                ingresado = true;
+        
+        for (int i = contadorFichasj1; i < fichasj1.length; i++) {
+            
+            if (avance == 1 && i<fichasj1.length) {
+                fichasj1[i].setLabel(new JLabel());
+                gd.ingresarFicha(fichasj1[i], fichasj1[i].getLabel(), idAuxiliar);
+                fichasj1[i].setEnJuego(true);
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
-
             }
-
         }
+        
+//        try {
+//        if (avance == 1 && fichasMetidas <= 2) {
+//            ///INGRESAR CADA FICHA AL TABLERO
+//            if (ingresado == false) {
+//                j1 = jugador1ficha1;
+//                ficha1j1 = new Ficha(1, j1, true);
+//                gd.ingresarFicha(ficha1j1, j1, idAuxiliar);
+//                fichasMetidas++;
+//                ingresado = true;
+//                btnMeterFicha.setEnabled(true);
+//                lanzarCañas.setEnabled(false);
+//            }
+//        }
 
         if (ingresado == true) {
             if (avance > 0) {
@@ -286,10 +299,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
             }
 
         }
-
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "");
-//        }
+        
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
@@ -304,12 +314,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
 
-        if (ficha1j1.isEnJuego()) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
-            idAuxiliar = idAuxiliar - 1;
+        for (int i = 0; i < fichasj1.length; i++) {
+            if (fichasj1[i].isEnJuego()) {
+            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[i]);
+//            idAuxiliar = idAuxiliar - 1;
             btnMeterFicha.setEnabled(false);
             lanzarCañas.setEnabled(true);
+            }
         }
+//        if (ficha1j1.isEnJuego()) {
+//            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
+//            idAuxiliar = idAuxiliar - 1;
+//            btnMeterFicha.setEnabled(false);
+//            lanzarCañas.setEnabled(true);
+//        }
 
 
     }//GEN-LAST:event_btnMeterFichaActionPerformed
@@ -321,8 +339,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
     public int LanzarDados() {
         //caña1
         // avance = 0;
-        int numeroJ = Integer.parseInt(LblnumJugadores.getText().trim());
-        char lol = LblnumJugadores.getText().charAt(0);
         int numJug2 = Integer.parseInt(LblnumJugadores.getText().trim());
 
         System.out.println("numJ: " + numJug2);
@@ -330,7 +346,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
             Turno.setText("Turno: J" + (iparaNumJ + 1));
 
             if (iparaNumJ == numJug2) {
-                System.out.println("Entras?");
                 iparaNumJ = 0;
                 Turno.setText("Turno J:" + (iparaNumJ + 1));
             }
@@ -423,7 +438,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
     int ancho = 950;
     int alto = 928;
     int avance;
-    int idAuxiliar, idAuxiliar2 = 0;
+    int idAuxiliar = 0;
+    int idAuxiliar2 = 0;
 
     boolean ingresado;
     boolean primeraVez = true;
