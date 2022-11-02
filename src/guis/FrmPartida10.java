@@ -262,14 +262,18 @@ public class FrmPartida10 extends javax.swing.JFrame {
             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
         }
         
+        
+        ///Ciclo que recorre la cantidad de fichas del jugador 1 y la ficha que se encuentre en turno
+        //se la manda al metodo de ingresar ficha
         for (int i = contadorFichasj1; i < fichasj1.length; i++) {
-            
-            if (avance == 1 && i<fichasj1.length) {
+            if (avance == 1 && contadorFichasj1<fichasj1.length) {
                 fichasj1[i].setLabel(new JLabel());
                 gd.ingresarFicha(fichasj1[i], fichasj1[i].getLabel(), idAuxiliar);
                 fichasj1[i].setEnJuego(true);
+                contadorFichasj1=i;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
+                System.out.println("fichas ingresadas: "+contadorFichasj1);
             }
         }
         
@@ -314,20 +318,16 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
 
-        for (int i = 0; i < fichasj1.length; i++) {
+        ///ciclo que recorre las fichas del jugador 1 y las mete al tablero con el método moverFicha
+        for (int i = contadorFichasj1; i < fichasj1.length; i++) {
             if (fichasj1[i].isEnJuego()) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[i]);
-//            idAuxiliar = idAuxiliar - 1;
             btnMeterFicha.setEnabled(false);
             lanzarCañas.setEnabled(true);
+                System.out.println("ficha "+contadorFichasj1);
             }
         }
-//        if (ficha1j1.isEnJuego()) {
-//            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
-//            idAuxiliar = idAuxiliar - 1;
-//            btnMeterFicha.setEnabled(false);
-//            lanzarCañas.setEnabled(true);
-//        }
+
 
 
     }//GEN-LAST:event_btnMeterFichaActionPerformed
