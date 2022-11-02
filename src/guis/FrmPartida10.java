@@ -33,6 +33,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
+        ficha1j1.setEnJuego(ingresado);
+        btnMeterFicha.setEnabled(false);
         jugadores=partida.getListaJugadores();
         iniciarlbl();
     }
@@ -259,7 +261,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
 //        try {
         if (avance == 1 && fichasMetidas <= 2) {
             ///INGRESAR CADA FICHA AL TABLERO
-            if (ficha1j1 == null) {
+            if (ingresado == false) {
                 j1 = jugador1ficha1;
                 ficha1j1 = new Ficha(1, j1, true);
                 gd.ingresarFicha(ficha1j1, j1, idAuxiliar);
@@ -268,14 +270,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
 
-            } else if (ficha2j1 == null) {
-                j2 = jugador1ficha2;
-                ficha2j1 = new Ficha(1, j2, true);
-                gd.ingresarFicha(ficha2j1, j2, idAuxiliar2);
-                fichasMetidas++;
-                ingresado = true;
-                btnMeterFicha.setEnabled(true);
-                lanzarCañas.setEnabled(false);
             }
 
         }
@@ -309,16 +303,12 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
-        lanzarCañas.setEnabled(true);
-        if (ficha2j1 != null) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha2j1);
+
+        if (ficha1j1.isEnJuego()) {
+            casillaAvanzada = gd.moverFicha(idAuxiliar, -1, ficha1j1);
             idAuxiliar = idAuxiliar - 1;
             btnMeterFicha.setEnabled(false);
-        }
-        if (ficha1j1.isEnJuego()) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar2, -1, ficha1j1);
-            idAuxiliar2 = idAuxiliar2 - 1;
-            btnMeterFicha.setEnabled(false);
+            lanzarCañas.setEnabled(true);
         }
 
 
@@ -441,8 +431,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
-    Ficha ficha1j1;
-    Ficha ficha2j1;
+    Ficha ficha1j1 = new Ficha();
+    Ficha ficha2j1 = new Ficha();
     JLabel j1 = new JLabel();
     JLabel j2 = new JLabel();
     int fichasMetidas;
