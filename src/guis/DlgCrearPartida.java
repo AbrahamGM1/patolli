@@ -25,6 +25,8 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgCrearPartida2
+     * @param parent
+     * @param modal
      */
     public DlgCrearPartida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -354,11 +356,11 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonCrear;
-    public static javax.swing.JTextField campoTextoFondoApuestas;
+    private javax.swing.JTextField campoTextoFondoApuestas;
     private javax.swing.JTextField campoTextoMontoPorApuesta;
     private javax.swing.JComboBox<String> comboBoxCasillas;
     private javax.swing.JComboBox<String> comboBoxFichas;
-    public static javax.swing.JComboBox<String> comboBoxNumJugadores;
+    private javax.swing.JComboBox<String> comboBoxNumJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

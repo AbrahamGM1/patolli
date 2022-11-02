@@ -35,7 +35,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         primeraVez = true;
         ficha1j1.setEnJuego(ingresado);
         btnMeterFicha.setEnabled(false);
-        jugadores=partida.getListaJugadores();
+        jugadores = partida.getListaJugadores();
         iniciarlbl();
     }
 
@@ -44,7 +44,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         iniciarlbl();
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
-        jugadores=partida.getListaJugadores();
+        jugadores = partida.getListaJugadores();
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
     }
