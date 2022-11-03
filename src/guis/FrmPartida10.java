@@ -262,19 +262,19 @@ public class FrmPartida10 extends javax.swing.JFrame {
         }
         
         
-        ///Ciclo que recorre la cantidad de fichas del jugador 1 y la ficha que se encuentre en turno
-        //se la manda al metodo de ingresar ficha
-        for (int i = contadorFichasj1; i < fichasj1.length; i++) {
+        ///Se compara si el contador de las fichas es menor al tamaño del arreglo de las fichas del jugador 1
+        //dicho de forma mas sencilla, si el jugador aún no mete todas sus fichas al tablero y le salió un 1 al arrojar las cañas
+        //pues ingresa la ficha correspondiente        
             if (avance == 1 && contadorFichasj1<fichasj1.length) {
-                fichasj1[i].setLabel(new JLabel());
-                gd.ingresarFicha(fichasj1[i], fichasj1[i].getLabel(), idAuxiliar);
-                fichasj1[i].setEnJuego(true);
-                contadorFichasj1=i;
+                fichasj1[contadorFichasj1].setLabel(new JLabel());
+                gd.ingresarFicha(fichasj1[contadorFichasj1], fichasj1[contadorFichasj1].getLabel(), idAuxiliar);
+                fichasj1[contadorFichasj1].setEnJuego(true);
+                System.out.println("fichas ingresadas: "+contadorFichasj1);
+                contadorFichasj1=contadorFichasj1+1;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
-                System.out.println("fichas ingresadas: "+contadorFichasj1);
+                
             }
-        }
         
 
         //Si hay una ficha en el tablero y el avance es de al menos una casilla entonces se llama al método mover ficha
@@ -308,14 +308,15 @@ public class FrmPartida10 extends javax.swing.JFrame {
         ///ciclo que recorre las fichas del jugador 1 y las mete al tablero con el método moverFicha
         //en este caso la iteración vale el contador exclusivo de las fichas del jugador 1 el cual es una variable declarada afuera de los métodos
         //y va aumentando cada vez que se ejecuta este método
-        for (int i = contadorFichasj1; i < fichasj1.length; i++) {
-            if (fichasj1[i].isEnJuego()) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[i]);
+        //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
+        //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada
+            if (fichasj1[contadorFichasj1-1].isEnJuego()) {
+            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[contadorFichasj1-1]);
             btnMeterFicha.setEnabled(false);
             lanzarCañas.setEnabled(true);
                 System.out.println("ficha "+contadorFichasj1);
             }
-        }
+        
 
 
 
