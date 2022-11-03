@@ -67,14 +67,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
         caña3 = new javax.swing.JLabel();
         caña4 = new javax.swing.JLabel();
         caña5 = new javax.swing.JLabel();
-        jugador1ficha1 = new javax.swing.JLabel();
-        jugador1ficha2 = new javax.swing.JLabel();
-        jugador1ficha3 = new javax.swing.JLabel();
-        jugador1ficha4 = new javax.swing.JLabel();
         btn_Salir = new javax.swing.JButton();
         btnMeterFicha = new javax.swing.JButton();
         Turno = new javax.swing.JTextField();
         LblnumJugadores = new javax.swing.JLabel();
+        jugador1ficha1 = new javax.swing.JLabel();
+        jugador1ficha2 = new javax.swing.JLabel();
+        jugador1ficha3 = new javax.swing.JLabel();
+        jugador1ficha4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
@@ -113,8 +113,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
-        jugador1ficha2.setToolTipText("");
-
         btn_Salir.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -143,22 +141,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jugador1ficha3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jugador1ficha2))
-                    .addComponent(jugador1ficha1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jugador1ficha4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(554, 554, 554)
-                        .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(634, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(tablero)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -186,15 +168,28 @@ public class FrmPartida10 extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(caña2))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(30, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(554, 554, 554)
+                        .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jugador1ficha1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jugador1ficha2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jugador1ficha3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jugador1ficha4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jugador1ficha2)
-                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,16 +212,14 @@ public class FrmPartida10 extends javax.swing.JFrame {
                         .addGap(139, 139, 139)
                         .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jugador1ficha3))
-                        .addComponent(jugador1ficha1)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(jugador1ficha4))
-                        .addComponent(tablero)))
-                .addGap(64, 64, 64)
+                    .addComponent(tablero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jugador1ficha1)
+                    .addComponent(jugador1ficha2)
+                    .addComponent(jugador1ficha3)
+                    .addComponent(jugador1ficha4))
+                .addGap(42, 42, 42)
                 .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -266,7 +259,23 @@ public class FrmPartida10 extends javax.swing.JFrame {
         //dicho de forma mas sencilla, si el jugador aún no mete todas sus fichas al tablero y le salió un 1 al arrojar las cañas
         //pues ingresa la ficha correspondiente        
             if (avance == 1 && contadorFichasj1<fichasj1.length) {
-                fichasj1[contadorFichasj1].setLabel(new JLabel());
+            switch (contadorFichasj1) {
+                case 0:
+                    fichasj1[contadorFichasj1].setLabel(jugador1ficha1);
+                    break;
+                case 1:
+                    fichasj1[contadorFichasj1].setLabel(jugador1ficha2);
+                    break;
+                case 2:
+                    fichasj1[contadorFichasj1].setLabel(jugador1ficha3);
+                    break;
+                case 3:
+                    fichasj1[contadorFichasj1].setLabel(jugador1ficha4);
+                    break;                    
+                default:
+                    break;
+            }
+                
                 gd.ingresarFicha(fichasj1[contadorFichasj1], fichasj1[contadorFichasj1].getLabel(), idAuxiliar);
                 fichasj1[contadorFichasj1].setEnJuego(true);
                 System.out.println("fichas ingresadas: "+contadorFichasj1);
