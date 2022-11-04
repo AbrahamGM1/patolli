@@ -84,28 +84,28 @@ public class GraphicsDemo extends JPanel {
                 casillaDestino = lcasillas.get(casillaAvance);
                 if (casillaDestino.getId() >= lcasillas.get(43).getId()) {
                     JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                    lbl.setIcon(null);
-                    lbl.setEnabled(false);
+                    ficha.getLabel().setIcon(null);
+                    ficha.getLabel().setEnabled(false);
                     
                     return null;
                 }
 
                 if (casillaDestino.equals(lcasillas.get(43))) {
                     JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                    lbl.setIcon(null);
-                    lbl.setEnabled(false);
+                    ficha.getLabel().setIcon(null);
+                    ficha.getLabel().setEnabled(false);
 
                     return null;
                 }
 
-                lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
+                ficha.getLabel().setLocation(casillaDestino.getX(), casillaDestino.getY());
                 System.out.println(casillaAvance);
                 repaint();
                 return casillaDestino;
             } else {
                 JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                lbl.setIcon(null);
-                lbl.setEnabled(false);
+                ficha.getLabel().setIcon(null);
+                ficha.getLabel().setEnabled(false);
                 return null;
             }
 
@@ -123,20 +123,15 @@ public class GraphicsDemo extends JPanel {
      * la ficha y se le asigna una posición a este label, aunque por motivos desconocidos por ahora, extrañamente lo pone en la posición x0,y0.
      * 
      * @param ficha - la ficha a ingresar
-     * @param l - el label que tomará la ficha a ingresar
-     * @param idCasilla - el id inicial de casilla de la ficha a ingresar
-     * @return la casilla inicial¿? deberia de cambiarlo por ficha?
+     * @return la ficha
      */
-    public Casilla ingresarFicha(Ficha ficha, JLabel l, int idCasilla) {
-        JLabel lbl = l;
-        Casilla casillaInicial = lcasillas.get(idCasilla);
-
+    public Ficha ingresarFicha(Ficha ficha) {
+        Casilla casillaInicial = lcasillas.get(ficha.getId());
+        ficha.getLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
+        ficha.getLabel().setLocation(x, y);
         System.out.println(casillaInicial.getX() + "," + casillaInicial.getY());
-        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-        lbl.setLocation(casillaInicial.getX(), casillaInicial.getY());
-
         repaint();
-        return casillaInicial;
+        return ficha;
     }
 
     /***
