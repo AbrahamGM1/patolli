@@ -58,7 +58,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        tablero = new javax.swing.JLabel();
         hacerApuesta = new javax.swing.JButton();
         lanzarCañas = new javax.swing.JButton();
         txtApuesta = new javax.swing.JTextField();
@@ -75,6 +74,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugador1ficha2 = new javax.swing.JLabel();
         jugador1ficha3 = new javax.swing.JLabel();
         jugador1ficha4 = new javax.swing.JLabel();
+        tablero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
@@ -82,8 +82,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1244, 844));
-
-        tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
 
         hacerApuesta.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         hacerApuesta.setText("Hacer Apuesta");
@@ -135,6 +133,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
                 TurnoActionPerformed(evt);
             }
         });
+
+        tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -276,7 +276,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
                     break;
             }
                 
-                gd.ingresarFicha(fichasj1[contadorFichasj1], fichasj1[contadorFichasj1].getLabel(), idAuxiliar);
+                gd.ingresarFicha(fichasj1[contadorFichasj1]);
+                
                 fichasj1[contadorFichasj1].setEnJuego(true);
                 System.out.println("fichas ingresadas: "+contadorFichasj1);
                 contadorFichasj1=contadorFichasj1+1;
@@ -313,18 +314,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
-
+        jugador1ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
+        jugador1ficha1.setLocation(jugador1ficha1.getX(), jugador1ficha1.getY()-10);
+        
         ///ciclo que recorre las fichas del jugador 1 y las mete al tablero con el método moverFicha
         //en este caso la iteración vale el contador exclusivo de las fichas del jugador 1 el cual es una variable declarada afuera de los métodos
         //y va aumentando cada vez que se ejecuta este método
         //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
         //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada
-            if (fichasj1[contadorFichasj1-1].isEnJuego()) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[contadorFichasj1-1]);
-            btnMeterFicha.setEnabled(false);
-            lanzarCañas.setEnabled(true);
-                System.out.println("ficha "+contadorFichasj1);
-            }
+//            if (fichasj1[contadorFichasj1-1].isEnJuego()) {
+//            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[contadorFichasj1-1]);
+//            btnMeterFicha.setEnabled(false);
+//            lanzarCañas.setEnabled(true);
+//                System.out.println("ficha "+contadorFichasj1);
+//            }
         
 
 
