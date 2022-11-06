@@ -4,14 +4,23 @@
  */
 package sockets.jugador;
 
+import java.io.IOException;
+import java.net.Socket;
+
 /**
  *
  * @author luisg
  */
 public class Client {
     
-    private final int puerto = 2027;
-    
-    //localhost será el valor temporalmente
-    private String host = "localhost";
+    public static void main(String[] args){
+        Socket cliente = null;
+        
+        try{
+            cliente = new Socket("127.0.0.1", 2027);
+            
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
 }
