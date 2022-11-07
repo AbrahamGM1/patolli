@@ -8,7 +8,13 @@ import javax.swing.JOptionPane;
 import guis.panel.GraphicsDemo;
 import org.greenrobot.eventbus.Subscribe;
 import guis.panel.CasillaPartida;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -17,16 +23,20 @@ import javax.swing.JLabel;
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
  */
-public class FrmPartida10 extends javax.swing.JFrame {
-    
+public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
+
     Jugador[] jugadores;
     int iparaNumJ = 0;
-    Ficha[] fichasj1; 
-    int contadorFichasj1=0;
+    Ficha[] fichasj1;
+    int contadorFichasj1 = 0;
+
     /**
-     * Creates new form FrmPartida10
-     * Si dentro del crear partida se crea un frame de un tablero de 10 casillas se inicializan variables que serán utilizadas en los demás métodos dentro de
-     * este JFrame, es importante que cuando se cree un frmPartida se le envie de parámetro la partida configurada.
+     * Creates new form FrmPartida10 Si dentro del crear partida se crea un
+     * frame de un tablero de 10 casillas se inicializan variables que serán
+     * utilizadas en los demás métodos dentro de este JFrame, es importante que
+     * cuando se cree un frmPartida se le envie de parámetro la partida
+     * configurada.
+     *
      * @param partida
      */
     public FrmPartida10(Partida partida) {
@@ -40,6 +50,17 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugadores = partida.getListaJugadores();
         fichasj1 = jugadores[0].getFichas();
         iniciarlbl();
+
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public FrmPartida10() {
@@ -50,8 +71,18 @@ public class FrmPartida10 extends javax.swing.JFrame {
         jugadores = partida.getListaJugadores();
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
-    }
 
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -244,21 +275,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         LanzarDados();
-         //Si no sale 1 y no hay fichas pasa turno
+        //Si no sale 1 y no hay fichas pasa turno
         if (avance != 1 && ingresado == false) {
             return;
         }
-        
+
         //Si no hay avance y hay fichas "avanza" 0 casillas y pasa turno
         if (avance == 0 && ingresado == true) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
         }
-        
-        
+
         ///Se compara si el contador de las fichas es menor al tamaño del arreglo de las fichas del jugador 1
         //dicho de forma mas sencilla, si el jugador aún no mete todas sus fichas al tablero y le salió un 1 al arrojar las cañas
         //pues ingresa la ficha correspondiente        
-            if (avance == 1 && contadorFichasj1<fichasj1.length) {
+        if (avance == 1 && contadorFichasj1 < fichasj1.length) {
             switch (contadorFichasj1) {
                 case 0:
                     fichasj1[contadorFichasj1].setLabel(jugador1ficha1);
@@ -271,21 +301,20 @@ public class FrmPartida10 extends javax.swing.JFrame {
                     break;
                 case 3:
                     fichasj1[contadorFichasj1].setLabel(jugador1ficha4);
-                    break;                    
+                    break;
                 default:
                     break;
             }
-                
-                gd.ingresarFicha(fichasj1[contadorFichasj1]);
-                
-                fichasj1[contadorFichasj1].setEnJuego(true);
-                System.out.println("fichas ingresadas: "+contadorFichasj1);
-                contadorFichasj1=contadorFichasj1+1;
-                btnMeterFicha.setEnabled(true);
-                lanzarCañas.setEnabled(false);
-                
-            }
-        
+
+            gd.ingresarFicha(fichasj1[contadorFichasj1]);
+
+            fichasj1[contadorFichasj1].setEnJuego(true);
+            System.out.println("fichas ingresadas: " + contadorFichasj1);
+            contadorFichasj1 = contadorFichasj1 + 1;
+            btnMeterFicha.setEnabled(true);
+            lanzarCañas.setEnabled(false);
+
+        }
 
         //Si hay una ficha en el tablero y el avance es de al menos una casilla entonces se llama al método mover ficha
         if (ingresado == true) {
@@ -300,7 +329,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
             }
 
         }
-        
+
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
@@ -315,8 +344,8 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
         jugador1ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-        jugador1ficha1.setLocation(jugador1ficha1.getX(), jugador1ficha1.getY()-10);
-        
+        jugador1ficha1.setLocation(jugador1ficha1.getX(), jugador1ficha1.getY() - 10);
+
         ///ciclo que recorre las fichas del jugador 1 y las mete al tablero con el método moverFicha
         //en este caso la iteración vale el contador exclusivo de las fichas del jugador 1 el cual es una variable declarada afuera de los métodos
         //y va aumentando cada vez que se ejecuta este método
@@ -328,9 +357,6 @@ public class FrmPartida10 extends javax.swing.JFrame {
 //            lanzarCañas.setEnabled(true);
 //                System.out.println("ficha "+contadorFichasj1);
 //            }
-        
-
-
 
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
@@ -339,7 +365,7 @@ public class FrmPartida10 extends javax.swing.JFrame {
     }//GEN-LAST:event_TurnoActionPerformed
 
     public int LanzarDados() {
-        
+
         int numJug2 = Integer.parseInt(LblnumJugadores.getText().trim());
 
         System.out.println("numJ: " + numJug2);
@@ -414,6 +440,26 @@ public class FrmPartida10 extends javax.swing.JFrame {
 
     }
 
+    @Override
+    public void run() {
+        try {
+            mensaje = in.readUTF();
+            int aux = Integer.parseInt(mensaje);
+            id = aux;
+
+            if (juegoFinalizado) {
+                cliente.close();
+            }
+
+            while (true) {
+                String recibidos = in.readUTF();
+                //TODO: Leer turnos y movimientos
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel LblnumJugadores;
     public static javax.swing.JTextField Turno;
@@ -454,4 +500,12 @@ public class FrmPartida10 extends javax.swing.JFrame {
     JLabel j1 = new JLabel();
     JLabel j2 = new JLabel();
     int fichasMetidas;
+    private Socket cliente;
+    private DataOutputStream out;
+    private DataInputStream in;
+    private int puerto = 2027;
+    public static String host = "127.0.0.1";
+    private String mensaje;
+    int id;
+    private boolean juegoFinalizado = false;
 }

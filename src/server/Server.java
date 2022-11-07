@@ -57,8 +57,8 @@ public class Server {
      *
      * @param args
      */
-    public static void main(String[] args) {
-        Server server = new Server();
-        server.escuchar();
-    }
+//    public static void main(String[] args) {
+//        Server server = new Server();
+//        server.escuchar();
+//    }
 }

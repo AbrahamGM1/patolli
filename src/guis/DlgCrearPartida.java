@@ -9,6 +9,7 @@ import entidades.Partida;
 import entidades.Tablero;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import server.Server;
 
 /**
  *
@@ -25,6 +26,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgCrearPartida2
+     *
      * @param parent
      * @param modal
      */
@@ -203,6 +205,8 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(this, "El Monto de la apuesta no puede ser mayor o igual al fondo de las apuestas", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
+        Server server = new Server();
+        server.escuchar();
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -239,9 +243,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(null, "Solo se aceptan números");
             }
-        } 
-        
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "LLene correctamente los datos SOLO NÚMEROS");
             return false;
         }
@@ -314,8 +316,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 partida.setVisible(true);
                 this.setVisible(false);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Dato Erróneo");
         }
     }

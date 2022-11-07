@@ -3,33 +3,61 @@ package guis;
 import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
+import static guis.FrmPartida10.host;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
-public class FrmPartida12 extends javax.swing.JFrame {
+public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
 
     /**
      * Creates new form FrmPartida10
+     *
      * @param partida
      */
     public FrmPartida12(Partida partida) {
         initComponents();
         this.partida = partida;
         iniciarlbl();
+
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    public FrmPartida12(){
+
+    public FrmPartida12() {
         initComponents();
         iniciarlbl();
         this.setLocationRelativeTo(null);
+
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -203,7 +231,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
                 } else {
                     if (this.determinarMovimiento() > 0) {
                         partida.getListaJugadores()[0].getFichas()[i].setPosicion(0);
-                        jugador1.setLocation(302,583);
+                        jugador1.setLocation(302, 583);
                         return;
                     }
                 }
@@ -260,7 +288,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
             caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         }
     }
-    
+
     public void iniciarlbl() {
         caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
@@ -269,7 +297,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         jugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
     }
-    
+
     public int determinarMovimiento() {
         int movimiento = 0;
         for (int i = 0; i < partida.getDados().length; i++) {
@@ -282,7 +310,7 @@ public class FrmPartida12 extends javax.swing.JFrame {
         }
         return movimiento;
     }
-    
+
     public boolean verificarDentro(int Id, Jugador jugador) {
         Jugador j = jugador;
 
@@ -299,12 +327,32 @@ public class FrmPartida12 extends javax.swing.JFrame {
         }
         return false;
     }
-    
+
     @Subscribe
-    public void establecerPartida(Partida partida){
+    public void establecerPartida(Partida partida) {
         this.partida = partida;
     }
-    
+
+    @Override
+    public void run() {
+        try {
+            mensaje = in.readUTF();
+            int aux = Integer.parseInt(mensaje);
+            id = aux;
+
+            if (juegoFinalizado) {
+                cliente.close();
+            }
+
+            while (true) {
+                String recibidos = in.readUTF();
+                //TODO: Leer turnos y movimientos
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
@@ -323,4 +371,12 @@ public class FrmPartida12 extends javax.swing.JFrame {
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
+    private Socket cliente;
+    private DataOutputStream out;
+    private DataInputStream in;
+    private int puerto = 2027;
+    public static String host = "127.0.0.1";
+    private String mensaje;
+    int id;
+    private boolean juegoFinalizado = false;
 }
