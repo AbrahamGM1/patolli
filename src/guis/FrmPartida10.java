@@ -481,7 +481,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     boolean primeraVez = true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
-    List<Casilla> casillas = c.inicializarCasilla10();
+    List<Casilla> casillas = c.inicializarCasilla10j1();
     Casilla casillaAvanzada;
     Ficha ficha1j1 = new Ficha();
     Ficha ficha2j1 = new Ficha();

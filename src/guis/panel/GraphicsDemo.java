@@ -26,7 +26,7 @@ public class GraphicsDemo extends JPanel {
     int x = 340;
     int y = 325;
     CasillaPartida c = new CasillaPartida();
-    List<Casilla> lcasillas = c.inicializarCasilla10();
+    List<Casilla> lcasillas = c.inicializarCasilla10j1();
 
     //Se asignan el total de casillas que tendrá el tablero seleccionado a la hora de configurar la partida
     public GraphicsDemo(int casillas) {

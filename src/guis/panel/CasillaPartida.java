@@ -13,61 +13,51 @@ import java.util.List;
  * 
  */
 public class CasillaPartida {
-    List <Casilla> Casilla10 = new ArrayList();
+    List <Casilla> Casilla10j1 = new ArrayList();
     List <Casilla> Casilla12 = new ArrayList();
     List <Casilla> Casilla14 = new ArrayList();
 
     public CasillaPartida() {
     }
     
-    public List inicializarCasilla10(){
-    Casilla10.add(new Casilla(0,432,449));
-    Casilla10.add(new Casilla(1,467,421));
-    Casilla10.add(new Casilla(2,498,454));
-    Casilla10.add(new Casilla(3,527,485));
-    Casilla10.add(new Casilla(4,556,520));
-    Casilla10.add(new Casilla(5,586,550));
-    Casilla10.add(new Casilla(6,621,580));
-    Casilla10.add(new Casilla(7,658,542));
-    Casilla10.add(new Casilla(8,626,512));
-    Casilla10.add(new Casilla(9,593,483));
-    Casilla10.add(new Casilla(10,563,451));
+    public List inicializarCasilla10j1(){
+    Casilla10j1.add(new Casilla(0,533, 360));
+    Casilla10j1.add(new Casilla(1,564, 331));
+    Casilla10j1.add(new Casilla(2,597, 298));
+    Casilla10j1.add(new Casilla(3,627, 267));
+    Casilla10j1.add(new Casilla(4,662, 231));
+    Casilla10j1.add(new Casilla(5,629, 200));
+    Casilla10j1.add(new Casilla(6,590, 235));
+    Casilla10j1.add(new Casilla(7,561, 264));
+    Casilla10j1.add(new Casilla(8,529, 297));
+    Casilla10j1.add(new Casilla(9,498, 328));
+    Casilla10j1.add(new Casilla(10,466, 357));
     
-    Casilla10.add(new Casilla(11,533,422));
-    Casilla10.add(new Casilla(12,499,389));
-    Casilla10.add(new Casilla(13,533,360));
-    Casilla10.add(new Casilla(14,564,331));
-    Casilla10.add(new Casilla(15,597,298));
-    Casilla10.add(new Casilla(16,627,267));
-    Casilla10.add(new Casilla(17,662,231));
-    Casilla10.add(new Casilla(18,629,200));
-    Casilla10.add(new Casilla(19,590,235));
-    Casilla10.add(new Casilla(20,561,264));
-    Casilla10.add(new Casilla(21,529,297));
+    Casilla10j1.add(new Casilla(11,434, 329));
+    Casilla10j1.add(new Casilla(12,400, 299));
+    Casilla10j1.add(new Casilla(13,369, 268));
+    Casilla10j1.add(new Casilla(14,337, 238));
+    Casilla10j1.add(new Casilla(15,300, 204));
+    Casilla10j1.add(new Casilla(16,268, 236));
+    Casilla10j1.add(new Casilla(17,304, 271));
+    Casilla10j1.add(new Casilla(18,335, 303));
+    Casilla10j1.add(new Casilla(19,365, 335));
+    Casilla10j1.add(new Casilla(20,396, 365));
+    Casilla10j1.add(new Casilla(21,432, 392));
     
-    Casilla10.add(new Casilla(22,498,328));
-    Casilla10.add(new Casilla(23,466,357));
-    Casilla10.add(new Casilla(24,434,329));
-    Casilla10.add(new Casilla(25,400,299));
-    Casilla10.add(new Casilla(26,369,268));
-    Casilla10.add(new Casilla(27,337,238));
-    Casilla10.add(new Casilla(28,300,204));
-    Casilla10.add(new Casilla(29,268,236));
-    Casilla10.add(new Casilla(30,304,271));
-    Casilla10.add(new Casilla(31,335,303));
-    Casilla10.add(new Casilla(32,365,335));
+    Casilla10j1.add(new Casilla(22,398, 419));
+    Casilla10j1.add(new Casilla(23,366, 451));
+    Casilla10j1.add(new Casilla(24,336, 480));
+    Casilla10j1.add(new Casilla(25,303, 514));
+    Casilla10j1.add(new Casilla(26,296, 547));
+    Casilla10j1.add(new Casilla(27,302, 583));
+    Casilla10j1.add(new Casilla(28,340, 544));
+    Casilla10j1.add(new Casilla(29,372, 512));
+    Casilla10j1.add(new Casilla(30,401, 482));
+    Casilla10j1.add(new Casilla(31,432, 449));
+    Casilla10j1.add(new Casilla(32,467, 421));
     
-    Casilla10.add(new Casilla(33,396,365));
-    Casilla10.add(new Casilla(34,432,392));
-    Casilla10.add(new Casilla(35,398,419));
-    Casilla10.add(new Casilla(36,366,451));
-    Casilla10.add(new Casilla(37,336,480));
-    Casilla10.add(new Casilla(38,303,514));
-    Casilla10.add(new Casilla(39,269,547));
-    Casilla10.add(new Casilla(40,302,583));
-    Casilla10.add(new Casilla(41,340,544));
-    Casilla10.add(new Casilla(42,372,512));
-    Casilla10.add(new Casilla(43,401,482));
-    return Casilla10;
+    Casilla10j1.add(new Casilla(33,498, 454));
+    return Casilla10j1;
     }
 }
