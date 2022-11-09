@@ -30,16 +30,16 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
         this.partida = partida;
         iniciarlbl();
 
-        try {
-            //Se crea el socket con el host y el puerto, se declaran los streams
-            //de comunicacion
-            cliente = new Socket(host, puerto);
-
-            in = new DataInputStream(cliente.getInputStream());
-            out = new DataOutputStream(cliente.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            //Se crea el socket con el host y el puerto, se declaran los streams
+//            //de comunicacion
+//            cliente = new Socket(host, puerto);
+//
+//            in = new DataInputStream(cliente.getInputStream());
+//            out = new DataOutputStream(cliente.getOutputStream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public FrmPartida14() {
@@ -47,16 +47,16 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
         iniciarlbl();
         this.setLocationRelativeTo(null);
 
-        try {
-            //Se crea el socket con el host y el puerto, se declaran los streams
-            //de comunicacion
-            cliente = new Socket(host, puerto);
-
-            in = new DataInputStream(cliente.getInputStream());
-            out = new DataOutputStream(cliente.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            //Se crea el socket con el host y el puerto, se declaran los streams
+//            //de comunicacion
+//            cliente = new Socket(host, puerto);
+//
+//            in = new DataInputStream(cliente.getInputStream());
+//            out = new DataOutputStream(cliente.getOutputStream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**

@@ -51,16 +51,16 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         fichasj1 = jugadores[0].getFichas();
         iniciarlbl();
 
-        try {
-            //Se crea el socket con el host y el puerto, se declaran los streams
-            //de comunicacion
-            cliente = new Socket(host, puerto);
-
-            in = new DataInputStream(cliente.getInputStream());
-            out = new DataOutputStream(cliente.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            //Se crea el socket con el host y el puerto, se declaran los streams
+//            //de comunicacion
+//            cliente = new Socket(host, puerto);
+//
+//            in = new DataInputStream(cliente.getInputStream());
+//            out = new DataOutputStream(cliente.getOutputStream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public FrmPartida10() {
@@ -72,16 +72,16 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
 
-        try {
-            //Se crea el socket con el host y el puerto, se declaran los streams
-            //de comunicacion
-            cliente = new Socket(host, puerto);
-
-            in = new DataInputStream(cliente.getInputStream());
-            out = new DataOutputStream(cliente.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            //Se crea el socket con el host y el puerto, se declaran los streams
+//            //de comunicacion
+//            cliente = new Socket(host, puerto);
+//
+//            in = new DataInputStream(cliente.getInputStream());
+//            out = new DataOutputStream(cliente.getOutputStream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @SuppressWarnings("unchecked")
