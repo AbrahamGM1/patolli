@@ -45,10 +45,12 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jugador1ficha1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
+        
         ficha1j1.setEnJuego(ingresado);
         btnMeterFicha.setEnabled(false);
         jugadores = partida.getListaJugadores();
         fichasj1 = jugadores[0].getFichas();
+        ficha1j1=fichasj1[0];
         iniciarlbl();
 
 //        try {
@@ -331,6 +333,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
@@ -339,8 +342,8 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         //en este caso la iteración vale el contador exclusivo de las fichas del jugador 1 el cual es una variable declarada afuera de los métodos
         //y va aumentando cada vez que se ejecuta este método
         //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
-        //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada
-            if (fichasj1[contadorFichasj1-1].isEnJuego()) {
+        //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada   
+        if (fichasj1[contadorFichasj1-1].isEnJuego()) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[contadorFichasj1-1]);
             btnMeterFicha.setEnabled(false);
             lanzarCañas.setEnabled(true);
@@ -350,7 +353,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
     private void TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurnoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_TurnoActionPerformed
 
     public int LanzarDados() {
@@ -485,8 +488,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     Casilla casillaAvanzada;
     Ficha ficha1j1 = new Ficha();
     Ficha ficha2j1 = new Ficha();
-    JLabel j1 = new JLabel();
-    JLabel j2 = new JLabel();
     int fichasMetidas;
     private Socket cliente;
     private DataOutputStream out;
