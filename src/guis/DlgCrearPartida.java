@@ -237,7 +237,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 float fondo = Float.parseFloat(campoTextoFondoApuestas.getText());
                 if ((monto > 0 || monto >= maximo) && (fondo > 0 || fondo >= maximo)) {
                     this.confirmacion = 1;
-                    JOptionPane.showMessageDialog(null, "Se han validado los datos correctamente");
                     return true;
                 }
             } else {
