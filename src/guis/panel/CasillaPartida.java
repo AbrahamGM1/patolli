@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class CasillaPartida {
 
-    public List<Casilla> Casilla10 = new ArrayList<>();
+    public List<Casilla> Casilla10j1 = new ArrayList<>();
     public List<Casilla> casilla10J2 = new ArrayList<>();
     public List<Casilla> casilla10J3 = new ArrayList<>();
     public List<Casilla> casilla10J4 = new ArrayList<>();
@@ -22,98 +22,59 @@ public class CasillaPartida {
     public CasillaPartida() {
 
     }
-    public List inicializarCasilla10(){
-    Casilla10.add(new Casilla(0,432,449));
-    Casilla10.add(new Casilla(1,467,421));
-    Casilla10.add(new Casilla(2,498,454));
-    Casilla10.add(new Casilla(3,527,485));
-    Casilla10.add(new Casilla(4,556,520));
-    Casilla10.add(new Casilla(5,586,550));
-    Casilla10.add(new Casilla(6,621,580));
-    Casilla10.add(new Casilla(7,658,542));
-    Casilla10.add(new Casilla(8,626,512));
-    Casilla10.add(new Casilla(9,593,483));
-    Casilla10.add(new Casilla(10,563,451));
 
-    Casilla10.add(new Casilla(11,533,422));
-    Casilla10.add(new Casilla(12,499,389));
-    Casilla10.add(new Casilla(13,533,360));
-    Casilla10.add(new Casilla(14,564,331));
-    Casilla10.add(new Casilla(15,597,298));
-    Casilla10.add(new Casilla(16,627,267));
-    Casilla10.add(new Casilla(17,662,231));
-    Casilla10.add(new Casilla(18,629,200));
-    Casilla10.add(new Casilla(19,590,235));
-    Casilla10.add(new Casilla(20,561,264));
-    Casilla10.add(new Casilla(21,529,297));
+    public List<Casilla> inicializarCasilla10() {
+        Casilla10j1.add(new Casilla(0, 533, 360));
+        Casilla10j1.add(new Casilla(1, 564, 331));
+        Casilla10j1.add(new Casilla(2, 597, 298));
+        Casilla10j1.add(new Casilla(3, 627, 267));
+        Casilla10j1.add(new Casilla(4, 662, 231));
+        Casilla10j1.add(new Casilla(5, 629, 200));
+        Casilla10j1.add(new Casilla(6, 590, 235));
+        Casilla10j1.add(new Casilla(7, 561, 264));
+        Casilla10j1.add(new Casilla(8, 529, 297));
+        Casilla10j1.add(new Casilla(9, 498, 328));
+        Casilla10j1.add(new Casilla(10, 466, 357));
 
-    Casilla10.add(new Casilla(22,498,328));
-    Casilla10.add(new Casilla(23,466,357));
-    Casilla10.add(new Casilla(24,434,329));
-    Casilla10.add(new Casilla(25,400,299));
-    Casilla10.add(new Casilla(26,369,268));
-    Casilla10.add(new Casilla(27,337,238));
-    Casilla10.add(new Casilla(28,300,204));
-    Casilla10.add(new Casilla(29,268,236));
-    Casilla10.add(new Casilla(30,304,271));
-    Casilla10.add(new Casilla(31,335,303));
-    Casilla10.add(new Casilla(32,365,335));
+        Casilla10j1.add(new Casilla(11, 434, 329));
+        Casilla10j1.add(new Casilla(12, 400, 299));
+        Casilla10j1.add(new Casilla(13, 369, 268));
+        Casilla10j1.add(new Casilla(14, 337, 238));
+        Casilla10j1.add(new Casilla(15, 300, 204));
+        Casilla10j1.add(new Casilla(16, 268, 236));
+        Casilla10j1.add(new Casilla(17, 304, 271));
+        Casilla10j1.add(new Casilla(18, 335, 303));
+        Casilla10j1.add(new Casilla(19, 365, 335));
+        Casilla10j1.add(new Casilla(20, 396, 365));
+        Casilla10j1.add(new Casilla(21, 432, 392));
 
-    Casilla10.add(new Casilla(33,396,365));
-    Casilla10.add(new Casilla(34,432,392));
-    Casilla10.add(new Casilla(35,398,419));
-    Casilla10.add(new Casilla(36,366,451));
-    Casilla10.add(new Casilla(37,336,480));
-    Casilla10.add(new Casilla(38,303,514));
-    Casilla10.add(new Casilla(39,269,547));
-    Casilla10.add(new Casilla(40,302,583));
-    Casilla10.add(new Casilla(41,340,544));
-    Casilla10.add(new Casilla(42,372,512));
-    Casilla10.add(new Casilla(43,401,482));
-    return Casilla10;
+        Casilla10j1.add(new Casilla(22, 398, 419));
+        Casilla10j1.add(new Casilla(23, 366, 451));
+        Casilla10j1.add(new Casilla(24, 336, 480));
+        Casilla10j1.add(new Casilla(25, 303, 514));
+        Casilla10j1.add(new Casilla(26, 296, 547));
+        Casilla10j1.add(new Casilla(27, 302, 583));
+        Casilla10j1.add(new Casilla(28, 340, 544));
+        Casilla10j1.add(new Casilla(29, 372, 512));
+        Casilla10j1.add(new Casilla(30, 401, 482));
+        Casilla10j1.add(new Casilla(31, 432, 449));
+        Casilla10j1.add(new Casilla(32, 467, 421));
+
+        Casilla10j1.add(new Casilla(33, 498, 454));
+        Casilla10j1.add(new Casilla(34, 527, 485));
+        Casilla10j1.add(new Casilla(35, 556, 520));
+        Casilla10j1.add(new Casilla(36, 586, 550));
+        Casilla10j1.add(new Casilla(37, 621, 580));
+        Casilla10j1.add(new Casilla(38, 658, 542));
+        Casilla10j1.add(new Casilla(39, 626, 512));
+        Casilla10j1.add(new Casilla(40, 593, 483));
+        Casilla10j1.add(new Casilla(41, 563, 451));
+        Casilla10j1.add(new Casilla(42, 533, 422));
+        Casilla10j1.add(new Casilla(43, 499, 389));
+        return Casilla10j1;
     }
-//    public List inicializarCasilla10() {
-//        Casilla10j1.add(new Casilla(0, 533, 360));
-//        Casilla10j1.add(new Casilla(1, 564, 331));
-//        Casilla10j1.add(new Casilla(2, 597, 298));
-//        Casilla10j1.add(new Casilla(3, 627, 267));
-//        Casilla10j1.add(new Casilla(4, 662, 231));
-//        Casilla10j1.add(new Casilla(5, 629, 200));
-//        Casilla10j1.add(new Casilla(6, 590, 235));
-//        Casilla10j1.add(new Casilla(7, 561, 264));
-//        Casilla10j1.add(new Casilla(8, 529, 297));
-//        Casilla10j1.add(new Casilla(9, 498, 328));
-//        Casilla10j1.add(new Casilla(10, 466, 357));
-//
-//        Casilla10j1.add(new Casilla(11, 434, 329));
-//        Casilla10j1.add(new Casilla(12, 400, 299));
-//        Casilla10j1.add(new Casilla(13, 369, 268));
-//        Casilla10j1.add(new Casilla(14, 337, 238));
-//        Casilla10j1.add(new Casilla(15, 300, 204));
-//        Casilla10j1.add(new Casilla(16, 268, 236));
-//        Casilla10j1.add(new Casilla(17, 304, 271));
-//        Casilla10j1.add(new Casilla(18, 335, 303));
-//        Casilla10j1.add(new Casilla(19, 365, 335));
-//        Casilla10j1.add(new Casilla(20, 396, 365));
-//        Casilla10j1.add(new Casilla(21, 432, 392));
-//
-//        Casilla10j1.add(new Casilla(22, 398, 419));
-//        Casilla10j1.add(new Casilla(23, 366, 451));
-//        Casilla10j1.add(new Casilla(24, 336, 480));
-//        Casilla10j1.add(new Casilla(25, 303, 514));
-//        Casilla10j1.add(new Casilla(26, 296, 547));
-//        Casilla10j1.add(new Casilla(27, 302, 583));
-//        Casilla10j1.add(new Casilla(28, 340, 544));
-//        Casilla10j1.add(new Casilla(29, 372, 512));
-//        Casilla10j1.add(new Casilla(30, 401, 482));
-//        Casilla10j1.add(new Casilla(31, 432, 449));
-//        Casilla10j1.add(new Casilla(32, 467, 421));
-//
-//        Casilla10j1.add(new Casilla(33, 498, 454));
-//        return Casilla10j1;
-//    }
 
-    public List inicializarCaminoJugador2Tablero10() {
+    public List<Casilla> inicializarCaminoJugador2Tablero10() {
         casilla10J2.add(new Casilla(0, 434, 329));
         casilla10J2.add(new Casilla(1, 400, 299));
         casilla10J2.add(new Casilla(2, 369, 268));
@@ -151,11 +112,22 @@ public class CasillaPartida {
         casilla10J2.add(new Casilla(31, 533, 422));
         casilla10J2.add(new Casilla(32, 499, 389));
         casilla10J2.add(new Casilla(33, 533, 360));
+        casilla10J2.add(new Casilla(34, 564, 331));
+        casilla10J2.add(new Casilla(35, 597, 298));
+        casilla10J2.add(new Casilla(36, 627, 267));
+        casilla10J2.add(new Casilla(37, 662, 231));
+        casilla10J2.add(new Casilla(38, 629, 200));
+        casilla10J2.add(new Casilla(39, 590, 235));
+        casilla10J2.add(new Casilla(40, 561, 264));
+
+        casilla10J2.add(new Casilla(41, 529, 297));
+        casilla10J2.add(new Casilla(42, 498, 328));
+        casilla10J2.add(new Casilla(43, 466, 357));
 
         return casilla10J2;
     }
 
-    public List inicializarCaminoJugador3Tablero10() {
+    public List<Casilla> inicializarCaminoJugador3Tablero10() {
         casilla10J3.add(new Casilla(0, 398, 419));
         casilla10J3.add(new Casilla(1, 366, 451));
         casilla10J3.add(new Casilla(2, 336, 480));
@@ -193,11 +165,22 @@ public class CasillaPartida {
         casilla10J3.add(new Casilla(31, 498, 328));
         casilla10J3.add(new Casilla(32, 466, 357));
         casilla10J3.add(new Casilla(33, 434, 329));
+        casilla10J3.add(new Casilla(34, 400, 299));
+        casilla10J3.add(new Casilla(35, 369, 268));
+        casilla10J3.add(new Casilla(36, 337, 238));
+        casilla10J3.add(new Casilla(37, 300, 204));
+        casilla10J3.add(new Casilla(38, 268, 236));
+        casilla10J3.add(new Casilla(39, 304, 271));
+        casilla10J3.add(new Casilla(40, 335, 303));
+
+        casilla10J3.add(new Casilla(41, 365, 335));
+        casilla10J3.add(new Casilla(42, 396, 365));
+        casilla10J3.add(new Casilla(43, 432, 392));
 
         return casilla10J3;
     }
 
-    public List inicializarCaminoJugador4() {
+    public List<Casilla> inicializarCaminoJugador4() {
         casilla10J4.add(new Casilla(0, 498, 454));
         casilla10J4.add(new Casilla(1, 527, 485));
         casilla10J4.add(new Casilla(2, 556, 520));
@@ -235,6 +218,17 @@ public class CasillaPartida {
         casilla10J4.add(new Casilla(31, 396, 365));
         casilla10J4.add(new Casilla(32, 432, 392));
         casilla10J4.add(new Casilla(33, 398, 419));
+        casilla10J4.add(new Casilla(34, 366, 451));
+        casilla10J4.add(new Casilla(35, 336, 480));
+        casilla10J4.add(new Casilla(36, 303, 514));
+        casilla10J4.add(new Casilla(37, 269, 547));
+        casilla10J4.add(new Casilla(38, 302, 583));
+        casilla10J4.add(new Casilla(39, 340, 544));
+        casilla10J4.add(new Casilla(40, 372, 512));
+
+        casilla10J4.add(new Casilla(41, 401, 482));
+        casilla10J4.add(new Casilla(42, 432, 449));
+        casilla10J4.add(new Casilla(43, 467, 421));
 
         return casilla10J4;
     }
