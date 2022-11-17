@@ -70,7 +70,7 @@ public class GraphicsDemo extends JPanel {
         System.out.println("id casilla " + idCasilla);
 
         if (valorCaña == 5) {
-            casillaAvance = idCasilla + valorCaña + 5;
+            casillaAvance += 5;
         }
 
         if (valorCaña == 0) {
