@@ -42,15 +42,9 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     public FrmPartida10(Partida partida) {
         initComponents();
         this.partida = partida;
-        jugador1ficha1.setLocation(432, 449);
+        jugador1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
-        
-        ficha1j1.setEnJuego(ingresado);
-        btnMeterFicha.setEnabled(false);
-        jugadores = partida.getListaJugadores();
-        fichasj1 = jugadores[0].getFichas();
-        ficha1j1=fichasj1[0];
         iniciarlbl();
 
 //        try {
@@ -68,9 +62,8 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     public FrmPartida10() {
         initComponents();
         iniciarlbl();
-        jugador1ficha1.setLocation(432, 449);
+        jugador1.setLocation(432, 449);
         ingresado = false;
-        jugadores = partida.getListaJugadores();
         btnMeterFicha.setEnabled(false);
         this.setLocationRelativeTo(null);
 
@@ -91,22 +84,24 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        hacerApuesta = new javax.swing.JButton();
-        lanzarCañas = new javax.swing.JButton();
-        txtApuesta = new javax.swing.JTextField();
-        caña1 = new javax.swing.JLabel();
-        caña2 = new javax.swing.JLabel();
-        caña3 = new javax.swing.JLabel();
-        caña4 = new javax.swing.JLabel();
-        caña5 = new javax.swing.JLabel();
-        btn_Salir = new javax.swing.JButton();
-        btnMeterFicha = new javax.swing.JButton();
-        Turno = new javax.swing.JTextField();
         LblnumJugadores = new javax.swing.JLabel();
-        jugador1ficha1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jugador1 = new javax.swing.JLabel();
         jugador1ficha2 = new javax.swing.JLabel();
         jugador1ficha3 = new javax.swing.JLabel();
         jugador1ficha4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        caña2 = new javax.swing.JLabel();
+        caña3 = new javax.swing.JLabel();
+        caña1 = new javax.swing.JLabel();
+        caña5 = new javax.swing.JLabel();
+        caña4 = new javax.swing.JLabel();
+        Turno = new javax.swing.JTextField();
+        btnMeterFicha = new javax.swing.JButton();
+        lanzarCañas = new javax.swing.JButton();
+        hacerApuesta = new javax.swing.JButton();
+        txtApuesta = new javax.swing.JTextField();
+        btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tablero Chico");
@@ -115,39 +110,65 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1244, 844));
 
-        hacerApuesta.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
-        hacerApuesta.setText("Hacer Apuesta");
-        hacerApuesta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hacerApuestaActionPerformed(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
 
-        lanzarCañas.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
-        lanzarCañas.setText("Lanzar Cañas");
-        lanzarCañas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lanzarCañasActionPerformed(evt);
-            }
-        });
+        jugador1.setText("label1");
 
-        txtApuesta.setEditable(false);
+        jugador1ficha2.setText("label2");
 
-        caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
+        jugador1ficha3.setText("label 3");
+
+        jugador1ficha4.setText("label 4");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(554, 554, 554)
+                        .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jugador1)
+                        .addGap(57, 57, 57)
+                        .addComponent(jugador1ficha2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jugador1ficha3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(jugador1ficha4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jugador1)
+                    .addComponent(jugador1ficha2)
+                    .addComponent(jugador1ficha3)
+                    .addComponent(jugador1ficha4))
+                .addGap(862, 862, 862)
+                .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
         caña3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
-        caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
+        caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
 
-        btn_Salir.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
-        btn_Salir.setText("Salir");
-        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+        caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png"))); // NOI18N
+
+        Turno.setEditable(false);
+        Turno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SalirActionPerformed(evt);
+                TurnoActionPerformed(evt);
             }
         });
 
@@ -159,103 +180,114 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        Turno.setEditable(false);
-        Turno.addActionListener(new java.awt.event.ActionListener() {
+        lanzarCañas.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        lanzarCañas.setText("Lanzar Cañas");
+        lanzarCañas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TurnoActionPerformed(evt);
+                lanzarCañasActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1037, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(983, 983, 983)
+        hacerApuesta.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        hacerApuesta.setText("Hacer Apuesta");
+        hacerApuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hacerApuestaActionPerformed(evt);
+            }
+        });
+
+        txtApuesta.setEditable(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(caña1)
                         .addGap(18, 18, 18)
                         .addComponent(caña5)
                         .addGap(18, 18, 18)
                         .addComponent(caña4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1024, 1024, 1024)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addComponent(caña3)
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(caña2))))
-                .addContainerGap(30, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(554, 554, 554)
-                        .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jugador1ficha1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador1ficha2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador1ficha3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jugador1ficha4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(caña2)))
+                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(caña1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(caña4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(caña5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addComponent(caña3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(caña2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(139, 139, 139)
-                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jugador1ficha1)
-                    .addComponent(jugador1ficha2)
-                    .addComponent(jugador1ficha3)
-                    .addComponent(jugador1ficha4))
-                .addGap(42, 42, 42)
-                .addComponent(LblnumJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
+
+        btn_Salir.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
+        btn_Salir.setText("Salir");
+        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 158, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -268,61 +300,38 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         LanzarDados();
-        //Si no sale 1 y no hay fichas pasa turno
+        
         if (avance != 1 && ingresado == false) {
             return;
         }
-
-        //Si no hay avance y hay fichas "avanza" 0 casillas y pasa turno
         if (avance == 0 && ingresado == true) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
+            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
         }
-
-        ///Se compara si el contador de las fichas es menor al tamaño del arreglo de las fichas del jugador 1
-        //dicho de forma mas sencilla, si el jugador aún no mete todas sus fichas al tablero y le salió un 1 al arrojar las cañas
-        //pues ingresa la ficha correspondiente        
-        if (avance == 1 && contadorFichasj1 < fichasj1.length) {
-            switch (contadorFichasj1) {
-                case 0:
-                    fichasj1[contadorFichasj1].setLabel(jugador1ficha1);
-                    break;
-                case 1:
-                    fichasj1[contadorFichasj1].setLabel(jugador1ficha2);
-                    break;
-                case 2:
-                    fichasj1[contadorFichasj1].setLabel(jugador1ficha3);
-                    break;
-                case 3:
-                    fichasj1[contadorFichasj1].setLabel(jugador1ficha4);
-                    break;
-                default:
-                    break;
+        try {
+            if (avance == 1 && ingresado == false) {
+                gd.ingresarFicha(jugador1,idAuxiliar);
+                ingresado = true;
+                btnMeterFicha.setEnabled(true);
+                lanzarCañas.setEnabled(false);
             }
 
-            gd.ingresarFicha(fichasj1[contadorFichasj1]);
-
-            fichasj1[contadorFichasj1].setEnJuego(true);
-            System.out.println("fichas ingresadas: " + contadorFichasj1);
-            contadorFichasj1 = contadorFichasj1 + 1;
-            btnMeterFicha.setEnabled(true);
-            lanzarCañas.setEnabled(false);
-
-        }
-
-        //Si hay una ficha en el tablero y el avance es de al menos una casilla entonces se llama al método mover ficha
-        if (ingresado == true) {
-            if (avance > 0) {
-                casillaAvanzada = gd.moverFicha(idAuxiliar, avance, ficha1j1);
-                if (casillaAvanzada == null) {
-                } else {
+            if (ingresado == true) {
+                if (avance > 0) {
+                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                    if (casillaAvanzada==null) {
+                    }else{
                     idAuxiliar = casillaAvanzada.getId();
                     System.out.println(primeraVez);
-                    primeraVez = false;
+                    primeraVez=false;
+                    }
                 }
+
             }
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "");
+            System.err.println(e.getMessage());
         }
-
     }//GEN-LAST:event_lanzarCañasActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
@@ -333,7 +342,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
@@ -343,13 +352,10 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         //y va aumentando cada vez que se ejecuta este método
         //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
         //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada   
-        if (fichasj1[contadorFichasj1-1].isEnJuego()) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, 1, fichasj1[contadorFichasj1-1]);
-            btnMeterFicha.setEnabled(false);
-            lanzarCañas.setEnabled(true);
-                System.out.println("ficha "+contadorFichasj1);
-            }
-
+        lanzarCañas.setEnabled(true);
+        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
+        idAuxiliar=idAuxiliar-1;
+        btnMeterFicha.setEnabled(false);
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
     private void TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurnoActionPerformed
@@ -432,25 +438,25 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
     }
 
-    @Override
-    public void run() {
-        try {
-            mensaje = in.readUTF();
-            int aux = Integer.parseInt(mensaje);
-            id = aux;
-
-            if (juegoFinalizado) {
-                cliente.close();
-            }
-
-            while (true) {
-                String recibidos = in.readUTF();
-                //TODO: Leer turnos y movimientos
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+//    @Override
+//    public void run() {
+//        try {
+//            mensaje = in.readUTF();
+//            int aux = Integer.parseInt(mensaje);
+//            id = aux;
+//
+//            if (juegoFinalizado) {
+//                cliente.close();
+//            }
+//
+//            while (true) {
+//                String recibidos = in.readUTF();
+//                //TODO: Leer turnos y movimientos
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel LblnumJugadores;
@@ -463,8 +469,10 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel caña4;
     private javax.swing.JLabel caña5;
     private javax.swing.JButton hacerApuesta;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jugador1ficha1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jugador1;
     private javax.swing.JLabel jugador1ficha2;
     private javax.swing.JLabel jugador1ficha3;
     private javax.swing.JLabel jugador1ficha4;
@@ -477,24 +485,16 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     int ancho = 950;
     int alto = 928;
     int avance;
-    int idAuxiliar = 0;
-    int idAuxiliar2 = 0;
-
+    int idAuxiliar;
     boolean ingresado;
-    boolean primeraVez = true;
+    boolean primeraVez=true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
-    List<Casilla> casillas = c.inicializarCasilla10j1();
+    List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
-    Ficha ficha1j1 = new Ficha();
-    Ficha ficha2j1 = new Ficha();
-    int fichasMetidas;
-    private Socket cliente;
-    private DataOutputStream out;
-    private DataInputStream in;
-    private int puerto = 2027;
-    public static String host = "127.0.0.1";
-    private String mensaje;
-    int id;
-    private boolean juegoFinalizado = false;
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

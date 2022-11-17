@@ -3,13 +3,9 @@ package guis;
 import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
-import static guis.FrmPartida10.host;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.greenrobot.eventbus.Subscribe;
 

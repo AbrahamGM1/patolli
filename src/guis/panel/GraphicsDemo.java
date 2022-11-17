@@ -26,7 +26,7 @@ public class GraphicsDemo extends JPanel {
     int x = 340;
     int y = 325;
     CasillaPartida c = new CasillaPartida();
-    List<Casilla> lcasillas = c.inicializarCasilla10j1();
+    List<Casilla> lcasillas = c.inicializarCasilla10();
 
     //Se asignan el total de casillas que tendrá el tablero seleccionado a la hora de configurar la partida
     public GraphicsDemo(int casillas) {
@@ -63,8 +63,8 @@ public class GraphicsDemo extends JPanel {
      * @param ficha - La ficha que se va a mover
      * @return 
      */
-    public Casilla moverFicha(int idCasilla, int valorCaña, Ficha ficha) {
-        JLabel lbl = ficha.getLabel();
+    public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
+        JLabel lbl = ficha;
         Casilla casillaDestino = lcasillas.get(idCasilla);
         int casillaAvance = idCasilla + valorCaña;
         System.out.println("id casilla " + idCasilla);
@@ -83,29 +83,29 @@ public class GraphicsDemo extends JPanel {
             if (casillaAvance <= 44) {
                 casillaDestino = lcasillas.get(casillaAvance);
                 if (casillaDestino.getId() >= lcasillas.get(43).getId()) {
-                    JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                    ficha.getLabel().setIcon(null);
-                    ficha.getLabel().setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    lbl.setIcon(null);
+                    lbl.setEnabled(false);
                     
                     return null;
                 }
 
                 if (casillaDestino.equals(lcasillas.get(43))) {
-                    JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                    ficha.getLabel().setIcon(null);
-                    ficha.getLabel().setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                    lbl.setIcon(null);
+                    lbl.setEnabled(false);
 
                     return null;
                 }
 
-                ficha.getLabel().setLocation(casillaDestino.getX(), casillaDestino.getY());
+                lbl.setLocation(casillaDestino.getX(), casillaDestino.getY());
                 System.out.println(casillaAvance);
                 repaint();
                 return casillaDestino;
             } else {
-                JOptionPane.showMessageDialog(null, "Ficha recorrió el tablero");
-                ficha.getLabel().setIcon(null);
-                ficha.getLabel().setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
+                lbl.setIcon(null);
+                lbl.setEnabled(false);
                 return null;
             }
 
@@ -122,16 +122,19 @@ public class GraphicsDemo extends JPanel {
      * exactamente los mismos que tenga la casilla de la lista "lcasillas" con la que su id coincida, se le asigna un ícono al label de 
      * la ficha y se le asigna una posición a este label, aunque por motivos desconocidos por ahora, extrañamente lo pone en la posición x0,y0.
      * 
-     * @param ficha - la ficha a ingresar
+     * @param idCasilla - el id de la casilla
      * @return la ficha
      */
-    public Ficha ingresarFicha(Ficha ficha) {
-        Casilla casillaInicial = lcasillas.get(ficha.getId());
-        ficha.getLabel().setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
-        ficha.getLabel().setLocation(x, y);
+    public Casilla ingresarFicha(JLabel l, int idCasilla) {
+        JLabel lbl = l;
+        Casilla casillaInicial = lcasillas.get(idCasilla);
+
         System.out.println(casillaInicial.getX() + "," + casillaInicial.getY());
+        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fichaUno.png")));
+        lbl.setLocation(casillaInicial.getX(), casillaInicial.getY());
+
         repaint();
-        return ficha;
+        return casillaInicial;
     }
 
     /***
