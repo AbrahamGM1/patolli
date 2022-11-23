@@ -45,7 +45,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jugador1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
-        jugadores = partida.getListaJugadores();
         iniciarlbl();
 
 //        try {
@@ -87,9 +86,9 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jPanel1 = new javax.swing.JPanel();
         LblnumJugadores = new javax.swing.JLabel();
         jugador1 = new javax.swing.JLabel();
-        jugador2 = new javax.swing.JLabel();
-        jugador3 = new javax.swing.JLabel();
-        jugador4 = new javax.swing.JLabel();
+        jugador1ficha2 = new javax.swing.JLabel();
+        jugador1ficha3 = new javax.swing.JLabel();
+        jugador1ficha4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         caña2 = new javax.swing.JLabel();
@@ -115,9 +114,9 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(LblnumJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 1696, 56, 30));
         jPanel1.add(jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 820, -1, -1));
-        jPanel1.add(jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 820, 37, -1));
-        jPanel1.add(jugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 820, 37, -1));
-        jPanel1.add(jugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 820, 37, -1));
+        jPanel1.add(jugador1ficha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 820, 37, -1));
+        jPanel1.add(jugador1ficha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 820, 37, -1));
+        jPanel1.add(jugador1ficha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 820, 37, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 800));
@@ -184,33 +183,27 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36))
+                        .addComponent(caña1)
+                        .addGap(18, 18, 18)
+                        .addComponent(caña5)
+                        .addGap(18, 18, 18)
+                        .addComponent(caña4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(caña1)
-                                .addGap(18, 18, 18)
-                                .addComponent(caña5)
-                                .addGap(18, 18, 18)
-                                .addComponent(caña4))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(caña3)
-                                .addGap(26, 26, 26)
-                                .addComponent(caña2)))
-                        .addContainerGap(57, Short.MAX_VALUE))))
+                        .addGap(41, 41, 41)
+                        .addComponent(caña3)
+                        .addGap(26, 26, 26)
+                        .addComponent(caña2)))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMeterFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,65 +258,29 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         LanzarDados();
-
+        
         if (avance != 1 && ingresado == false) {
             return;
         }
         if (avance == 0 && ingresado == true) {
-
-            casillaAvanzada = gd.moverFicha(idAuxiliarj1, avance, jugador1);
+            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
         }
         try {
             if (avance == 1 && ingresado == false) {
-                primerTurno = 1;
-                if (primerTurno == 1) {
-                    gd.ingresarFicha(jugador1, idAuxiliarj1,1);
-                    ingresado = true;
-                    btnMeterFicha.setEnabled(true);
-                    lanzarCañas.setEnabled(false);
-                    primerTurno = 2;
-                }
-
-                if (jugadores.length <= 2) {
-                    if (primerTurno == 2) {
-                        gd.ingresarFicha(jugador2, idAuxiliarj2,2);
-                        ingresado = true;
-                        btnMeterFicha.setEnabled(true);
-                        lanzarCañas.setEnabled(false);
-                        primerTurno = 3;
-                    }
-                }
-      
-                if (jugadores.length <= 3) {
-                    if (primerTurno == 3) {
-                        gd.ingresarFicha(jugador3, idAuxiliarj3,3);
-                        ingresado = true;
-                        btnMeterFicha.setEnabled(true);
-                        lanzarCañas.setEnabled(false);
-                        primerTurno = 4;
-                    }
-                }
-
-                if (jugadores.length <= 4) {
-                    if (primerTurno == 4) {
-                        gd.ingresarFicha(jugador4, idAuxiliarj4,4);
-                        ingresado = true;
-                        btnMeterFicha.setEnabled(true);
-                        lanzarCañas.setEnabled(false);
-                        primerTurno = 5;
-                    }
-                }            
-
+                gd.ingresarFicha(jugador1,idAuxiliar);
+                ingresado = true;
+                btnMeterFicha.setEnabled(true);
+                lanzarCañas.setEnabled(false);
             }
 
             if (ingresado == true) {
                 if (avance > 0) {
-                    casillaAvanzada = gd.moverFicha(idAuxiliarj1, avance, jugador1);
-                    if (casillaAvanzada == null) {
-                    } else {
-                        idAuxiliarj1 = casillaAvanzada.getId();
-                        System.out.println(primeraVez);
-                        primeraVez = false;
+                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                    if (casillaAvanzada==null) {
+                    }else{
+                    idAuxiliar = casillaAvanzada.getId();
+                    System.out.println(primeraVez);
+                    primeraVez=false;
                     }
                 }
 
@@ -354,8 +311,8 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
         //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada   
         lanzarCañas.setEnabled(true);
-        casillaAvanzada = gd.moverFicha(idAuxiliarj1, -1, jugador1);
-        idAuxiliarj1 = idAuxiliarj1 - 1;
+        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
+        idAuxiliar=idAuxiliar-1;
         btnMeterFicha.setEnabled(false);
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
@@ -373,7 +330,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
             if (iparaNumJ == numJug2) {
                 iparaNumJ = 0;
-                Turno.setText("Turno: J" + (iparaNumJ + 1));
+                Turno.setText("Turno J:" + (iparaNumJ + 1));
             }
             iparaNumJ++;
         }
@@ -474,22 +431,21 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jugador1;
-    private javax.swing.JLabel jugador2;
-    private javax.swing.JLabel jugador3;
-    private javax.swing.JLabel jugador4;
+    private javax.swing.JLabel jugador1ficha2;
+    private javax.swing.JLabel jugador1ficha3;
+    private javax.swing.JLabel jugador1ficha4;
     private javax.swing.JButton lanzarCañas;
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
-    int primerTurno = 0;
-    int turno = 0;
+    int x = 0;
+    int y = 0;
+    int ancho = 950;
+    int alto = 928;
     int avance;
-    int idAuxiliarj1;
-    int idAuxiliarj2;
-    int idAuxiliarj3;
-    int idAuxiliarj4;
+    int idAuxiliar;
     boolean ingresado;
-    boolean primeraVez = true;
+    boolean primeraVez=true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
