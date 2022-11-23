@@ -3,6 +3,7 @@ package guis;
 import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
+import static guis.FrmPartida10.LblnumJugadores;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import org.greenrobot.eventbus.Subscribe;
  * Martínez 00000228796
  */
 public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
+
+    int iparaNumJ = 0;
 
     /**
      * Creates new form FrmPartida10
@@ -72,7 +75,7 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
         tablero = new javax.swing.JLabel();
         hacerApuesta = new javax.swing.JButton();
         lanzarCañas = new javax.swing.JButton();
-        txtApuesta = new javax.swing.JTextField();
+        Turno = new javax.swing.JTextField();
         caña1 = new javax.swing.JLabel();
         caña2 = new javax.swing.JLabel();
         caña3 = new javax.swing.JLabel();
@@ -156,7 +159,7 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
                 .addGap(49, 49, 49)
                 .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hacerApuesta)
@@ -184,7 +187,7 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,6 +255,20 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     public void LanzarDados() {
+
+        int numJug2 = Integer.parseInt(LblnumJugadores.getText().trim());
+
+        System.out.println("numJ: " + numJug2);
+        if (iparaNumJ <= numJug2) { //1 <= 2
+            Turno.setText("Turno: J" + (iparaNumJ + 1));
+
+            if (iparaNumJ == numJug2) {
+                iparaNumJ = 0;
+                Turno.setText("Turno: J" + (iparaNumJ + 1));
+            }
+            iparaNumJ++;
+        }
+
         //caña1
         partida.getDados()[0].generarLado();
         partida.getDados()[1].generarLado();
@@ -353,6 +370,7 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Turno;
     private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
     private javax.swing.JLabel caña2;
@@ -367,7 +385,6 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jugador4;
     private javax.swing.JButton lanzarCañas;
     private javax.swing.JLabel tablero;
-    private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
     private Socket cliente;

@@ -3,6 +3,8 @@ package guis;
 import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
+import static guis.FrmPartida10.LblnumJugadores;
+import static guis.FrmPartida10.Turno;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
@@ -17,11 +19,14 @@ import org.greenrobot.eventbus.Subscribe;
  */
 public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
 
+    int iparaNumJ = 0;
+
     /**
      * Creates new form FrmPartida10
      *
      * @param partida
      */
+
     public FrmPartida12(Partida partida) {
         initComponents();
         this.partida = partida;
@@ -69,7 +74,7 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
         tablero = new javax.swing.JLabel();
         hacerApuesta = new javax.swing.JButton();
         lanzarCañas = new javax.swing.JButton();
-        txtApuesta = new javax.swing.JTextField();
+        Turno = new javax.swing.JTextField();
         caña1 = new javax.swing.JLabel();
         caña2 = new javax.swing.JLabel();
         caña3 = new javax.swing.JLabel();
@@ -153,7 +158,7 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
                 .addGap(37, 37, 37)
                 .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(txtApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hacerApuesta)
@@ -184,7 +189,7 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
                             .addComponent(hacerApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btn_Salir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                                .addComponent(txtApuesta, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addComponent(Turno, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGap(20, 20, 20)
                         .addComponent(lanzarCañas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -248,6 +253,19 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     public void LanzarDados() {
+
+        int numJug2 = Integer.parseInt(LblnumJugadores.getText().trim());
+
+        System.out.println("numJ: " + numJug2);
+        if (iparaNumJ <= numJug2) { //1 <= 2
+            Turno.setText("Turno: J" + (iparaNumJ + 1));
+
+            if (iparaNumJ == numJug2) {
+                iparaNumJ = 0;
+                Turno.setText("Turno: J" + (iparaNumJ + 1));
+            }
+            iparaNumJ++;
+        }
         //caña1
         partida.getDados()[0].generarLado();
         partida.getDados()[1].generarLado();
@@ -350,6 +368,7 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Turno;
     private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel caña1;
     private javax.swing.JLabel caña2;
@@ -364,7 +383,6 @@ public class FrmPartida12 extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jugador4;
     private javax.swing.JButton lanzarCañas;
     private javax.swing.JLabel tablero;
-    private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
     private Socket cliente;
