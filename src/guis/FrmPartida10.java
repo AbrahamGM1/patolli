@@ -330,7 +330,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
             if (iparaNumJ == numJug2) {
                 iparaNumJ = 0;
-                Turno.setText("Turno J:" + (iparaNumJ + 1));
+                Turno.setText("Turno: J" + (iparaNumJ + 1));
             }
             iparaNumJ++;
         }
