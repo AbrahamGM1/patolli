@@ -35,18 +35,18 @@ public class Server {
 
             //Ciclo infinito para estar escuchando por nuevos jugadores
             System.out.println("Esperando jugadores...");
-            while (true) {
-                //Cuando un jugador se conecte guardamos el socket en esta línea
-                Socket cliente = servidor.accept();
-
-                //Se agrega el socket a la lista
-                usuarios.add(cliente);
-
-                Runnable run = new HiloServidor(cliente, usuarios, id);
-                Thread hilo = new Thread(run);
-                hilo.start();
-                id++;
-            }
+//            while (true) {
+//                //Cuando un jugador se conecte guardamos el socket en esta línea
+//                Socket cliente = servidor.accept();
+//
+//                //Se agrega el socket a la lista
+//                usuarios.add(cliente);
+//
+//                Runnable run = new HiloServidor(cliente, usuarios, id);
+//                Thread hilo = new Thread(run);
+//                hilo.start();
+//                id++;
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -45,6 +45,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jugador1.setLocation(432, 449);
         ingresado = false;
         primeraVez = true;
+        jugadores = partida.getListaJugadores();
         iniciarlbl();
 
 //        try {
@@ -86,10 +87,10 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jPanel1 = new javax.swing.JPanel();
         LblnumJugadores = new javax.swing.JLabel();
         jugador1 = new javax.swing.JLabel();
-        jugador1ficha2 = new javax.swing.JLabel();
-        jugador1ficha3 = new javax.swing.JLabel();
-        jugador1ficha4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jugador2 = new javax.swing.JLabel();
+        jugador3 = new javax.swing.JLabel();
+        jugador4 = new javax.swing.JLabel();
+        tablero = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         caña2 = new javax.swing.JLabel();
         caña3 = new javax.swing.JLabel();
@@ -114,12 +115,12 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(LblnumJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 1696, 56, 30));
         jPanel1.add(jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 820, -1, -1));
-        jPanel1.add(jugador1ficha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 820, 37, -1));
-        jPanel1.add(jugador1ficha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 820, 37, -1));
-        jPanel1.add(jugador1ficha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 820, 37, -1));
+        jPanel1.add(jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 820, 37, -1));
+        jPanel1.add(jugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 820, 37, -1));
+        jPanel1.add(jugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 820, 37, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 800));
+        tablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tableroChico.png"))); // NOI18N
+        jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 800));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -258,34 +259,58 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
     private void lanzarCañasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarCañasActionPerformed
         LanzarDados();
-        
+
         if (avance != 1 && ingresado == false) {
             return;
         }
         if (avance == 0 && ingresado == true) {
             casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+            casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2);
         }
         try {
-            if (avance == 1 && ingresado == false) {
-                gd.ingresarFicha(jugador1,idAuxiliar);
+            if (avance == 1 && primerTurno == 0) {
+                gd.ingresarFicha(jugador1, idAuxiliar, 1);
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
                 lanzarCañas.setEnabled(false);
+                primerTurno = 1;
+            }
+            if (avance == 1 && primerTurno == 1) {
+
+                gd.ingresarFicha(jugador2, idAuxiliar2, 2);
+                ingresado = true;
+                btnMeterFicha.setEnabled(true);
+                lanzarCañas.setEnabled(false);
+                primerTurno = 2;
             }
 
             if (ingresado == true) {
-                if (avance > 0) {
-                    casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
-                    if (casillaAvanzada==null) {
-                    }else{
-                    idAuxiliar = casillaAvanzada.getId();
-                    System.out.println(primeraVez);
-                    primeraVez=false;
+                if (iparaNumJ == 1) {
+                    System.out.println("paraNumJ "+ iparaNumJ);
+                    if (avance > 0) {
+                        casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                        if (casillaAvanzada == null) {
+                        } else {
+                            idAuxiliar = casillaAvanzada.getId();
+                            System.out.println(primeraVez);
+                            primeraVez = false;
+                        }
                     }
                 }
 
+                if (iparaNumJ == 2) {
+                    System.out.println("paraNumJ "+ iparaNumJ);
+                    if (avance > 0) {
+                        casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2);
+                        if (casillaAvanzada == null) {
+                        } else {
+                            idAuxiliar2 = casillaAvanzada.getId();
+                            System.out.println(primeraVez);
+                            primeraVez = false;
+                        }
+                    }
+                }
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "");
             System.err.println(e.getMessage());
@@ -312,7 +337,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada   
         lanzarCañas.setEnabled(true);
         casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
-        idAuxiliar=idAuxiliar-1;
+        idAuxiliar = idAuxiliar - 1;
         btnMeterFicha.setEnabled(false);
     }//GEN-LAST:event_btnMeterFichaActionPerformed
 
@@ -427,25 +452,26 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel caña4;
     private javax.swing.JLabel caña5;
     private javax.swing.JButton hacerApuesta;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jugador1;
-    private javax.swing.JLabel jugador1ficha2;
-    private javax.swing.JLabel jugador1ficha3;
-    private javax.swing.JLabel jugador1ficha4;
+    private javax.swing.JLabel jugador2;
+    private javax.swing.JLabel jugador3;
+    private javax.swing.JLabel jugador4;
     private javax.swing.JButton lanzarCañas;
+    private javax.swing.JLabel tablero;
     private javax.swing.JTextField txtApuesta;
     // End of variables declaration//GEN-END:variables
     Partida partida;
-    int x = 0;
-    int y = 0;
-    int ancho = 950;
-    int alto = 928;
+    int primerTurno = 0;
+    int turno = 0;
     int avance;
     int idAuxiliar;
+    int idAuxiliar2;
+    int idAuxiliar3;
+    int idAuxiliar4;
     boolean ingresado;
-    boolean primeraVez=true;
+    boolean primeraVez = true;
     GraphicsDemo gd;
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
