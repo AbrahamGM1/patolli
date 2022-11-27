@@ -33,7 +33,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     public DlgCrearPartida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
     }
 
     /**
@@ -60,6 +59,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Crear partida");
 
         jLabel1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jLabel1.setText("Casillas por aspa");
@@ -183,6 +183,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
@@ -205,8 +206,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(this, "El Monto de la apuesta no puede ser mayor o igual al fondo de las apuestas", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-        Server server = new Server();
-        server.escuchar();
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -280,12 +279,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             j.setFichas(this.llenarFichas(numFichas, j));
         }
 
-        return new Partida(numCasillas, tablero, jugadores, this.llenarDados(), gen());
-    }
-
-    public int gen() {
-        Random r = new Random(System.currentTimeMillis());
-        return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
+        return new Partida(numCasillas, tablero, jugadores, this.llenarDados());
     }
 
     public void iniciarPartida() {
@@ -296,22 +290,16 @@ public class DlgCrearPartida extends javax.swing.JDialog {
             }
             if (numCasillas == 10) {
                 FrmPartida10 partida = new FrmPartida10(crearPartida());
-                FrmMenu.evento.register(partida);
-                FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 12) {
                 FrmPartida12 partida = new FrmPartida12(crearPartida());
-                FrmMenu.evento.register(partida);
-                FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 14) {
                 FrmPartida14 partida = new FrmPartida14(crearPartida());
-                FrmMenu.evento.register(partida);
-                FrmMenu.evento.post(this.crearPartida());
                 partida.setVisible(true);
                 this.setVisible(false);
             }

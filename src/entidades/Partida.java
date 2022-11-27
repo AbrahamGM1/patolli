@@ -21,18 +21,16 @@ public class Partida {
     private Tablero tablero;
     private Jugador[] listaJugadores;
     private Dado[] dados;
-    private int Codigo;
 
     public Partida() {
 
     }
 
-    public Partida(int numCasillas, Tablero tablero, Jugador[] listaJugadores, Dado[] dados, int Codigo) {
+    public Partida(int numCasillas, Tablero tablero, Jugador[] listaJugadores, Dado[] dados) {
         this.numCasillas = numCasillas;
         this.tablero = tablero;
         this.listaJugadores = listaJugadores;
         this.dados = dados;
-        this.Codigo = Codigo;
     }
 
     public Partida(Tablero tablero, Jugador[] listaJugadores, Dado[] dados) {
@@ -63,14 +61,6 @@ public class Partida {
 
     public void setDados(Dado[] dados) {
         this.dados = dados;
-    }
-
-    public int getCodigo() {
-        return Codigo;
-    }
-
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
     }
 
     public int getNumCasillas() {

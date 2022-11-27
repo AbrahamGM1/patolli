@@ -6,16 +6,11 @@ import entidades.Ficha;
 import entidades.Partida;
 import javax.swing.JOptionPane;
 import guis.panel.GraphicsDemo;
-import org.greenrobot.eventbus.Subscribe;
 import guis.panel.CasillaPartida;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
 
 /**
  *
@@ -414,32 +409,25 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
     }
 
-    @Subscribe
-    public void establecerPartida(Partida partida) {
-        this.partida = partida;
-        gd = new GraphicsDemo(10);
+    @Override
+    public void run() {
+        try {
+            mensaje = in.readUTF();
+            int aux = Integer.parseInt(mensaje);
+            id = aux;
 
+            if (juegoFinalizado) {
+                cliente.close();
+            }
+
+            while (true) {
+                String recibidos = in.readUTF();
+                //TODO: Leer turnos y movimientos
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-
-//    @Override
-//    public void run() {
-//        try {
-//            mensaje = in.readUTF();
-//            int aux = Integer.parseInt(mensaje);
-//            id = aux;
-//
-//            if (juegoFinalizado) {
-//                cliente.close();
-//            }
-//
-//            while (true) {
-//                String recibidos = in.readUTF();
-//                //TODO: Leer turnos y movimientos
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel LblnumJugadores;
@@ -472,13 +460,16 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     int idAuxiliar4;
     boolean ingresado;
     boolean primeraVez = true;
-    GraphicsDemo gd;
+    GraphicsDemo gd = new GraphicsDemo(10);
     CasillaPartida c = new CasillaPartida();
     List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    private Socket cliente;
+    private DataOutputStream out;
+    private DataInputStream in;
+    private int puerto = 2027;
+    public static String host = "127.0.0.1";
+    private String mensaje;
+    int id;
+    private boolean juegoFinalizado = false;
 }

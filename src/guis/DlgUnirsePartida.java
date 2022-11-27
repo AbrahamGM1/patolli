@@ -19,7 +19,6 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
     public DlgUnirsePartida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,6 +37,7 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Unirse a partida");
 
         jLabel1.setFont(new java.awt.Font("Jokerman", 1, 14)); // NOI18N
         jLabel1.setText("Introduzca la dirección IP que el anfitrió le proporcionó para unirse a la partida");
@@ -99,6 +99,7 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnirseActionPerformed

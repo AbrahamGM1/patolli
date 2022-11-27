@@ -6,12 +6,8 @@ import entidades.Partida;
 import static guis.FrmPartida10.LblnumJugadores;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.greenrobot.eventbus.Subscribe;
 
 /**
  *
@@ -342,11 +338,6 @@ public class FrmPartida14 extends javax.swing.JFrame implements Runnable {
             }
         }
         return false;
-    }
-
-    @Subscribe
-    public void establecerPartida(Partida partida) {
-        this.partida = partida;
     }
 
     @Override
