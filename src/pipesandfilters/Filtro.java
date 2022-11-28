@@ -9,38 +9,33 @@ package pipesandfilters;
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
+ * @param <T>
  */
-public class Filtro {
+public class Filtro<T> {
 
-    public void filtroJugadorGanoPartida() {
-
+    private final T filtro;
+    
+    public Filtro(Class<T> tipoFiltro) {
+        filtro = (T) tipoFiltro;
     }
-
-    public void filtroJugadorPerdio() {
-
-    }
-
-    public void filtroFinalizadoPartida() {
-
-    }
-
-    public void filtroJugadorAvanza10() {
-
-    }
-
-    public void filtroJugadorSeUnio() {
-
-    }
-
-    public void filtroCasillaRoja() {
-
-    }
-
-    public void filtroPartidaInicio() {
-
-    }
-
-    public void filtroJugadorAbandonoPartida() {
-
+    
+    public void accion() {
+        if (filtro.getClass().equals(FiltroCasillaRoja.class)) {
+            ((FiltroCasillaRoja) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroFinalizoPartida.class)){
+            ((FiltroFinalizoPartida) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroJugadorAbandonoPartida.class)) {
+            ((FiltroJugadorAbandonoPartida) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroJugadorAvanza10.class)) {
+            ((FiltroJugadorAvanza10) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroJugadorGanoPartida.class)) {
+            ((FiltroJugadorGanoPartida) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroJugadorPerdio.class)) {
+            ((FiltroJugadorPerdio) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroJugadorSeUnio.class)) {
+            ((FiltroJugadorSeUnio) filtro).accion();
+        } else if (filtro.getClass().equals(FiltroPartidaInicio.class)) {
+            ((FiltroPartidaInicio) filtro).accion();
+        }
     }
 }

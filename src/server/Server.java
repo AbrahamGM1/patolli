@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class Server {
 
     //inicialización de puerto
-    private final int puerto = 2027;
+    private final int puerto = 4444;
 
     //número máximo de conexiones
     private final int noConexiones = 4;
@@ -35,9 +35,10 @@ public class Server {
 
             //Ciclo infinito para estar escuchando por nuevos jugadores
             System.out.println("Esperando jugadores...");
-            while (true) {
+//            while (true) {
                 //Cuando un jugador se conecte guardamos el socket en esta línea
                 Socket cliente = servidor.accept();
+                System.out.println("Nuevo jugador aceptado");
 
                 //Se agrega el socket a la lista
                 usuarios.add(cliente);
@@ -46,7 +47,7 @@ public class Server {
                 Thread hilo = new Thread(run);
                 hilo.start();
                 id++;
-            }
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,8 +9,11 @@ import guis.panel.GraphicsDemo;
 import guis.panel.CasillaPartida;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,16 +46,16 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         jugadores = partida.getListaJugadores();
         iniciarlbl();
 
-//        try {
-//            //Se crea el socket con el host y el puerto, se declaran los streams
-//            //de comunicacion
-//            cliente = new Socket(host, puerto);
-//
-//            in = new DataInputStream(cliente.getInputStream());
-//            out = new DataOutputStream(cliente.getOutputStream());
-//        } catch (IOException ex) {
-//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public FrmPartida10() {
@@ -467,8 +470,8 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private Socket cliente;
     private DataOutputStream out;
     private DataInputStream in;
-    private int puerto = 2027;
-    public static String host = "127.0.0.1";
+    private int puerto = 4444;
+    public static String host = "localhost";
     private String mensaje;
     int id;
     private boolean juegoFinalizado = false;
