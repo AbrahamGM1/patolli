@@ -37,10 +37,12 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
      *
      * @param partida
      */
-    public FrmPartida10(Partida partida) {
+    public FrmPartida10(Partida partida, int id) {
         initComponents();
+        this.iD = id;
         this.partida = partida;
         jugador1.setLocation(432, 449);
+        jugador2.setLocation(434, 329);
         ingresado = false;
         primeraVez = true;
         jugadores = partida.getListaJugadores();
@@ -58,24 +60,25 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         }
     }
 
-    public FrmPartida10() {
+    public FrmPartida10(int id) {
         initComponents();
+        this.iD = id;
         iniciarlbl();
         jugador1.setLocation(432, 449);
+        jugador2.setLocation(434, 329);
         ingresado = false;
         btnMeterFicha.setEnabled(false);
-        this.setLocationRelativeTo(null);
 
-//        try {
-//            //Se crea el socket con el host y el puerto, se declaran los streams
-//            //de comunicacion
-//            cliente = new Socket(host, puerto);
-//
-//            in = new DataInputStream(cliente.getInputStream());
-//            out = new DataOutputStream(cliente.getOutputStream());
-//        } catch (IOException ex) {
-//            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            //Se crea el socket con el host y el puerto, se declaran los streams
+            //de comunicacion
+            cliente = new Socket(host, puerto);
+
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -417,7 +420,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         try {
             mensaje = in.readUTF();
             int aux = Integer.parseInt(mensaje);
-            id = aux;
+            iD = aux;
 
             if (juegoFinalizado) {
                 cliente.close();
@@ -473,6 +476,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     private int puerto = 4444;
     public static String host = "localhost";
     private String mensaje;
-    int id;
+    int iD;
     private boolean juegoFinalizado = false;
 }

@@ -1,6 +1,7 @@
 package guis;
 
 import javax.swing.JOptionPane;
+import server.Server;
 
 /**
  *
@@ -103,8 +104,12 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnirseActionPerformed
-        verificarCampo();
-        dispose();
+        if (verificarIP()) {
+            unirPartida();
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "La ip donde se encuentra la partida es 127.0.0.1", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_botonUnirseActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -113,30 +118,16 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
         menu.setVisible(true);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    public void verificarCampo() {
+    public boolean verificarIP() {
         String ip = this.campoTextoIP.getText();
-        if (codigo(ip)) {
-            unirsePartida();
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese solo 5 números");
-        }
+        
+        return ip.equals("127.0.0.1");
     }
-
-    public static boolean codigo(String numero) {
-        return numero.matches("[0-9]{5}");
-    }
-
-    public void unirsePartida() {
-        try {
-            String Codigo = this.campoTextoIP.getText();
-            if (Codigo.equals("")) {
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe la partida");
-            }
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
-        }
+    
+    public void unirPartida() {
+        FrmPartida10 frmPartida = new FrmPartida10(Server.id);
+        frmPartida.setVisible(true);
+        this.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -35,7 +35,7 @@ public class Server {
 
             //Ciclo infinito para estar escuchando por nuevos jugadores
             System.out.println("Esperando jugadores...");
-//            while (true) {
+            while (true) {
                 //Cuando un jugador se conecte guardamos el socket en esta línea
                 Socket cliente = servidor.accept();
                 System.out.println("Nuevo jugador aceptado");
@@ -47,7 +47,7 @@ public class Server {
                 Thread hilo = new Thread(run);
                 hilo.start();
                 id++;
-//            }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,7 +7,6 @@ import entidades.Ficha;
 import entidades.Jugador;
 import entidades.Partida;
 import entidades.Tablero;
-import java.util.Random;
 import javax.swing.JOptionPane;
 import server.Server;
 
@@ -187,8 +186,6 @@ public class DlgCrearPartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        FrmPartida10 xd = new FrmPartida10(crearPartida());
-
         int FondoApuesta = Integer.parseInt(campoTextoFondoApuestas.getText());
         int MontoApuesta = Integer.parseInt(campoTextoMontoPorApuesta.getText());
         int numJugadores = Integer.parseInt(comboBoxNumJugadores.getSelectedItem().toString());
@@ -197,11 +194,10 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         System.out.println("MA: " + MontoApuesta);
 
         if (FondoApuesta > MontoApuesta) {
-            crearPartida();
-            iniciarPartida();
+            Partida partida = crearPartida();
+            iniciarPartida(partida);
             System.out.println("numJugadors: " + numJugadores);
-            xd.LblnumJugadores.setText(" " + numJugadores);
-            // xd.Turno.setText(comboBoxNumJugadores.getSelectedItem().toString());
+            FrmPartida10.LblnumJugadores.setText(" " + numJugadores);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "El Monto de la apuesta no puede ser mayor o igual al fondo de las apuestas", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -282,25 +278,25 @@ public class DlgCrearPartida extends javax.swing.JDialog {
         return new Partida(numCasillas, tablero, jugadores, this.llenarDados());
     }
 
-    public void iniciarPartida() {
+    public void iniciarPartida(Partida partida) {
         try {
             if (confirmacion == 0) {
                 JOptionPane.showMessageDialog(null, "Es necesario que se validen los datos");
                 return;
             }
             if (numCasillas == 10) {
-                FrmPartida10 partida = new FrmPartida10(crearPartida());
-                partida.setVisible(true);
+                FrmPartida10 frmPartida = new FrmPartida10(partida, Server.id);
+                frmPartida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 12) {
-                FrmPartida12 partida = new FrmPartida12(crearPartida());
-                partida.setVisible(true);
+                FrmPartida12 frmPartida = new FrmPartida12(partida);
+                frmPartida.setVisible(true);
                 this.setVisible(false);
             }
             if (numCasillas == 14) {
-                FrmPartida14 partida = new FrmPartida14(crearPartida());
-                partida.setVisible(true);
+                FrmPartida14 frmPartida = new FrmPartida14(partida);
+                frmPartida.setVisible(true);
                 this.setVisible(false);
             }
         } catch (Exception e) {
