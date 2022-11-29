@@ -77,9 +77,11 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         comboBoxCasillas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxCasillas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "12", "14" }));
+        comboBoxCasillas.setEnabled(false);
 
         comboBoxNumJugadores.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxNumJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
+        comboBoxNumJugadores.setEnabled(false);
         comboBoxNumJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxNumJugadoresActionPerformed(evt);
@@ -88,17 +90,24 @@ public class DlgCrearPartida extends javax.swing.JDialog {
 
         comboBoxFichas.setFont(new java.awt.Font("Jokerman", 1, 12)); // NOI18N
         comboBoxFichas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6" }));
+        comboBoxFichas.setEnabled(false);
         comboBoxFichas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxFichasActionPerformed(evt);
             }
         });
 
+        campoTextoFondoApuestas.setEditable(false);
+        campoTextoFondoApuestas.setText("500000");
         campoTextoFondoApuestas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoTextoFondoApuestasActionPerformed(evt);
             }
         });
+
+        campoTextoMontoPorApuesta.setEditable(false);
+        campoTextoMontoPorApuesta.setText("5");
+        campoTextoMontoPorApuesta.setToolTipText("");
 
         botonCrear.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         botonCrear.setText("Crear");
@@ -285,7 +294,7 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 return;
             }
             if (numCasillas == 10) {
-                FrmPartida10 frmPartida = new FrmPartida10(partida, Server.id);
+                FrmPartida10 frmPartida = new FrmPartida10(partida);
                 frmPartida.setVisible(true);
                 this.setVisible(false);
             }

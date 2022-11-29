@@ -24,7 +24,7 @@ public class Server {
     private LinkedList<Socket> usuarios = new LinkedList<>();
 
     public static int id = 0;
-
+    
     /**
      * Fución para que el servidor empiece a recibir conexiones de clientes
      */

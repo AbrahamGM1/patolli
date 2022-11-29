@@ -150,6 +150,7 @@
             <StringItem index="2" value="14"/>
           </StringArray>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -167,6 +168,7 @@
             <StringItem index="2" value="4"/>
           </StringArray>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxNumJugadoresActionPerformed"/>
@@ -189,6 +191,7 @@
             <StringItem index="4" value="6"/>
           </StringArray>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxFichasActionPerformed"/>
@@ -198,11 +201,20 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="campoTextoFondoApuestas">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="500000"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoTextoFondoApuestasActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="campoTextoMontoPorApuesta">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="5"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botonCrear">
       <Properties>

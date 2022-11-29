@@ -37,9 +37,9 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
      *
      * @param partida
      */
-    public FrmPartida10(Partida partida, int id) {
+    public FrmPartida10(Partida partida) {
         initComponents();
-        this.iD = id;
+        
         this.partida = partida;
         jugador1.setLocation(432, 449);
         jugador2.setLocation(434, 329);
@@ -47,27 +47,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         primeraVez = true;
         jugadores = partida.getListaJugadores();
         iniciarlbl();
-
-        try {
-            //Se crea el socket con el host y el puerto, se declaran los streams
-            //de comunicacion
-            cliente = new Socket(host, puerto);
-
-            in = new DataInputStream(cliente.getInputStream());
-            out = new DataOutputStream(cliente.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public FrmPartida10(int id) {
-        initComponents();
-        this.iD = id;
-        iniciarlbl();
-        jugador1.setLocation(432, 449);
-        jugador2.setLocation(434, 329);
-        ingresado = false;
-        btnMeterFicha.setEnabled(false);
 
         try {
             //Se crea el socket con el host y el puerto, se declaran los streams
@@ -421,7 +400,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
             mensaje = in.readUTF();
             int aux = Integer.parseInt(mensaje);
             iD = aux;
-
+            
             if (juegoFinalizado) {
                 cliente.close();
             }

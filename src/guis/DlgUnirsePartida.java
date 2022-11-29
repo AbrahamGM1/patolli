@@ -1,7 +1,13 @@
 package guis;
 
+import entidades.Apuestas;
+import entidades.Casilla;
+import entidades.Dado;
+import entidades.Ficha;
+import entidades.Jugador;
+import entidades.Partida;
+import entidades.Tablero;
 import javax.swing.JOptionPane;
-import server.Server;
 
 /**
  *
@@ -105,7 +111,10 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
 
     private void botonUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnirseActionPerformed
         if (verificarIP()) {
-            unirPartida();
+            Partida partida = this.obtenerPartida();
+            unirPartida(partida);
+            System.out.println("numJugadors: " + 2);
+            FrmPartida10.LblnumJugadores.setText(" " + 2);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "La ip donde se encuentra la partida es 127.0.0.1", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -124,10 +133,55 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
         return ip.equals("127.0.0.1");
     }
     
-    public void unirPartida() {
-        FrmPartida10 frmPartida = new FrmPartida10(Server.id);
+    public void unirPartida(Partida partida) {
+        FrmPartida10 frmPartida = new FrmPartida10(partida);
         frmPartida.setVisible(true);
         this.setVisible(false);
+    }
+    
+    public Partida obtenerPartida() {
+        Apuestas apuestas = new Apuestas(500000, 5);
+        Tablero tablero = new Tablero(this.llenarCasillas(10 * 2 * 4 + 4, 2));
+        Jugador[] jugadores = this.llenarJugadores(2, apuestas);
+        
+        for (Jugador j : jugadores) {
+            j.setFichas(this.llenarFichas(2, j));
+        }
+        
+        return new Partida(10, tablero, jugadores, this.llenarDados());
+    }
+    
+    public Casilla[] llenarCasillas(int numCasillas, int numFichas) {
+        Casilla[] casillas = new Casilla[numCasillas];
+        for (int i = 1; i < numCasillas; i++) {
+            casillas[i - 1] = new Casilla(i, new Ficha[numFichas]);
+        }
+        return casillas;
+    }
+    
+    public Jugador[] llenarJugadores(int numJugadores, Apuestas apuesta) {
+        Jugador[] jugadores = new Jugador[numJugadores];
+        for (int i = 1; i < numJugadores + 1; i++) {
+            jugadores[i - 1] = new Jugador(apuesta);
+        }
+        return jugadores;
+    }
+    
+    public Ficha[] llenarFichas(int numFichas, Jugador jugador) {
+        Ficha[] fichas = new Ficha[numFichas];
+        for (int i = 1; i < numFichas + 1; i++) {
+            fichas[i - 1] = new Ficha(i - 1, -1);
+        }
+        return fichas;
+    }
+    
+    public Dado[] llenarDados() {
+        Dado[] dados = new Dado[5];
+        for (int i = 0; i < 5; i++) {
+            Dado dado = new Dado();
+            dados[i] = dado;
+        }
+        return dados;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -91,6 +91,4 @@ public class Ficha {
     public void setLabel(JLabel label) {
         this.label = label;
     }
-
-    
 }

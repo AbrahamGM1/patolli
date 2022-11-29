@@ -55,5 +55,4 @@ public class Jugador {
     public void setFondoJugador(int fondoJugador) {
         this.fondoJugador = fondoJugador;
     }
-    
 }
