@@ -134,9 +134,13 @@ public class DlgUnirsePartida extends javax.swing.JDialog {
     }
     
     public void unirPartida(Partida partida) {
-        FrmPartida10 frmPartida = new FrmPartida10(partida);
+        FrmPartida10 frmPartida = new FrmPartida10(partida, 1);
         frmPartida.setVisible(true);
         this.setVisible(false);
+        
+        Runnable run = frmPartida;
+        Thread hilo = new Thread(run);
+        hilo.start();
     }
     
     public Partida obtenerPartida() {

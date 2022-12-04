@@ -8,7 +8,6 @@ import entidades.Jugador;
 import entidades.Partida;
 import entidades.Tablero;
 import javax.swing.JOptionPane;
-import server.Server;
 
 /**
  *
@@ -294,9 +293,12 @@ public class DlgCrearPartida extends javax.swing.JDialog {
                 return;
             }
             if (numCasillas == 10) {
-                FrmPartida10 frmPartida = new FrmPartida10(partida);
+                FrmPartida10 frmPartida = new FrmPartida10(partida, 0);
                 frmPartida.setVisible(true);
                 this.setVisible(false);
+                Runnable run = frmPartida;
+                Thread hilo = new Thread(run);
+                hilo.start();
             }
             if (numCasillas == 12) {
                 FrmPartida12 frmPartida = new FrmPartida12(partida);

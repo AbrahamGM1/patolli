@@ -14,6 +14,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pipesandfilters.TuberiaMensajes;
 
 /**
  *
@@ -36,10 +37,12 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
      * configurada.
      *
      * @param partida
+     * @param id
      */
-    public FrmPartida10(Partida partida) {
+    public FrmPartida10(Partida partida, int id) {
         initComponents();
         
+        this.iD = id;
         this.partida = partida;
         jugador1.setLocation(432, 449);
         jugador2.setLocation(434, 329);
@@ -57,6 +60,18 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
             out = new DataOutputStream(cliente.getOutputStream());
         } catch (IOException ex) {
             Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            if (iD == 0) {
+                tuberia.ejecutarTuberia(out, iD, 7);
+            }
+            
+            if (iD == 1) {
+                tuberia.ejecutarTuberia(out, iD, 6);
+            }
+        } catch (IOException e) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -302,6 +317,14 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         if (opcionSeleccionado == JOptionPane.NO_OPTION) {
             return;
         }
+        this.juegoFinalizado = true;
+        
+        try {
+            tuberia.ejecutarTuberia(out, iD, 2);
+        } catch (IOException e) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
         this.setVisible(false);
@@ -393,6 +416,39 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         caña4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
     }
+    
+    public void mensajeCasillaRoja() {
+        JOptionPane.showMessageDialog(null, "Un jugador ha caído en una casilla roja!!!");
+    }
+    
+    public void mensajeFinalizoPartida() {
+        JOptionPane.showMessageDialog(null, "La partida ha terminado");
+    }
+    
+    public void mensajeJugadorAbandonoPartida() {
+        JOptionPane.showMessageDialog(null, "Un jugador ha abandonado la partida");
+        this.juegoFinalizado = true;
+    }
+    
+    public void mensajeJugadorAvanza10() {
+        JOptionPane.showMessageDialog(null, "Un jugador avanzó 10 casillas!!!");
+    }
+    
+    public void mensajeJugadorGanoPartida() {
+        JOptionPane.showMessageDialog(null, "Felicidades a jugador (?) has ganado!");
+    }
+    
+    public void mensajeJugadorPerdio() {
+        JOptionPane.showMessageDialog(null, "Mala suerte jugador (?) has perdido");
+    }
+    
+    public void mensajeJugadorSeUnio() {
+        JOptionPane.showMessageDialog(null, "Un nuevo jugador se ha unido");
+    }
+    
+    public void mensajePartidaInicio() {
+        JOptionPane.showMessageDialog(null, "La partida ha iniciado");
+    }
 
     @Override
     public void run() {
@@ -407,7 +463,48 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
             while (true) {
                 String recibidos = in.readUTF();
-                //TODO: Leer turnos y movimientos
+                String[] recibido = recibidos.split(";");
+                
+                int metodo = Integer.parseInt(recibido[0]);
+                int id = Integer.parseInt(recibido[1]);
+                
+                switch (metodo) {
+                    case 0:
+                        this.mensajeCasillaRoja();
+                        break;
+                    case 1:
+                        this.mensajeFinalizoPartida();
+                        break;
+                    case 2:
+                        if (id != this.iD) {
+                            this.mensajeJugadorAbandonoPartida();
+                        }
+                        break;
+                    case 3:
+                        if (id != this.iD) {
+                            this.mensajeJugadorAvanza10();
+                        }
+                        break;
+                    case 4:
+                        this.mensajeJugadorGanoPartida();
+                        break;
+                    case 5:
+                        this.mensajeJugadorPerdio();
+                        break;
+                    case 6:
+                        if (id != this.iD) {
+                            this.mensajeJugadorSeUnio();
+                        }
+                        break;
+                    case 7:
+                        this.mensajePartidaInicio();
+                        break;
+                    default: 
+                        break;
+                }
+                
+                metodo = -1;
+                id = -1;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -450,11 +547,12 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     List<Casilla> casillas = c.inicializarCasilla10();
     Casilla casillaAvanzada;
     private Socket cliente;
-    private DataOutputStream out;
-    private DataInputStream in;
+    DataOutputStream out;
+    DataInputStream in;
     private int puerto = 4444;
     public static String host = "localhost";
     private String mensaje;
     int iD;
     private boolean juegoFinalizado = false;
+    TuberiaMensajes tuberia = new TuberiaMensajes();
 }

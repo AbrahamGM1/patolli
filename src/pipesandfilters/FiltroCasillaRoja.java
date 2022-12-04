@@ -4,13 +4,16 @@
  */
 package pipesandfilters;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 /**
  *
  * @author luisg
  */
 public class FiltroCasillaRoja {
     
-    public void accion() {
-        
+    public static void accion(DataOutputStream out, int id) throws IOException {
+        out.writeUTF("0;" + id + ";");
     }
 }
