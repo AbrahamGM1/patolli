@@ -1,17 +1,12 @@
 package entidades;
 
 /**
+ * Clase que contienen los atributos de la entidad Jugador. El fondo de apuestas
+ * que este posee y el numero de fichas con las que jugara.
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
- * Clase que contienen los atributos de la entidad 
- * Jugador. El fondo de apuestas que este posee y 
- * el numero de fichas con las que jugara.
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
 public class Jugador {
 

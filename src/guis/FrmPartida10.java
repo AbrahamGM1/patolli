@@ -65,9 +65,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         try {
             if (iD == 0) {
                 tuberia.ejecutarTuberia(out, iD, 7);
-            }
-            
-            if (iD == 1) {
+            } else {
                 tuberia.ejecutarTuberia(out, iD, 6);
             }
         } catch (IOException e) {
@@ -265,8 +263,8 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
             return;
         }
         if (avance == 0 && ingresado == true) {
-            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
-            casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2);
+            casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1, out, iD, tuberia);
+            casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2, out, iD, tuberia);
         }
         try {
             if (avance == 1 && primerTurno == 0) {
@@ -277,7 +275,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
                 primerTurno = 1;
             }
             if (avance == 1 && primerTurno == 1) {
-
                 gd.ingresarFicha(jugador2, idAuxiliar2, 2);
                 ingresado = true;
                 btnMeterFicha.setEnabled(true);
@@ -289,12 +286,45 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
                 if (iparaNumJ == 1) {
                     System.out.println("paraNumJ "+ iparaNumJ);
                     if (avance > 0) {
-                        casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1);
+                        casillaAvanzada = gd.moverFicha(idAuxiliar, avance, jugador1, out, iD, tuberia);
+                        
                         if (casillaAvanzada == null) {
+                            
                         } else {
                             idAuxiliar = casillaAvanzada.getId();
                             System.out.println(primeraVez);
                             primeraVez = false;
+                        }
+                        
+                        if (avance == 5) {
+                            try {
+                                tuberia.ejecutarTuberia(out, iD, 3);
+                            } catch (IOException e) {
+                                Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                            }
+                        }
+                        
+                        if ((jugador1.getLocation().x == 597 && jugador1.getLocation().y == 298) || 
+                                (jugador1.getLocation().x == 627 && jugador1.getLocation().y == 267) ||
+                                (jugador1.getLocation().x == 590 && jugador1.getLocation().y == 235) ||
+                                (jugador1.getLocation().x == 561 && jugador1.getLocation().y == 264) ||
+                                (jugador1.getLocation().x == 369 && jugador1.getLocation().y == 268) ||
+                                (jugador1.getLocation().x == 337 && jugador1.getLocation().y == 238) ||
+                                (jugador1.getLocation().x == 304 && jugador1.getLocation().y == 271) ||
+                                (jugador1.getLocation().x == 335 && jugador1.getLocation().y == 303) ||
+                                (jugador1.getLocation().x == 336 && jugador1.getLocation().y == 380) ||
+                                (jugador1.getLocation().x == 303 && jugador1.getLocation().y == 514) ||
+                                (jugador1.getLocation().x == 340 && jugador1.getLocation().y == 544) ||
+                                (jugador1.getLocation().x == 372 && jugador1.getLocation().y == 512) ||
+                                (jugador1.getLocation().x == 556 && jugador1.getLocation().y == 520) ||
+                                (jugador1.getLocation().x == 586 && jugador1.getLocation().y == 550) ||
+                                (jugador1.getLocation().x == 626 && jugador1.getLocation().y == 512) ||
+                                (jugador1.getLocation().x == 593 && jugador1.getLocation().y == 483)) {
+                            try {
+                                tuberia.ejecutarTuberia(out, iD, 0);
+                            } catch (IOException e) {
+                                Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                            }
                         }
                     }
                 }
@@ -302,12 +332,45 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
                 if (iparaNumJ == 2) {
                     System.out.println("paraNumJ "+ iparaNumJ);
                     if (avance > 0) {
-                        casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2);
+                        casillaAvanzada = gd.moverFicha(idAuxiliar2, avance, jugador2, out, iD, tuberia);
+                        
                         if (casillaAvanzada == null) {
+                            
                         } else {
                             idAuxiliar2 = casillaAvanzada.getId();
                             System.out.println(primeraVez);
                             primeraVez = false;
+                        }
+                        
+                        if (avance == 5) {
+                            try {
+                                tuberia.ejecutarTuberia(out, iD, 3);
+                            } catch (IOException e) {
+                                Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                            }
+                        }
+                        
+                        if ((jugador2.getLocation().x == 597 && jugador2.getLocation().y == 298) || 
+                                (jugador2.getLocation().x == 627 && jugador2.getLocation().y == 267) ||
+                                (jugador2.getLocation().x == 590 && jugador2.getLocation().y == 235) ||
+                                (jugador2.getLocation().x == 561 && jugador2.getLocation().y == 264) ||
+                                (jugador2.getLocation().x == 369 && jugador2.getLocation().y == 268) ||
+                                (jugador2.getLocation().x == 337 && jugador2.getLocation().y == 238) ||
+                                (jugador2.getLocation().x == 304 && jugador2.getLocation().y == 271) ||
+                                (jugador2.getLocation().x == 335 && jugador2.getLocation().y == 303) ||
+                                (jugador2.getLocation().x == 336 && jugador2.getLocation().y == 380) ||
+                                (jugador2.getLocation().x == 303 && jugador2.getLocation().y == 514) ||
+                                (jugador2.getLocation().x == 340 && jugador2.getLocation().y == 544) ||
+                                (jugador2.getLocation().x == 372 && jugador2.getLocation().y == 512) ||
+                                (jugador2.getLocation().x == 556 && jugador2.getLocation().y == 520) ||
+                                (jugador2.getLocation().x == 586 && jugador2.getLocation().y == 550) ||
+                                (jugador2.getLocation().x == 626 && jugador2.getLocation().y == 512) ||
+                                (jugador2.getLocation().x == 593 && jugador2.getLocation().y == 483)) {
+                            try {
+                                tuberia.ejecutarTuberia(out, iD, 0);
+                            } catch (IOException e) {
+                                Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                            }
                         }
                     }
                 }
@@ -332,7 +395,11 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         }
         
         System.exit(0);
-
+        try {
+            cliente.close();
+        } catch (IOException e) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void btnMeterFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMeterFichaActionPerformed
@@ -343,7 +410,7 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
         //Se usa el -1 porque cuando se pulsa lanzar cañas y sale un 1 cuando aun quedan fichas, el contador de fichas ingresadas aumenta, por tanto
         //si les quitaramos el -1 leeria una ficha con un contador superior la cual no existe, se tiene que "revertir" para que se lea la ingresada   
         lanzarCañas.setEnabled(true);
-        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1);
+        casillaAvanzada = gd.moverFicha(idAuxiliar, -1, jugador1, out, iD, tuberia);
         idAuxiliar = idAuxiliar - 1;
         btnMeterFicha.setEnabled(false);
     }//GEN-LAST:event_btnMeterFichaActionPerformed
@@ -412,7 +479,9 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
 
     }
 
-    //Le pone las imágenes a las cañas
+    /**
+     * Le pone las imágenes a las cañas
+     */
     public void iniciarlbl() {
         caña1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
         caña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cañaLisa.png")));
@@ -422,36 +491,37 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
     }
     
     public void mensajeCasillaRoja() {
-        JOptionPane.showMessageDialog(null, "Un jugador ha caído en una casilla roja!!!");
+        JOptionPane.showMessageDialog(this, "Un jugador ha caído en una casilla roja!!!", "Casilla roja!!", JOptionPane.WARNING_MESSAGE);
     }
     
     public void mensajeFinalizoPartida() {
-        JOptionPane.showMessageDialog(null, "La partida ha terminado");
-    }
-    
-    public void mensajeJugadorAbandonoPartida() {
-        JOptionPane.showMessageDialog(null, "Un jugador ha abandonado la partida");
+        JOptionPane.showMessageDialog(this, "La partida ha terminado", "Partida finalizada", JOptionPane.INFORMATION_MESSAGE);
         this.juegoFinalizado = true;
     }
     
+    public void mensajeJugadorAbandonoPartida() {
+        JOptionPane.showMessageDialog(this, "Un jugador ha abandonado la partida", "Jugador abandonó partida", JOptionPane.WARNING_MESSAGE);
+        this.mensajeFinalizoPartida();
+    }
+    
     public void mensajeJugadorAvanza10() {
-        JOptionPane.showMessageDialog(null, "Un jugador avanzó 10 casillas!!!");
+        JOptionPane.showMessageDialog(this, "Un jugador avanzó 10 casillas!!!", "Que buena suerte", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void mensajeJugadorGanoPartida() {
-        JOptionPane.showMessageDialog(null, "Felicidades a jugador (?) has ganado!");
+        JOptionPane.showMessageDialog(this, "Felicidades a jugador (?) has ganado!", "Felicidades!", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void mensajeJugadorPerdio() {
-        JOptionPane.showMessageDialog(null, "Mala suerte jugador (?) has perdido");
+        JOptionPane.showMessageDialog(this, "Mala suerte jugador (?) has perdido", "Suerte a la próxima", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void mensajeJugadorSeUnio() {
-        JOptionPane.showMessageDialog(null, "Un nuevo jugador se ha unido");
+        JOptionPane.showMessageDialog(this, "Un nuevo jugador se ha unido", "Nuevo jugador", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void mensajePartidaInicio() {
-        JOptionPane.showMessageDialog(null, "La partida ha iniciado");
+        JOptionPane.showMessageDialog(this, "La partida ha iniciado", "Partida creada", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
@@ -460,10 +530,6 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
             mensaje = in.readUTF();
             int aux = Integer.parseInt(mensaje);
             iD = aux;
-            
-            if (juegoFinalizado) {
-                cliente.close();
-            }
 
             while (true) {
                 String recibidos = in.readUTF();
@@ -509,13 +575,14 @@ public class FrmPartida10 extends javax.swing.JFrame implements Runnable {
                 
                 if (juegoFinalizado) {
                     System.exit(0);
+                    cliente.close();
                 }
                 
                 metodo = -1;
                 id = -1;
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

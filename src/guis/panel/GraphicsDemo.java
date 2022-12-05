@@ -1,21 +1,22 @@
 package guis.panel;
 
 import entidades.Casilla;
-import entidades.Ficha;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import guis.FrmPartida10;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import pipesandfilters.TuberiaMensajes;
 
 /**
  *
  * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
  * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
  * Martínez 00000228796
- *
  */
 public class GraphicsDemo extends JPanel {
 
@@ -36,32 +37,30 @@ public class GraphicsDemo extends JPanel {
      * EXPLICACIÓN DE LA CASILLA DESTINO Y "LCASILLAS" Método que hará el
      * traslado de las fichas, hace una casilla "casillaDestino" que va a valer
      * exactamente lo mismo que la casilla de la lísta de casillas del tablero
-     * con la que coincida el id. EJEMPLO: Si el id de la casilla enviada es 4,
-     * entonces la "casillaDestino" valdrá lo mismo que lo que vale la casilla
-     * con el id 4 dentro de la lista "lcasillas" La lista "lcasillas" es una
-     * lista que almacena todas las casillas (con su id, posición x, posición y)
-     * que se encuentran dentro del tablero.
-     *
-     * EXPLICACIÓN DE LA CASILLA AVANCE CasillaAvance es un número entero que se
-     * usa como el nuevo id de la casilla al cual se le suma el valor obtenido
-     * de las cañas al ser arrojadas para de esa manera poder saber en que id de
-     * las casillas va a caer la ficha una vez se realice el traslado
-     *
-     * EXPLICACIÓN DE LAS CONDICIONES La primer condición: si salieron 5 cañas
-     * con punto, se avanzaran las 5 casillas, mas otras 5 para poder avanzar
-     * las 10 casillas como lo dicta el reglamento del juego
-     *
-     * La segunda condición: Si no sacó ningun punto el jugador pues no se mueve
-     *
-     * La tercera condición: Si aún no se ha recorrido todo el tablero entonces
-     * a la "casillaDestino" se le será asignada el valor que tiene la casilla
-     * de la lista de casillas "lcasillas" correspondiente al número almacenado
-     * dentro de la variable "casillaAvance", a partrír de aqui ocurren otra
-     * serie de condiciones en las cuales: si el tablero supera las 43 casillas
-     * con su siguiente movimiento se le avisa que recorrió todo el tablero y
-     * desactiva la ficha, en caso de que no las haya superado, al label de la
-     * casilla se le da la posición correspondiente a la casilla destino, y el
-     * método devuelve la nueva casilla en la que se encontrará la ficha
+     * con la que coincida el id.EJEMPLO: Si el id de la casilla enviada es 4,
+ entonces la "casillaDestino" valdrá lo mismo que lo que vale la casilla
+ con el id 4 dentro de la lista "lcasillas" La lista "lcasillas" es una
+ lista que almacena todas las casillas (con su id, posición x, posición y)
+ que se encuentran dentro del tablero.EXPLICACIÓN DE LA CASILLA AVANCE CasillaAvance es un número entero que se
+ usa como el nuevo id de la casilla al cual se le suma el valor obtenido
+ de las cañas al ser arrojadas para de esa manera poder saber en que id de
+ las casillas va a caer la ficha una vez se realice el traslado
+
+ EXPLICACIÓN DE LAS CONDICIONES La primer condición: si salieron 5 cañas
+ con punto, se avanzaran las 5 casillas, mas otras 5 para poder avanzar
+ las 10 casillas como lo dicta el reglamento del juego
+
+ La segunda condición: Si no sacó ningun punto el jugador pues no se mueve
+
+ La tercera condición: Si aún no se ha recorrido todo el tablero entonces
+ a la "casillaDestino" se le será asignada el valor que tiene la casilla
+ de la lista de casillas "lcasillas" correspondiente al número almacenado
+ dentro de la variable "casillaAvance", a partrír de aqui ocurren otra
+ serie de condiciones en las cuales: si el tablero supera las 43 casillas
+ con su siguiente movimiento se le avisa que recorrió todo el tablero y
+ desactiva la ficha, en caso de que no las haya superado, al label de la
+ casilla se le da la posición correspondiente a la casilla destino, y el
+ método devuelve la nueva casilla en la que se encontrará la ficha
      *
      *
      *
@@ -69,9 +68,12 @@ public class GraphicsDemo extends JPanel {
      * que se va a mover
      * @param valorCaña - El valor que dieron las cañas al ser arrojadas
      * @param ficha - La ficha que se va a mover
+     * @param out
+     * @param id
+     * @param tuberia
      * @return
      */
-    public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha) {
+    public Casilla moverFicha(int idCasilla, int valorCaña, JLabel ficha, DataOutputStream out, int id, TuberiaMensajes tuberia) {
         JLabel lbl = ficha;
         Casilla casillaDestino = lcasillas.get(idCasilla);
         int casillaAvance = idCasilla + valorCaña;
@@ -94,7 +96,15 @@ public class GraphicsDemo extends JPanel {
                     JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
                     lbl.setIcon(null);
                     lbl.setEnabled(false);
-
+                    
+                    try {
+                        tuberia.ejecutarTuberia(out, id, 4);
+                        tuberia.ejecutarTuberia(out, id, 5);
+                        tuberia.ejecutarTuberia(out, id, 1);
+                    } catch (IOException e) {
+                        Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                    }
+                    
                     return null;
                 }
 
@@ -102,7 +112,15 @@ public class GraphicsDemo extends JPanel {
                     JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
                     lbl.setIcon(null);
                     lbl.setEnabled(false);
-
+                    
+                    try {
+                        tuberia.ejecutarTuberia(out, id, 4);
+                        tuberia.ejecutarTuberia(out, id, 5);
+                        tuberia.ejecutarTuberia(out, id, 1);
+                    } catch (IOException e) {
+                        Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                    }
+                    
                     return null;
                 }
 
@@ -114,6 +132,15 @@ public class GraphicsDemo extends JPanel {
                 JOptionPane.showMessageDialog(null, "Ficha recorrio el tablero");
                 lbl.setIcon(null);
                 lbl.setEnabled(false);
+                
+                try {
+                    tuberia.ejecutarTuberia(out, id, 4);
+                    tuberia.ejecutarTuberia(out, id, 5);
+                    tuberia.ejecutarTuberia(out, id, 1);
+                } catch (IOException e) {
+                    Logger.getLogger(FrmPartida10.class.getName()).log(Level.SEVERE, null, e);
+                }
+                
                 return null;
             }
 

@@ -1,35 +1,29 @@
 package entidades;
 
 /**
+ * Clase que contiene los atributos de la entidad de Casilla, donde cada casilla
+ * tiene asignado un id con sus coordenadas correspondientes.
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549
- * Gabriel Francisco Piñuelas Ramos 00000230626
- * Ricardo Pacheco Urias 00000229178
- * Abraham Sered Gómez Martínez 00000228796
- * 
- * Clase que contiene los atributos de la entidad 
- * de Casilla, donde cada casilla tiene asignado 
- * un id con sus coordenadas correspondientes.
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
 public class Casilla {
 
     private int id;
     private int x, y;
 
-
     private Ficha[] listaFicha;
 
     public Casilla() {
     }
-    
-    public Casilla(int id, int x, int y){
-        this.id=id;
-        this.x=x;
-        this.y=y;
+
+    public Casilla(int id, int x, int y) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
     }
-    
+
     public Casilla(int id, Ficha[] listaFicha) {
         this.id = id;
         this.listaFicha = listaFicha;
@@ -43,7 +37,7 @@ public class Casilla {
         this.id = id;
     }
 
-        public int getX() {
+    public int getX() {
         return x;
     }
 
@@ -58,7 +52,7 @@ public class Casilla {
     public void setY(int y) {
         this.y = y;
     }
-    
+
     public Ficha[] getListaFicha() {
         return listaFicha;
     }

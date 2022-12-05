@@ -3,18 +3,13 @@ package entidades;
 import javax.swing.JLabel;
 
 /**
+ * Clase que contiene los atributos de la entidad de Ficha. La posicion en la
+ * que esta se encuentra en relacion al id de la casilla y el estado en el que
+ * se encuentra, jugando o no.
  *
- * @author 
- * Luis Gonzalo Cervantes Rivera 00000228549 
- * Gabriel Francisco Piñuelas Ramos 00000230626 
- * Ricardo Pacheco Urias 00000229178 
- * Abraham Sered Gómez Martínez 00000228796
- *
- * Clase que contiene los atributos de la entidad de
- * Ficha. La posicion en la que esta se encuentra
- * en relacion al id de la casilla y el estado en 
- * el que se encuentra, jugando o no.
- * 
+ * @author Luis Gonzalo Cervantes Rivera 00000228549 Gabriel Francisco Piñuelas
+ * Ramos 00000230626 Ricardo Pacheco Urias 00000229178 Abraham Sered Gómez
+ * Martínez 00000228796
  */
 public class Ficha {
 
@@ -34,19 +29,18 @@ public class Ficha {
         this.enJuego = enJuego;
     }
 
-
     public Ficha(int id, JLabel label, boolean enJuego) {
         this.id = id;
         this.label = label;
         this.enJuego = enJuego;
     }
-    
+
     public Ficha(int posicion, int id, boolean enJuego) {
         this.posicion = posicion;
         this.id = id;
         this.enJuego = enJuego;
     }
-        
+
     public Ficha(int id, int posicion) {
         this.id = id;
         this.posicion = posicion;
@@ -59,7 +53,7 @@ public class Ficha {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public Casilla getCasilla() {
         return casilla;
     }
